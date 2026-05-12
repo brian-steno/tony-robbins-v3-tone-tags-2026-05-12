@@ -1,48 +1,108 @@
 {
   "candidates": {
-    "flash": {
-      "candidate": "flash",
+    "sage_pro_flash": {
+      "candidate": "sage_pro_flash",
       "channels": 1,
-      "description": "Current low-latency ElevenLabs baseline.",
-      "display_name": "Flash",
-      "duration_seconds": 33.708,
+      "description": "Sage Robbins professional voice on the current low-latency ElevenLabs baseline.",
+      "display_name": "Sage Pro Flash",
+      "duration_seconds": 38.305,
       "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
       "sample_rate": 22050,
-      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/flash.wav",
-      "tts_model": "eleven_flash_v2_5"
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/sage_pro_flash.wav",
+      "tts_model": "eleven_flash_v2_5",
+      "voice_id": "duLiPbnRpVlh5zMcUzgt",
+      "voice_key": "pro"
     },
-    "ttd_plain": {
-      "candidate": "ttd_plain",
+    "sage_pro_ttd_plain": {
+      "candidate": "sage_pro_ttd_plain",
       "channels": 1,
-      "description": "TTD conversational render without audio tags.",
-      "display_name": "TTD Plain",
-      "duration_seconds": 34.204,
+      "description": "Sage Robbins professional voice on TTD conversational render without audio tags.",
+      "display_name": "Sage Pro TTD Plain",
+      "duration_seconds": 49.799,
       "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
       "sample_rate": 22050,
-      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/ttd_plain.wav",
-      "tts_model": "eleven_v3_conversational"
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/sage_pro_ttd_plain.wav",
+      "tts_model": "eleven_v3_conversational",
+      "voice_id": "duLiPbnRpVlh5zMcUzgt",
+      "voice_key": "pro"
     },
-    "ttd_tagged": {
-      "candidate": "ttd_tagged",
+    "sage_pro_ttd_tagged": {
+      "candidate": "sage_pro_ttd_tagged",
       "channels": 1,
-      "description": "TTD conversational render with visible Eleven v3 audio tags.",
-      "display_name": "TTD Tagged",
-      "duration_seconds": 35.092,
+      "description": "Sage Robbins professional voice on TTD conversational render with visible Eleven v3 audio tags.",
+      "display_name": "Sage Pro TTD Tagged",
+      "duration_seconds": 52.621,
       "input_text": "[deliberate intensity] If you have fourteen days, then stop acting as if you have fourteen months. [clear emphasis] Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. [faster, sharper] Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. [steady power] Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. [confident conviction] The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
       "sample_rate": 22050,
-      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/ttd_tagged.wav",
-      "tts_model": "eleven_v3_conversational"
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/sage_pro_ttd_tagged.wav",
+      "tts_model": "eleven_v3_conversational",
+      "voice_id": "duLiPbnRpVlh5zMcUzgt",
+      "voice_key": "pro"
     },
-    "turbo": {
-      "candidate": "turbo",
+    "sage_pro_turbo": {
+      "candidate": "sage_pro_turbo",
       "channels": 1,
-      "description": "Higher-fidelity ElevenLabs turbo baseline.",
-      "display_name": "Turbo",
-      "duration_seconds": 33.342,
+      "description": "Sage Robbins professional voice on the higher-fidelity ElevenLabs turbo baseline.",
+      "display_name": "Sage Pro Turbo",
+      "duration_seconds": 41.153,
       "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
       "sample_rate": 22050,
-      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/turbo.wav",
-      "tts_model": "eleven_turbo_v2_5"
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/sage_pro_turbo.wav",
+      "tts_model": "eleven_turbo_v2_5",
+      "voice_id": "duLiPbnRpVlh5zMcUzgt",
+      "voice_key": "pro"
+    },
+    "tony_flash": {
+      "candidate": "tony_flash",
+      "channels": 1,
+      "description": "Tony Robbins cloned voice on the current low-latency ElevenLabs baseline.",
+      "display_name": "Tony Flash",
+      "duration_seconds": 32.977,
+      "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/tony_flash.wav",
+      "tts_model": "eleven_flash_v2_5",
+      "voice_id": "7Uc3Xz72mC9WIQPI3t4m",
+      "voice_key": "primary"
+    },
+    "tony_ttd_plain": {
+      "candidate": "tony_ttd_plain",
+      "channels": 1,
+      "description": "Tony Robbins cloned voice on TTD conversational render without audio tags.",
+      "display_name": "Tony TTD Plain",
+      "duration_seconds": 37.078,
+      "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/tony_ttd_plain.wav",
+      "tts_model": "eleven_v3_conversational",
+      "voice_id": "7Uc3Xz72mC9WIQPI3t4m",
+      "voice_key": "primary"
+    },
+    "tony_ttd_tagged": {
+      "candidate": "tony_ttd_tagged",
+      "channels": 1,
+      "description": "Tony Robbins cloned voice on TTD conversational render with visible Eleven v3 audio tags.",
+      "display_name": "Tony TTD Tagged",
+      "duration_seconds": 36.843,
+      "input_text": "[deliberate intensity] If you have fourteen days, then stop acting as if you have fourteen months. [clear emphasis] Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. [faster, sharper] Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. [steady power] Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. [confident conviction] The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/tony_ttd_tagged.wav",
+      "tts_model": "eleven_v3_conversational",
+      "voice_id": "7Uc3Xz72mC9WIQPI3t4m",
+      "voice_key": "primary"
+    },
+    "tony_turbo": {
+      "candidate": "tony_turbo",
+      "channels": 1,
+      "description": "Tony Robbins cloned voice on the higher-fidelity ElevenLabs turbo baseline.",
+      "display_name": "Tony Turbo",
+      "duration_seconds": 34.178,
+      "input_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/fourteen-day-turnaround/audio/tony_turbo.wav",
+      "tts_model": "eleven_turbo_v2_5",
+      "voice_id": "7Uc3Xz72mC9WIQPI3t4m",
+      "voice_key": "primary"
     }
   },
   "packet_name": "tony-robbins-v3-tone-tag-review",
