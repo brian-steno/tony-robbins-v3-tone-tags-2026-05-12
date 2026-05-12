@@ -1,0 +1,55 @@
+{
+  "candidates": {
+    "flash": {
+      "candidate": "flash",
+      "channels": 1,
+      "description": "Current low-latency ElevenLabs baseline.",
+      "display_name": "Flash",
+      "duration_seconds": 32.219,
+      "input_text": "Right now the goal is not to solve your whole life in one move. The goal is to break the emotional pattern that has been running you. Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/break-state-pattern/audio/flash.wav",
+      "tts_model": "eleven_flash_v2_5"
+    },
+    "ttd_plain": {
+      "candidate": "ttd_plain",
+      "channels": 1,
+      "description": "TTD conversational render without audio tags.",
+      "display_name": "TTD Plain",
+      "duration_seconds": 32.768,
+      "input_text": "Right now the goal is not to solve your whole life in one move. The goal is to break the emotional pattern that has been running you. Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/break-state-pattern/audio/ttd_plain.wav",
+      "tts_model": "eleven_v3_conversational"
+    },
+    "ttd_tagged": {
+      "candidate": "ttd_tagged",
+      "channels": 1,
+      "description": "TTD conversational render with visible Eleven v3 audio tags.",
+      "display_name": "TTD Tagged",
+      "duration_seconds": 30.861,
+      "input_text": "[commanding, energetic] Right now the goal is not to solve your whole life in one move. [sharp emphasis] The goal is to break the emotional pattern that has been running you. [driving cadence] Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. [intense conviction] When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. [firm reassurance] You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. [focused close] Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/break-state-pattern/audio/ttd_tagged.wav",
+      "tts_model": "eleven_v3_conversational"
+    },
+    "turbo": {
+      "candidate": "turbo",
+      "channels": 1,
+      "description": "Higher-fidelity ElevenLabs turbo baseline.",
+      "display_name": "Turbo",
+      "duration_seconds": 29.528,
+      "input_text": "Right now the goal is not to solve your whole life in one move. The goal is to break the emotional pattern that has been running you. Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "sample_rate": 22050,
+      "saved_audio_path": "/home/brian/brian-work-next/workspace/reports/tts-direct-review/2026-05-12-tony-robbins-v3-tone-tags/break-state-pattern/audio/turbo.wav",
+      "tts_model": "eleven_turbo_v2_5"
+    }
+  },
+  "packet_name": "tony-robbins-v3-tone-tag-review",
+  "prompt": {
+    "plain_text": "Right now the goal is not to solve your whole life in one move. The goal is to break the emotional pattern that has been running you. Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+    "slug": "break-state-pattern",
+    "tagged_text": "[commanding, energetic] Right now the goal is not to solve your whole life in one move. [sharp emphasis] The goal is to break the emotional pattern that has been running you. [driving cadence] Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. [intense conviction] When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. [firm reassurance] You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. [focused close] Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+    "title": "Break the state pattern"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "packet_name": "tony-robbins-v3-tone-tag-review",
+  "prompts": [
+    {
+      "plain_text": "Right now the goal is not to solve your whole life in one move. The goal is to break the emotional pattern that has been running you. Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "slug": "break-state-pattern",
+      "tagged_text": "[commanding, energetic] Right now the goal is not to solve your whole life in one move. [sharp emphasis] The goal is to break the emotional pattern that has been running you. [driving cadence] Stand up, change your physiology, breathe deeper, and make one decision that puts you back in motion. [intense conviction] When people stay stuck, it is usually because they keep rehearsing the problem instead of conditioning a new state. [firm reassurance] You do not need more self-judgment. You need momentum, clarity, and one meaningful action completed today. [focused close] Focus on what you can control in the next hour, not on everything that still feels unfinished.",
+      "title": "Break the state pattern"
+    },
+    {
+      "plain_text": "If you have fourteen days, then stop acting as if you have fourteen months. Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "slug": "fourteen-day-turnaround",
+      "tagged_text": "[deliberate intensity] If you have fourteen days, then stop acting as if you have fourteen months. [clear emphasis] Pick the single outcome that matters most, define exactly what success looks like, and build your days around the actions that move that target. [faster, sharper] Cut the noise. Cut the reactive checking. Cut the conversations that drain your certainty. [steady power] Every day needs one primary win, one recovery habit, and one moment where you deliberately reset your state before you make your next move. [confident conviction] The quality of your focus will determine the quality of your result. The standard is not perfection. The standard is intensity with consistency.",
+      "title": "Fourteen day turnaround"
+    }
+  ]
+}
