@@ -362,6 +362,13 @@
 
       <section class="section">
         <h2>Hosted Review Scorecard</h2>
+        <p>
+          Latency notes below now use the <strong>2026-05-22 slot-aware runtime
+          smoke receipts</strong> on the hidden review rows. Treat them as
+          runtime-path evidence, not as a browser stopwatch from this page.
+          The most useful startup number here is the time to the first stable
+          burst of prompt audio, not the very first hot-track frame.
+        </p>
         <table>
           <thead>
             <tr>
@@ -383,8 +390,8 @@
                 <small>The live fleet audit still points to Flash as the current generic ElevenLabs renderer default, but current Tony production rows use the older <code>rGG…</code> voice id. This hosted lane intentionally swaps in the newer <code>7Uc3…</code> clone for subjective upgrade scoring.</small>
               </td>
               <td data-label="Latency signal">
-                Official ElevenLabs positioning: ultra-low latency, ~75ms model latency.
-                <small>Directional probe evidence also made Flash the fastest of the current ElevenLabs lanes we measured.</small>
+                Runtime receipt: first prompt frame at ~<strong>5.6ms</strong>, stable prompt audio at ~<strong>95.4ms</strong>, interrupt RTT ~<strong>5.01s</strong>.
+                <small>This is the current six-lane slot-aware smoke receipt on the hidden review row, not a vendor-side model-latency claim.</small>
               </td>
               <td data-label="Cost signal">
                 Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
@@ -405,7 +412,8 @@
                 <small>Not found pinned on active customer-attached non-preview rows during the live audit.</small>
               </td>
               <td data-label="Latency signal">
-                Official ElevenLabs positioning: balanced quality and latency, ~250–300ms model latency.
+                Runtime receipt: first prompt frame at ~<strong>0.8ms</strong>, stable prompt audio at ~<strong>90.2ms</strong>, interrupt RTT ~<strong>5.02s</strong>.
+                <small>Fastest stable-audio receipt in this run, but only by a small margin.</small>
               </td>
               <td data-label="Cost signal">
                 Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
@@ -426,8 +434,8 @@
                 <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
               </td>
               <td data-label="Latency signal">
-                No operator-grade hosted readback from this page.
-                <small>Directional related evidence exists for the newer TTD/v3-conversational lane, but that is not exact parity with this hosted Eleven v3 slot.</small>
+                Runtime receipt: first prompt frame at ~<strong>4.4ms</strong>, stable prompt audio at ~<strong>94.0ms</strong>, interrupt RTT ~<strong>5.03s</strong>.
+                <small>This receipt is prompt-slot-aware for <code>tony-voice-review-v3-plain-20260520</code>; it is still not the newer TTD / v3-conversational lane.</small>
               </td>
               <td data-label="Cost signal">
                 Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
@@ -448,8 +456,8 @@
                 <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
               </td>
               <td data-label="Latency signal">
-                Same caveat as v3 plain.
-                <small>Compare mainly for subjective delivery, not as a fully proven realtime baseline.</small>
+                Runtime receipt: first prompt frame at ~<strong>3.3ms</strong>, stable prompt audio at ~<strong>92.7ms</strong>, interrupt RTT ~<strong>5.02s</strong>.
+                <small>Measured through the tagged prompt slot specifically, so this is no longer just a v3-plain proxy.</small>
               </td>
               <td data-label="Cost signal">
                 Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
@@ -470,7 +478,8 @@
                 <small>Dedicated hidden test row only. Not used on active customer-attached production twins. The clone id comes from a shorter source slice than the ElevenLabs clone, so judge with that caveat in mind.</small>
               </td>
               <td data-label="Latency signal">
-                Cartesia positions Sonic as real-time; current docs/pricing surfaces describe ~90ms time-to-first-audio for Sonic 3 / 3.5 family messaging.
+                Runtime receipt: first prompt frame at ~<strong>3.6ms</strong>, stable prompt audio at ~<strong>95.5ms</strong>, interrupt RTT ~<strong>5.06s</strong>.
+                <small>Very close to the ElevenLabs lanes on stable startup in this smoke path.</small>
               </td>
               <td data-label="Cost signal">
                 Credit-based, not minute-priced on the public page.
@@ -492,8 +501,8 @@
                 <small>Dedicated hidden test row only. Current Cartesia docs recommend Sonic 3.5 for best naturalness and broader language support.</small>
               </td>
               <td data-label="Latency signal">
-                Same real-time family claim as Sonic 3.
-                <small>Cartesia documents <code>sonic-3.5</code> as the current base stable model and markets it for conversational low-latency TTS.</small>
+                Runtime receipt: first prompt frame at ~<strong>8.6ms</strong>, stable prompt audio at ~<strong>99.1ms</strong>, interrupt RTT ~<strong>5.02s</strong>.
+                <small>Slightly slower stable-audio receipt than Sonic 3 in this one-run smoke, but still in the same practical cluster.</small>
               </td>
               <td data-label="Cost signal">
                 Credit-based, not minute-priced on the public page.
