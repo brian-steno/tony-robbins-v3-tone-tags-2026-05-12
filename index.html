@@ -302,6 +302,7 @@
             <div class="pill-row">
               <div class="pill">Hosted chats are dev-backed hidden test rows</div>
               <div class="pill">No links on this page point at live Tony prod rows</div>
+              <div class="pill">Hosted ElevenLabs lanes use newer Tony clone <code>7Uc3…</code></div>
               <div class="pill">Current live fleet audit: 26 generic ElevenLabs, 4 OpenAI, 1 special-case</div>
             </div>
           </div>
@@ -313,21 +314,23 @@
             </p>
             <h3>Fastest honest reading</h3>
             <ul>
-              <li><strong>Flash</strong> is the current inferred generic ElevenLabs baseline.</li>
-              <li><strong>Turbo</strong> was not found pinned on active customer-attached rows.</li>
-              <li><strong>Hosted v3 plain/tagged</strong> are review lanes, not proven live defaults.</li>
-              <li><strong>Cartesia</strong> is a dedicated hidden test row using the Tony Cartesia clone.</li>
+              <li><strong>Hosted Flash / Turbo / v3 plain / v3 tagged</strong> all use the same newer Tony ElevenLabs clone <code>7Uc3…</code>.</li>
+              <li><strong>Current live Tony rows</strong> still point at the older <code>rGG…</code> voice, so this page is an upgrade scorecard, not a literal prod mirror.</li>
+              <li><strong>Turbo</strong> and <strong>v3</strong> were not found pinned on active customer-attached rows.</li>
+              <li><strong>Cartesia Sonic 3 / 3.5</strong> are dedicated hidden test rows using the Tony Cartesia clone.</li>
             </ul>
           </div>
         </div>
         <div class="notice">
-          <strong>Important evidence split:</strong> the hosted <code>v3 plain</code>
-          and <code>v3 tagged</code> links below are older Eleven v3 prompt-slot
-          lanes. The supporting static <code>TTD plain</code> and
+          <strong>Important evidence split:</strong> the hosted Flash / Turbo /
+          v3 links below are now aligned on the newer Tony clone
+          <code>7Uc3…</code>. The supporting static <code>TTD plain</code> and
           <code>TTD tagged</code> clips lower on the page are the newer
-          <code>eleven_v3_conversational</code> packet. They are useful related
-          evidence, but they are not exact model-parity proof for the hosted
-          Eleven v3 links.
+          <code>eleven_v3_conversational</code> packet, so they are useful
+          related evidence but not exact model-parity proof for the hosted
+          Eleven v3 links. The Cartesia clone still uses a shorter source slice
+          from the same Tony lineage, so cross-provider results remain slightly
+          source-asymmetric even after the hosted ElevenLabs cleanup.
         </div>
       </section>
 
@@ -376,8 +379,8 @@
                 <small>ElevenLabs <code>eleven_flash_v2_5</code></small>
               </td>
               <td data-label="Role / prod status">
-                Current inferred generic ElevenLabs baseline.
-                <small>Backed by the live audit: 26 active customer-attached non-preview rows resolve through the generic ElevenLabs lane with no explicit model pin found in row config or local <code>latest.yaml</code>. A hidden deployed env override is still the remaining caveat.</small>
+                Baseline renderer candidate on the newer Tony ElevenLabs clone.
+                <small>The live fleet audit still points to Flash as the current generic ElevenLabs renderer default, but current Tony production rows use the older <code>rGG…</code> voice id. This hosted lane intentionally swaps in the newer <code>7Uc3…</code> clone for subjective upgrade scoring.</small>
               </td>
               <td data-label="Latency signal">
                 Official ElevenLabs positioning: ultra-low latency, ~75ms model latency.
@@ -387,8 +390,8 @@
                 Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
               </td>
               <td data-label="Hosted chat">
-                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-20260520&amp;backend=dev">Open Flash chat</a>
-                <small>Hidden non-preview row: <code>tony-business-coaching-review</code></small>
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-20260520&amp;backend=dev">Open Flash chat</a>
+                <small>Hidden non-preview row: <code>tony-business-coaching-review-pvc</code></small>
               </td>
             </tr>
 
@@ -398,7 +401,7 @@
                 <small>ElevenLabs <code>eleven_turbo_v2_5</code></small>
               </td>
               <td data-label="Role / prod status">
-                Quality-oriented ElevenLabs comparison lane.
+                Quality-oriented ElevenLabs comparison lane on the same newer Tony clone.
                 <small>Not found pinned on active customer-attached non-preview rows during the live audit.</small>
               </td>
               <td data-label="Latency signal">
@@ -408,7 +411,7 @@
                 Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
               </td>
               <td data-label="Hosted chat">
-                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-turbo-20260520&amp;backend=dev">Open Turbo chat</a>
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-turbo-20260520&amp;backend=dev">Open Turbo chat</a>
                 <small>Same hidden review row, isolated by prompt slot.</small>
               </td>
             </tr>
@@ -419,7 +422,7 @@
                 <small>ElevenLabs <code>eleven_v3</code></small>
               </td>
               <td data-label="Role / prod status">
-                Expressive upgrade candidate without tag prompting.
+                Expressive upgrade candidate without tag prompting on the same newer Tony clone.
                 <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
               </td>
               <td data-label="Latency signal">
@@ -430,7 +433,7 @@
                 Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
               </td>
               <td data-label="Hosted chat">
-                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open v3 plain chat</a>
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open v3 plain chat</a>
                 <small>Older Eleven v3 prompt-slot lane, not the newer TTD packet.</small>
               </td>
             </tr>
@@ -441,7 +444,7 @@
                 <small>ElevenLabs <code>eleven_v3</code></small>
               </td>
               <td data-label="Role / prod status">
-                Expressive upgrade candidate with tag prompting.
+                Expressive upgrade candidate with tag prompting on the same newer Tony clone.
                 <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
               </td>
               <td data-label="Latency signal">
@@ -452,19 +455,19 @@
                 Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
               </td>
               <td data-label="Hosted chat">
-                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-20260520&amp;backend=dev">Open v3 tagged chat</a>
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-20260520&amp;backend=dev">Open v3 tagged chat</a>
                 <small>Best for judging whether tag shaping helps or hurts the feel.</small>
               </td>
             </tr>
 
             <tr>
               <td data-label="Lane">
-                <strong>Cartesia</strong>
+                <strong>Cartesia Sonic 3</strong>
                 <small>Cartesia <code>cartesia/sonic-3</code></small>
               </td>
               <td data-label="Role / prod status">
                 Cross-provider upgrade candidate.
-                <small>Dedicated hidden test row only. Not used on active customer-attached production twins.</small>
+                <small>Dedicated hidden test row only. Not used on active customer-attached production twins. The clone id comes from a shorter source slice than the ElevenLabs clone, so judge with that caveat in mind.</small>
               </td>
               <td data-label="Latency signal">
                 Cartesia positions Sonic as real-time; current docs/pricing surfaces describe ~90ms time-to-first-audio for Sonic 3 / 3.5 family messaging.
@@ -474,8 +477,31 @@
                 <small>Official pricing shows <strong>1 credit / character</strong> for Sonic TTS. Instant voice cloning requires a paid plan tier; pricing varies by plan credits.</small>
               </td>
               <td data-label="Hosted chat">
-                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open Cartesia chat</a>
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open Sonic 3 chat</a>
                 <small>Dedicated hidden non-preview row: <code>tony-business-coaching-cartesia</code></small>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Lane">
+                <strong>Cartesia Sonic 3.5</strong>
+                <small>Cartesia <code>cartesia/sonic-3.5</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Newer Cartesia flagship candidate.
+                <small>Dedicated hidden test row only. Current Cartesia docs recommend Sonic 3.5 for best naturalness and broader language support.</small>
+              </td>
+              <td data-label="Latency signal">
+                Same real-time family claim as Sonic 3.
+                <small>Cartesia documents <code>sonic-3.5</code> as the current base stable model and markets it for conversational low-latency TTS.</small>
+              </td>
+              <td data-label="Cost signal">
+                Credit-based, not minute-priced on the public page.
+                <small>Official pricing shows <strong>1 credit / character</strong> for Sonic TTS.</small>
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open Sonic 3.5 chat</a>
+                <small>Dedicated hidden non-preview row: <code>tony-business-coaching-cartesia-35</code></small>
               </td>
             </tr>
           </tbody>
@@ -492,9 +518,9 @@
         <div class="card">
           <h3>Direct fixed-text packet: “Fourteen day turnaround”</h3>
           <p>
-            Useful for same-text, short-form subjective comparison across all five
-            currently wired lanes. This is <strong>not</strong> the LiveKit runtime
-            smoke path.
+            Useful for same-text, short-form subjective comparison across the
+            May 12 direct-render packet. This is <strong>not</strong> the LiveKit
+            runtime smoke path, and it does not yet include Sonic 3.5.
           </p>
           <div class="asset-grid">
             <div class="asset-card">
@@ -600,7 +626,8 @@
             <h3>What remains caveated</h3>
             <ul>
               <li>We did <strong>not</strong> find Turbo or v3 explicitly pinned on active customer-attached rows.</li>
-              <li>Flash is the current inferred default for the generic ElevenLabs group.</li>
+              <li>Flash is the current inferred default renderer for the generic ElevenLabs group.</li>
+              <li>Current live Tony production rows still use the older <code>rGG…</code> voice, while this review hub intentionally uses the newer <code>7Uc3…</code> clone for the hosted ElevenLabs upgrade lanes.</li>
               <li>A hidden deployed env override could still change that generic ElevenLabs default without being visible from this page alone.</li>
             </ul>
           </div>
@@ -634,14 +661,14 @@ Upgrade judgment:
         <h2>Next Candidate Queue</h2>
         <ul class="queue-list">
           <li>
-            <strong>Cartesia Sonic 3.5</strong>:
-            current Cartesia docs recommend this for best naturalness and broader
-            language coverage. It is not wired into the hosted test surface yet.
-          </li>
-          <li>
             <strong>Cartesia Sonic 2</strong>:
             still worth testing if clone fidelity turns out to matter more than
             latest-model naturalness.
+          </li>
+          <li>
+            <strong>Fresh Sonic 3.5 static captures</strong>:
+            the hosted lane is wired now, but the direct fixed-text packet and
+            LiveKit RTC inflation packet still stop at Sonic 3.
           </li>
         </ul>
         <ul class="sources">
