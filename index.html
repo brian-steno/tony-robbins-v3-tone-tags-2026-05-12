@@ -1,1 +1,657 @@
-<!doctype html><html><head><meta charset='utf-8'><title>Direct TTS Tone Tag Review Packet</title><style>body{font-family:system-ui,sans-serif;max-width:1080px;margin:24px auto;padding:0 16px;line-height:1.5}.prompt{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0}.candidate{border:1px solid #ddd;border-radius:12px;padding:16px;margin:16px 0;background:#fff}.feedback{margin-top:16px;padding-top:12px;border-top:1px solid #e5e5e5}.feedback label{display:block;font-weight:600;margin:10px 0 6px}.feedback input,.feedback textarea{width:100%;max-width:420px;padding:8px;font:inherit}.controls{position:sticky;top:0;background:#fff;padding:12px 0;border-bottom:1px solid #ddd;margin-bottom:20px}.controls button{margin-right:8px;padding:8px 12px;font:inherit}pre{white-space:pre-wrap;background:#f7f7f7;padding:12px;border-radius:8px;overflow:auto}</style></head><body><h1>tony-robbins-inflation-cartesia-vs-v3</h1><div style="background:#fff7e0;border:1px solid #ffc107;border-radius:10px;padding:14px 18px;margin:14px 0;font-size:15px;line-height:1.55"><strong>Prod-equivalent LiveKit RTC captures.</strong> The audio below was captured off live subscribed RTC tracks. A minimal test agent (real AgentSession, real streaming TTS plugin, real RTC publish path — same code path tony-coaching uses in production) spoke the inflation script verbatim through each engine. No LLM rephrasing this time, so all four lanes speak the same content. Same Opus encode, same sample-rate conversion, same RTC transport as a real customer call. <strong>Leave feedback in Linear:</strong> <a href="https://linear.app/stenoai/issue/S-1484/tone-tag-review-tony-robbins-v3-elevenlabs-flashturbottd-vs-cartesia">S-1484 — Cartesia clone vs ElevenLabs v3 (Tony Robbins inflation script)</a>. After listening, comment on the issue with your ratings and notes using the template in the issue description. All ratings and notes belong in the Linear thread.</div><p>This packet is the prod-equivalent LiveKit RTC capture for the four-engine Tony Robbins voice comparison. Each clip is the live agent runtime speaking the inflation script verbatim through its configured TTS plugin, emitted over Opus through a real LiveKit RTC track in a dev LiveKit room. Each lane shares the same input content; engine, voice ID, and TTS streaming path are the only differences.</p><p>Voice lanes: Tony Robbins cloned voice across ElevenLabs Flash, ElevenLabs Eleven v3 conversational TTD (plain and audio-tagged), and Cartesia Sonic 3 clone.</p><section class='prompt'><h2>Realtime captures</h2><section class='candidate'><h3>Cartesia Clone</h3><p><strong>Model:</strong> <code>cartesia/sonic-3</code><br><strong>Voice lane:</strong> livekit_cartesia_clone<br><strong>Clip duration:</strong> 302.14s</p><p>LiveKit custom voice cloned to Cartesia Sonic via LiveKit Inference.</p><audio controls preload='metadata'><source src='inflation-script/audio/cartesia_clone.wav' type='audio/wav'></audio><p><a href='inflation-script/audio/cartesia_clone.wav'>Open raw audio</a></p></section><section class='candidate'><h3>Tony Flash</h3><p><strong>Model:</strong> <code>eleven_flash_v2_5</code><br><strong>Voice lane:</strong> primary<br><strong>Clip duration:</strong> 302.13s</p><p>Tony Robbins cloned voice on the current low-latency ElevenLabs baseline.</p><audio controls preload='metadata'><source src='inflation-script/audio/tony_flash.wav' type='audio/wav'></audio><p><a href='inflation-script/audio/tony_flash.wav'>Open raw audio</a></p></section><section class='candidate'><h3>Tony TTD Plain</h3><p><strong>Model:</strong> <code>eleven_v3_conversational</code><br><strong>Voice lane:</strong> primary<br><strong>Clip duration:</strong> 302.09s</p><p>Tony Robbins cloned voice on Eleven v3 conversational (TTD) without audio tags — realtime LiveKit RTC capture.</p><audio controls preload='metadata'><source src='inflation-script/audio/tony_ttd_plain.wav' type='audio/wav'></audio><p><a href='inflation-script/audio/tony_ttd_plain.wav'>Open raw audio</a></p></section><section class='candidate'><h3>Tony TTD Tagged</h3><p><strong>Model:</strong> <code>eleven_v3_conversational</code><br><strong>Voice lane:</strong> primary<br><strong>Clip duration:</strong> 302.17s</p><p>Tony Robbins cloned voice on Eleven v3 conversational (TTD) with audio tags ([dramatic tone], [pause], etc.) — realtime LiveKit RTC capture.</p><audio controls preload='metadata'><source src='inflation-script/audio/tony_ttd_tagged.wav' type='audio/wav'></audio><p><a href='inflation-script/audio/tony_ttd_tagged.wav'>Open raw audio</a></p></section></section></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tony Voice Review Hub</title>
+    <style>
+      :root {
+        --bg: #f7f4ee;
+        --panel: #fffdf8;
+        --panel-strong: #fff8ea;
+        --text: #1f1b16;
+        --muted: #62594d;
+        --line: #d8cdbd;
+        --accent: #8f431d;
+        --accent-soft: #f4e2d8;
+        --success: #e5f1e5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, #f1e6d7 0%, var(--bg) 260px);
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      main {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 32px 18px 56px;
+      }
+
+      h1,
+      h2,
+      h3,
+      th {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        letter-spacing: 0.01em;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2.6rem;
+        line-height: 1.05;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 1.35rem;
+      }
+
+      h3 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      code {
+        background: #f1ece3;
+        border-radius: 4px;
+        padding: 0.1rem 0.35rem;
+        font-size: 0.95em;
+      }
+
+      .hero,
+      .section,
+      .notice {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(31, 27, 22, 0.05);
+      }
+
+      .hero {
+        padding: 28px 28px 24px;
+        margin-bottom: 18px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 2.3fr 1fr;
+        gap: 18px;
+      }
+
+      .notice {
+        padding: 16px 18px;
+        margin: 18px 0 0;
+        background: var(--panel-strong);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 18px 0 0;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .section {
+        padding: 22px 22px 20px;
+        margin-top: 18px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        background: #fff;
+      }
+
+      .card p:last-child,
+      .card ul:last-child {
+        margin-bottom: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 14px 10px;
+        vertical-align: top;
+        text-align: left;
+      }
+
+      th {
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      td strong {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 0.98rem;
+      }
+
+      td small {
+        display: block;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
+      .prod-baseline {
+        background: rgba(143, 67, 29, 0.05);
+      }
+
+      .chat-link {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 600;
+      }
+
+      .asset-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .asset-card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        background: #fff;
+      }
+
+      .asset-card p {
+        margin-top: 6px;
+        margin-bottom: 10px;
+      }
+
+      audio {
+        width: 100%;
+        min-width: 0;
+        margin: 10px 0 8px;
+      }
+
+      .sources {
+        margin-top: 12px;
+        font-size: 0.95rem;
+      }
+
+      .sources li {
+        margin-bottom: 6px;
+      }
+
+      .queue-list li {
+        margin-bottom: 10px;
+      }
+
+      .template {
+        white-space: pre-wrap;
+        background: #f3eee5;
+        border-radius: 12px;
+        padding: 14px;
+        color: var(--text);
+      }
+
+      @media (max-width: 880px) {
+        .hero-grid,
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tr {
+          border: 1px solid var(--line);
+          border-radius: 14px;
+          margin-bottom: 12px;
+          overflow: hidden;
+          background: #fff;
+        }
+
+        td {
+          border-bottom: 1px solid #ede5d8;
+        }
+
+        td:last-child {
+          border-bottom: 0;
+        }
+
+        td::before {
+          content: attr(data-label);
+          display: block;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          text-transform: uppercase;
+          font-size: 0.78rem;
+          letter-spacing: 0.05em;
+          color: var(--muted);
+          margin-bottom: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <h1>Tony Voice Review Hub</h1>
+            <p>
+              This page is the team review surface for deciding which voice lanes
+              are best for real-time Tony-style twins. The primary comparison is
+              the hosted chat links below. Supporting static clips are split by
+              evidence type so we do not blur hidden test chats, direct fixed-text
+              renders, and LiveKit RTC captures into one misleading bucket.
+            </p>
+            <p>
+              Goal: find the best subjective quality that still feels acceptable
+              for real-time twins. Once the team has a subjective ranking, compare
+              that with latency and cost to decide what should stay baseline and
+              what should be treated as an upgrade tier.
+            </p>
+            <div class="pill-row">
+              <div class="pill">Hosted chats are dev-backed hidden test rows</div>
+              <div class="pill">No links on this page point at live Tony prod rows</div>
+              <div class="pill">Current live fleet audit: 26 generic ElevenLabs, 4 OpenAI, 1 special-case</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Feedback target</h3>
+            <p>
+              Leave ratings and notes in
+              <a href="https://linear.app/stenoai/issue/S-1484/tone-tag-review-tony-robbins-v3-elevenlabs-flashturbottd-vs-cartesia">S-1484</a>.
+            </p>
+            <h3>Fastest honest reading</h3>
+            <ul>
+              <li><strong>Flash</strong> is the current inferred generic ElevenLabs baseline.</li>
+              <li><strong>Turbo</strong> was not found pinned on active customer-attached rows.</li>
+              <li><strong>Hosted v3 plain/tagged</strong> are review lanes, not proven live defaults.</li>
+              <li><strong>Cartesia</strong> is a dedicated hidden test row using the Tony Cartesia clone.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="notice">
+          <strong>Important evidence split:</strong> the hosted <code>v3 plain</code>
+          and <code>v3 tagged</code> links below are older Eleven v3 prompt-slot
+          lanes. The supporting static <code>TTD plain</code> and
+          <code>TTD tagged</code> clips lower on the page are the newer
+          <code>eleven_v3_conversational</code> packet. They are useful related
+          evidence, but they are not exact model-parity proof for the hosted
+          Eleven v3 links.
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>How To Review</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>Suggested workflow</h3>
+            <ol>
+              <li>Open the hosted links in the scorecard below.</li>
+              <li>Use the same 2–3 prompts in each lane before judging.</li>
+              <li>Score subjective quality first, then use latency/cost as tie-breakers.</li>
+              <li>Use the static clips only as supporting evidence, not the only signal.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3>Review rubric</h3>
+            <ul>
+              <li>Likeness to Tony</li>
+              <li>Warmth and authority</li>
+              <li>Clarity and pronunciation</li>
+              <li>Pacing, pauses, and breath feel</li>
+              <li>Energy and emotional control</li>
+              <li>Realtime feel / responsiveness</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Hosted Review Scorecard</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Lane</th>
+              <th>Role / prod status</th>
+              <th>Latency signal</th>
+              <th>Cost signal</th>
+              <th>Hosted chat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="prod-baseline">
+              <td data-label="Lane">
+                <strong>Flash</strong>
+                <small>ElevenLabs <code>eleven_flash_v2_5</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Current inferred generic ElevenLabs baseline.
+                <small>Backed by the live audit: 26 active customer-attached non-preview rows resolve through the generic ElevenLabs lane with no explicit model pin found in row config or local <code>latest.yaml</code>. A hidden deployed env override is still the remaining caveat.</small>
+              </td>
+              <td data-label="Latency signal">
+                Official ElevenLabs positioning: ultra-low latency, ~75ms model latency.
+                <small>Directional probe evidence also made Flash the fastest of the current ElevenLabs lanes we measured.</small>
+              </td>
+              <td data-label="Cost signal">
+                Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-20260520&amp;backend=dev">Open Flash chat</a>
+                <small>Hidden non-preview row: <code>tony-business-coaching-review</code></small>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Lane">
+                <strong>Turbo</strong>
+                <small>ElevenLabs <code>eleven_turbo_v2_5</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Quality-oriented ElevenLabs comparison lane.
+                <small>Not found pinned on active customer-attached non-preview rows during the live audit.</small>
+              </td>
+              <td data-label="Latency signal">
+                Official ElevenLabs positioning: balanced quality and latency, ~250–300ms model latency.
+              </td>
+              <td data-label="Cost signal">
+                Official ElevenLabs API pricing: ~<strong>$0.06/min</strong>.
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-turbo-20260520&amp;backend=dev">Open Turbo chat</a>
+                <small>Same hidden review row, isolated by prompt slot.</small>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Lane">
+                <strong>v3 plain</strong>
+                <small>ElevenLabs <code>eleven_v3</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Expressive upgrade candidate without tag prompting.
+                <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
+              </td>
+              <td data-label="Latency signal">
+                No operator-grade hosted readback from this page.
+                <small>Directional related evidence exists for the newer TTD/v3-conversational lane, but that is not exact parity with this hosted Eleven v3 slot.</small>
+              </td>
+              <td data-label="Cost signal">
+                Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open v3 plain chat</a>
+                <small>Older Eleven v3 prompt-slot lane, not the newer TTD packet.</small>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Lane">
+                <strong>v3 tagged</strong>
+                <small>ElevenLabs <code>eleven_v3</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Expressive upgrade candidate with tag prompting.
+                <small>Hosted lane only. Not found pinned on active customer-attached non-preview rows.</small>
+              </td>
+              <td data-label="Latency signal">
+                Same caveat as v3 plain.
+                <small>Compare mainly for subjective delivery, not as a fully proven realtime baseline.</small>
+              </td>
+              <td data-label="Cost signal">
+                Official ElevenLabs API pricing for Eleven v3: ~<strong>$0.12/min</strong>.
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-20260520&amp;backend=dev">Open v3 tagged chat</a>
+                <small>Best for judging whether tag shaping helps or hurts the feel.</small>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="Lane">
+                <strong>Cartesia</strong>
+                <small>Cartesia <code>cartesia/sonic-3</code></small>
+              </td>
+              <td data-label="Role / prod status">
+                Cross-provider upgrade candidate.
+                <small>Dedicated hidden test row only. Not used on active customer-attached production twins.</small>
+              </td>
+              <td data-label="Latency signal">
+                Cartesia positions Sonic as real-time; current docs/pricing surfaces describe ~90ms time-to-first-audio for Sonic 3 / 3.5 family messaging.
+              </td>
+              <td data-label="Cost signal">
+                Credit-based, not minute-priced on the public page.
+                <small>Official pricing shows <strong>1 credit / character</strong> for Sonic TTS. Instant voice cloning requires a paid plan tier; pricing varies by plan credits.</small>
+              </td>
+              <td data-label="Hosted chat">
+                <a class="chat-link" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520&amp;backend=dev">Open Cartesia chat</a>
+                <small>Dedicated hidden non-preview row: <code>tony-business-coaching-cartesia</code></small>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section">
+        <h2>Supporting Static Clips</h2>
+        <p>
+          These are supporting artifacts, not replacements for the hosted chats.
+          They are split by evidence type so you can compare like with like.
+        </p>
+
+        <div class="card">
+          <h3>Direct fixed-text packet: “Fourteen day turnaround”</h3>
+          <p>
+            Useful for same-text, short-form subjective comparison across all five
+            currently wired lanes. This is <strong>not</strong> the LiveKit runtime
+            smoke path.
+          </p>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Flash</strong>
+              <p><code>eleven_flash_v2_5</code></p>
+              <audio controls preload="metadata">
+                <source src="supporting-clips/fourteen-day-turnaround/audio/tony_flash.wav" type="audio/wav">
+              </audio>
+              <a href="supporting-clips/fourteen-day-turnaround/audio/tony_flash.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>Turbo</strong>
+              <p><code>eleven_turbo_v2_5</code></p>
+              <audio controls preload="metadata">
+                <source src="supporting-clips/fourteen-day-turnaround/audio/tony_turbo.wav" type="audio/wav">
+              </audio>
+              <a href="supporting-clips/fourteen-day-turnaround/audio/tony_turbo.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>TTD plain</strong>
+              <p><code>eleven_v3_conversational</code></p>
+              <audio controls preload="metadata">
+                <source src="supporting-clips/fourteen-day-turnaround/audio/tony_ttd_plain.wav" type="audio/wav">
+              </audio>
+              <a href="supporting-clips/fourteen-day-turnaround/audio/tony_ttd_plain.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>TTD tagged</strong>
+              <p><code>eleven_v3_conversational</code></p>
+              <audio controls preload="metadata">
+                <source src="supporting-clips/fourteen-day-turnaround/audio/tony_ttd_tagged.wav" type="audio/wav">
+              </audio>
+              <a href="supporting-clips/fourteen-day-turnaround/audio/tony_ttd_tagged.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>Cartesia</strong>
+              <p><code>cartesia/sonic-3</code></p>
+              <audio controls preload="metadata">
+                <source src="supporting-clips/fourteen-day-turnaround/audio/cartesia_clone.wav" type="audio/wav">
+              </audio>
+              <a href="supporting-clips/fourteen-day-turnaround/audio/cartesia_clone.wav">Open raw audio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 16px;">
+          <h3>LiveKit RTC inflation packet</h3>
+          <p>
+            These clips were captured from real subscribed LiveKit RTC tracks
+            through the production-equivalent TTS publish path. There is no Turbo
+            recapture in this packet yet.
+          </p>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Flash</strong>
+              <p><code>eleven_flash_v2_5</code></p>
+              <audio controls preload="metadata">
+                <source src="inflation-script/audio/tony_flash.wav" type="audio/wav">
+              </audio>
+              <a href="inflation-script/audio/tony_flash.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>TTD plain</strong>
+              <p><code>eleven_v3_conversational</code></p>
+              <audio controls preload="metadata">
+                <source src="inflation-script/audio/tony_ttd_plain.wav" type="audio/wav">
+              </audio>
+              <a href="inflation-script/audio/tony_ttd_plain.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>TTD tagged</strong>
+              <p><code>eleven_v3_conversational</code></p>
+              <audio controls preload="metadata">
+                <source src="inflation-script/audio/tony_ttd_tagged.wav" type="audio/wav">
+              </audio>
+              <a href="inflation-script/audio/tony_ttd_tagged.wav">Open raw audio</a>
+            </div>
+            <div class="asset-card">
+              <strong>Cartesia</strong>
+              <p><code>cartesia/sonic-3</code></p>
+              <audio controls preload="metadata">
+                <source src="inflation-script/audio/cartesia_clone.wav" type="audio/wav">
+              </audio>
+              <a href="inflation-script/audio/cartesia_clone.wav">Open raw audio</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Current Fleet Read</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>What the live audit established</h3>
+            <ul>
+              <li><strong>31</strong> active customer-attached non-preview voice chats.</li>
+              <li><strong>26</strong> generic ElevenLabs-default rows.</li>
+              <li><strong>4</strong> OpenAI built-in voice rows.</li>
+              <li><strong>1</strong> special-case <code>afterall</code> row.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>What remains caveated</h3>
+            <ul>
+              <li>We did <strong>not</strong> find Turbo or v3 explicitly pinned on active customer-attached rows.</li>
+              <li>Flash is the current inferred default for the generic ElevenLabs group.</li>
+              <li>A hidden deployed env override could still change that generic ElevenLabs default without being visible from this page alone.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Comment Template</h2>
+        <div class="template">Lane ranking:
+1.
+2.
+3.
+
+Quality notes:
+- Best likeness to Tony:
+- Best pacing / pauses:
+- Best warmth / authority:
+- Most natural in back-and-forth chat:
+
+Latency / responsiveness notes:
+- Fastest-feeling lane:
+- Any lane that felt too slow for realtime:
+
+Upgrade judgment:
+- Worth keeping as baseline:
+- Worth positioning as premium upgrade:
+- Not worth the extra latency / cost:</div>
+      </section>
+
+      <section class="section">
+        <h2>Next Candidate Queue</h2>
+        <ul class="queue-list">
+          <li>
+            <strong>Cartesia Sonic 3.5</strong>:
+            current Cartesia docs recommend this for best naturalness and broader
+            language coverage. It is not wired into the hosted test surface yet.
+          </li>
+          <li>
+            <strong>Cartesia Sonic 2</strong>:
+            still worth testing if clone fidelity turns out to matter more than
+            latest-model naturalness.
+          </li>
+        </ul>
+        <ul class="sources">
+          <li><a href="https://elevenlabs.io/text-to-speech-api">ElevenLabs Text to Speech API</a></li>
+          <li><a href="https://elevenlabs.io/pricing/api">ElevenLabs API pricing</a></li>
+          <li><a href="https://cartesia.ai/pricing">Cartesia pricing</a></li>
+          <li><a href="https://docs.cartesia.ai/build-with-cartesia/tts-models/sonic-3-5">Cartesia Sonic 3.5 docs</a></li>
+          <li><a href="https://docs.cartesia.ai/build-with-cartesia/tts-models/older-models">Cartesia older model docs</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
