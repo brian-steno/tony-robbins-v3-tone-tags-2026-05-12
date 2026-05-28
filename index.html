@@ -107,6 +107,11 @@
     }
     a.review:focus,
     a.review:hover { filter: brightness(0.92); }
+    a.secondary {
+      background: var(--paper);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
     .notes {
       margin-top: 26px;
       padding-top: 18px;
@@ -176,6 +181,21 @@
         </dl>
         <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5</a>
       </article>
+    </section>
+
+    <section class="notes" aria-label="Pending provider candidates">
+      <p>Pending provider candidates:</p>
+      <div class="grid">
+        <article>
+          <h2>Mistral Voxtral TTS</h2>
+          <p>Mistral says Voxtral TTS beats ElevenLabs Flash v2.5 on naturalness in its human eval and supports short-reference voice adaptation. Not wired into hosted chat yet.</p>
+          <dl>
+            <dt>Status</dt><dd>Candidate for direct-render spike</dd>
+            <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
+          </dl>
+          <a class="review secondary" href="https://mistral.ai/news/voxtral-tts/">Read Mistral note</a>
+        </article>
+      </div>
     </section>
 
     <section class="notes">

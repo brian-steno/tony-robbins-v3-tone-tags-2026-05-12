@@ -7,7 +7,17 @@
     "Each lane uses a hidden review row plus an explicit prompt_set_id.",
     "Flash uses the Tony PVC-style ElevenLabs row.",
     "v3 plain/tagged intentionally use the Tony IVC-style ElevenLabs row.",
-    "Cartesia lanes still use the current 10-second instant clone and should not be scored as final PVC/provider parity."
+    "Cartesia lanes still use the current 10-second instant clone and should not be scored as final PVC/provider parity.",
+    "Mistral Voxtral TTS is listed as a pending provider candidate, not a live hosted lane."
+  ],
+  "candidate_links": [
+    {
+      "label": "Mistral Voxtral TTS",
+      "status": "pending direct-render spike",
+      "model": "voxtral-mini-tts-2603",
+      "source_url": "https://mistral.ai/news/voxtral-tts/",
+      "docs_url": "https://docs.mistral.ai/studio-api/audio/text_to_speech"
+    }
   ],
   "links": [
     {
