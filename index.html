@@ -1,140 +1,179 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tony Voice Review</title>
-    <style>
-      :root {
-        --bg: #f6f1e8;
-        --panel: #fffdf8;
-        --line: #d8cdbd;
-        --text: #221d17;
-        --muted: #6a6155;
-        --accent: #8f431d;
-      }
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tony Robbins Voice Model Review</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #171717;
+      --muted: #5c5c5c;
+      --line: #d9d9d9;
+      --paper: #ffffff;
+      --soft: #f5f5f3;
+      --accent: #165f63;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--soft);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+    header {
+      padding: 0 0 20px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 12px; color: var(--muted); max-width: 760px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 18px;
+      min-height: 190px;
+    }
+    h2 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    dl {
+      margin: 14px 0;
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 6px 10px;
+      font-size: 14px;
+    }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      overflow-wrap: anywhere;
+    }
+    a.review {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 13px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 650;
+      margin-top: 4px;
+    }
+    a.review:focus,
+    a.review:hover { filter: brightness(0.92); }
+    .notes {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+    ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+    li + li { margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Tony Robbins Voice Model Review</h1>
+      <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
+      <div class="status">Browser-proven text interaction on May 28, 2026</div>
+    </header>
 
-      * {
-        box-sizing: border-box;
-      }
+    <section class="grid" aria-label="Voice review links">
+      <article>
+        <h2>ElevenLabs Flash</h2>
+        <p>Current low-latency ElevenLabs baseline using the newer Tony PVC voice row.</p>
+        <dl>
+          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash</a>
+      </article>
 
-      body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: linear-gradient(180deg, #efe2d0 0%, var(--bg) 220px);
-        color: var(--text);
-      }
+      <article>
+        <h2>ElevenLabs v3 Plain</h2>
+        <p>Eleven v3 with the normal Tony prompt and no audio-tag forcing.</p>
+        <dl>
+          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-v3-plain-voiceonly-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528">Open v3 Plain</a>
+      </article>
 
-      main {
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 28px 18px 48px;
-      }
+      <article>
+        <h2>ElevenLabs v3 Tagged</h2>
+        <p>Minimal tag harness for checking literal Eleven v3 bracket tags in live hosted chat.</p>
+        <dl>
+          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open v3 Tagged</a>
+      </article>
 
-      h1,
-      h2 {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
+      <article>
+        <h2>Cartesia Sonic 3</h2>
+        <p>Cartesia Sonic 3 via the hidden Cartesia row. Provider settings come from the row.</p>
+        <dl>
+          <dt>Row</dt><dd><code>tony-business-coaching-cartesia</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3</a>
+      </article>
 
-      h1 {
-        margin: 0 0 8px;
-        font-size: 2.6rem;
-        line-height: 1.05;
-      }
+      <article>
+        <h2>Cartesia Sonic 3.5</h2>
+        <p>Cartesia Sonic 3.5 using the same Cartesia clone id as the Sonic 3 row.</p>
+        <dl>
+          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5</a>
+      </article>
+    </section>
 
-      p {
-        color: var(--muted);
-      }
-
-      a {
-        color: var(--accent);
-      }
-
-      .hero,
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        box-shadow: 0 10px 30px rgba(31, 27, 22, 0.05);
-      }
-
-      .hero {
-        padding: 26px 26px 22px;
-        margin-bottom: 18px;
-      }
-
-      .cta {
-        display: inline-block;
-        margin-top: 12px;
-        padding: 11px 16px;
-        border-radius: 999px;
-        background: var(--accent);
-        color: #fff;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 16px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-
-      .card h2 {
-        margin: 0 0 6px;
-        font-size: 1.2rem;
-      }
-
-      .card a {
-        display: inline-block;
-        margin-top: 0;
-        font-weight: 600;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <section class="hero">
-        <h1>Tony Voice Review</h1>
-        <p>
-          Listen to the audio or use the live chat for each model.
-        </p>
-        <p>
-          Record a 1-10 rating with comments in
-          <a href="https://linear.app/stenoai/issue/S-1484/tone-tag-review-tony-robbins-v3-elevenlabs-flashturbottd-vs-cartesia">S-1484</a>.
-        </p>
-      </section>
-
-      <section class="grid">
-        <article class="card">
-          <h2>Flash</h2>
-          <a href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-20260520">Live chat</a>
-        </article>
-
-        <article class="card">
-          <h2>v3 plain</h2>
-          <a href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520">Live chat</a>
-        </article>
-
-        <article class="card">
-          <h2>v3 tagged</h2>
-          <a href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-20260520">Live chat</a>
-        </article>
-
-        <article class="card">
-          <h2>Cartesia Sonic 3</h2>
-          <a href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520">Live chat</a>
-        </article>
-
-        <article class="card">
-          <h2>Cartesia Sonic 3.5</h2>
-          <a href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-20260520">Live chat</a>
-        </article>
-      </section>
-    </main>
-  </body>
+    <section class="notes">
+      <p>Suggested reviewer prompts:</p>
+      <ul>
+        <li><code>Say one sentence about taking action.</code></li>
+        <li><code>What is your favorite color?</code> on the v3 tagged lane should return <code>blue</code>.</li>
+        <li><code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, and <code>Pause between each word without spelling the words.</code> on the v3 tagged lane should show bracket tags.</li>
+      </ul>
+    </section>
+  </main>
+</body>
 </html>
