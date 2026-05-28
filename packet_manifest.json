@@ -1,17 +1,20 @@
 {
   "packet_name": "tony-robbins-live-voice-model-review",
   "updated_at": "2026-05-28",
-  "proof_level": "browser-proven text interaction on chat.steno.ai",
+  "proof_level": "source-lineage refresh in progress; Cartesia PVC rebuild pending",
   "notes": [
     "Recorded audio clips were removed from the public review page.",
-    "Each lane uses a hidden review row plus an explicit prompt_set_id."
+    "Each lane uses a hidden review row plus an explicit prompt_set_id.",
+    "Flash uses the Tony PVC-style ElevenLabs row.",
+    "v3 plain/tagged intentionally use the Tony IVC-style ElevenLabs row.",
+    "Cartesia lanes still use the current 10-second instant clone and should not be scored as final PVC/provider parity."
   ],
   "links": [
     {
       "label": "ElevenLabs Flash",
-      "chat_id": "tony-business-coaching-review-pvc",
+      "chat_id": "tony-business-coaching-review",
       "prompt_set_id": "tony-voice-review-flash-voiceonly-20260528",
-      "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528"
+      "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528"
     },
     {
       "label": "ElevenLabs v3 Plain",
