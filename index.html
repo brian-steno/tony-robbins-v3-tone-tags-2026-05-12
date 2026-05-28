@@ -120,6 +120,17 @@
     }
     ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
     li + li { margin-top: 4px; }
+    audio {
+      display: block;
+      width: 100%;
+      margin: 8px 0 10px;
+    }
+    .audio-label {
+      margin-top: 10px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+    }
   </style>
 </head>
 <body>
@@ -181,21 +192,20 @@
         </dl>
         <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5</a>
       </article>
-    </section>
 
-    <section class="notes" aria-label="Pending provider candidates">
-      <p>Pending provider candidates:</p>
-      <div class="grid">
-        <article>
-          <h2>Mistral Voxtral TTS</h2>
-          <p>Mistral says Voxtral TTS beats ElevenLabs Flash v2.5 on naturalness in its human eval and supports short-reference voice adaptation. Not wired into hosted chat yet.</p>
-          <dl>
-            <dt>Status</dt><dd>Candidate for direct-render spike</dd>
-            <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
-          </dl>
-          <a class="review secondary" href="https://mistral.ai/news/voxtral-tts/">Read Mistral note</a>
-        </article>
-      </div>
+      <article>
+        <h2>Mistral Voxtral TTS</h2>
+        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. Not wired into hosted chat yet.</p>
+        <dl>
+          <dt>Mode</dt><dd>Direct audio render</dd>
+          <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
+        </dl>
+        <div class="audio-label">Taking action</div>
+        <audio controls preload="metadata" src="assets/audio/mistral_voxtral_taking_action.mp3"></audio>
+        <div class="audio-label">Breakthrough</div>
+        <audio controls preload="metadata" src="assets/audio/mistral_voxtral_breakthrough.mp3"></audio>
+        <a class="review secondary" href="https://mistral.ai/news/voxtral-tts/">Read Mistral note</a>
+      </article>
     </section>
 
     <section class="notes">
@@ -203,6 +213,7 @@
       <ul>
         <li><code>Say one sentence about taking action.</code></li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
+        <li>The Mistral Voxtral lane is a playable direct-render audio lane, not a hosted chat link yet.</li>
         <li>Do not treat the current Cartesia lanes as final source-aligned PVC comparisons yet.</li>
         <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
       </ul>
