@@ -138,8 +138,8 @@
     <header>
       <h1>Tony Robbins Voice Model Review</h1>
       <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
-      <div class="status">Source-lineage refresh in progress on May 28, 2026</div>
-      <p class="notice"><strong>ElevenLabs source rule:</strong> all non-v3 ElevenLabs lanes use the Tony PVC-style voice row. ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on the IVC clone. Cartesia lanes are still the current 10-second instant clone and should not be scored as final PVC/provider parity until the Cartesia PVC asset finishes training and is wired in.</p>
+      <div class="status">Source-lineage refresh updated on May 29, 2026</div>
+      <p class="notice"><strong>ElevenLabs source rule:</strong> all non-v3 ElevenLabs lanes use the Tony PVC-style voice row. ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on the IVC clone. Cartesia PVC training completed on May 29 and returned candidate voices, but the live Cartesia links below still point at the previous 10-second instant clone until a candidate is selected, wired into the hosted rows, and smoke-tested.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
@@ -178,9 +178,9 @@
 
       <article>
         <h2>Cartesia Sonic 3</h2>
-        <p>Current Cartesia Sonic 3 instant-clone lane. PVC rebuild is pending.</p>
+        <p>Current Cartesia Sonic 3 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
         <dl>
-          <dt>Source</dt><dd>Current 10-second instant clone; not final PVC</dd>
+          <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
@@ -189,9 +189,9 @@
 
       <article>
         <h2>Cartesia Sonic 3.5</h2>
-        <p>Current Cartesia Sonic 3.5 instant-clone lane. PVC rebuild is pending.</p>
+        <p>Current Cartesia Sonic 3.5 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
         <dl>
-          <dt>Source</dt><dd>Current 10-second instant clone; not final PVC</dd>
+          <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
@@ -200,7 +200,7 @@
 
       <article>
         <h2>Mistral Voxtral TTS</h2>
-        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. Not wired into hosted chat yet.</p>
+        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. A dedicated <code>agentName=mistral-test</code> worker path exists for hosted listening tests, but this page has not added a browser-proven Mistral chat link yet.</p>
         <dl>
           <dt>Source</dt><dd>10-second reference clip from Tony PVC sample pack</dd>
           <dt>Mode</dt><dd>Direct audio render</dd>
@@ -220,8 +220,8 @@
         <li><code>Say one sentence about taking action.</code></li>
         <li>ElevenLabs non-v3 comparisons use the Tony PVC-style voice. ElevenLabs v3 comparisons use the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
-        <li>The Mistral Voxtral lane is a playable direct-render audio lane, not a hosted chat link yet.</li>
-        <li>Do not treat the current Cartesia lanes as final source-aligned PVC comparisons yet.</li>
+        <li>The Mistral Voxtral lane is a playable direct-render audio lane. Use a dedicated <code>agentName=mistral-test</code> URL only after the exact hosted link is browser-proven.</li>
+        <li>Do not treat the current Cartesia hosted links as final source-aligned PVC comparisons yet; the PVC job completed, but these rows still need a selected returned voice id and a smoke test.</li>
         <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
       </ul>
     </section>

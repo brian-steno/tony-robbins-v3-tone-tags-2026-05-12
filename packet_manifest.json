@@ -1,14 +1,14 @@
 {
   "packet_name": "tony-robbins-live-voice-model-review",
-  "updated_at": "2026-05-28",
-  "proof_level": "source-lineage refresh in progress; Cartesia PVC rebuild pending",
+  "updated_at": "2026-05-29",
+  "proof_level": "source-lineage refresh in progress; Cartesia PVC completed but hosted rows not repointed",
   "notes": [
     "Recorded audio clips were removed from the public review page.",
     "Each lane uses a hidden review row plus an explicit prompt_set_id.",
     "ElevenLabs source rule: non-v3 ElevenLabs lanes use the Tony PVC-style row.",
     "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row unless a lane is explicitly labeled as a v3 PVC control.",
-    "Cartesia lanes still use the current 10-second instant clone and should not be scored as final PVC/provider parity.",
-    "Mistral Voxtral TTS is a playable direct-render audio lane, not a live hosted chat lane."
+    "Cartesia PVC training completed on 2026-05-29 and returned voice candidates, but the hosted rows still use the current 10-second instant clone.",
+    "Mistral Voxtral TTS is a playable direct-render audio lane on this page; use agentName=mistral-test only after an exact hosted link is browser-proven."
   ],
   "direct_audio_lanes": [
     {
@@ -48,17 +48,41 @@
     },
     {
       "label": "Cartesia Sonic 3",
-      "voice_source": "Current 10-second instant clone; not final PVC",
+      "voice_source": "Current 10-second instant clone; PVC candidate not wired yet",
       "chat_id": "tony-business-coaching-cartesia",
       "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
     },
     {
       "label": "Cartesia Sonic 3.5",
-      "voice_source": "Current 10-second instant clone; not final PVC",
+      "voice_source": "Current 10-second instant clone; PVC candidate not wired yet",
       "chat_id": "tony-business-coaching-cartesia-35",
       "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
     }
-  ]
+  ],
+  "cartesia_pvc_completed": {
+    "checked_at_utc": "2026-05-29T20:33:55.806922+00:00",
+    "fine_tune_id": "fine_tune_Yeeg96cfnGnV5qE8QqxNm7",
+    "status": "completed",
+    "voices": [
+      {
+        "label": "V3",
+        "id": "dbeae250-d56d-4add-9d38-16f159179e8c"
+      },
+      {
+        "label": "V2",
+        "id": "724dc842-89ea-4982-92f3-776e2d6d8392"
+      },
+      {
+        "label": "V1",
+        "id": "9222f12e-d001-49c4-891b-f43c436834f0"
+      },
+      {
+        "label": "V0",
+        "id": "a9a7ffce-7d34-48d4-b689-c3a235ac4412"
+      }
+    ],
+    "hosted_row_status": "not_wired"
+  }
 }
