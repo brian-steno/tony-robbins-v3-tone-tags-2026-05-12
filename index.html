@@ -200,7 +200,7 @@
 
       <article>
         <h2>Mistral Voxtral TTS</h2>
-        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. A dedicated <code>agentName=mistral-test</code> worker path exists for hosted listening tests, but this page has not added a browser-proven Mistral chat link yet.</p>
+        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. A separate hosted proof link routes through the dedicated <code>agentName=mistral-test</code> worker; it proves the worker listening path, not Tony row-level Mistral routing.</p>
         <dl>
           <dt>Source</dt><dd>10-second reference clip from Tony PVC sample pack</dd>
           <dt>Mode</dt><dd>Direct audio render</dd>
@@ -210,6 +210,7 @@
         <audio controls preload="metadata" src="assets/audio/mistral_voxtral_taking_action.mp3"></audio>
         <div class="audio-label">Breakthrough</div>
         <audio controls preload="metadata" src="assets/audio/mistral_voxtral_breakthrough.mp3"></audio>
+        <a class="review" href="https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Mistral worker proof</a>
         <a class="review secondary" href="https://mistral.ai/news/voxtral-tts/">Read Mistral note</a>
       </article>
     </section>
@@ -220,7 +221,7 @@
         <li><code>Say one sentence about taking action.</code></li>
         <li>ElevenLabs non-v3 comparisons use the Tony PVC-style voice. ElevenLabs v3 comparisons use the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
-        <li>The Mistral Voxtral lane is a playable direct-render audio lane. Use a dedicated <code>agentName=mistral-test</code> URL only after the exact hosted link is browser-proven.</li>
+        <li>The Mistral Voxtral lane is a playable direct-render audio lane. The hosted <code>agentName=mistral-test</code> link is a dedicated-worker proof, not a Tony row-level provider-routing proof.</li>
         <li>Do not treat the current Cartesia hosted links as final source-aligned PVC comparisons yet; the PVC job completed, but these rows still need a selected returned voice id and a smoke test.</li>
         <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
       </ul>

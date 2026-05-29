@@ -8,7 +8,7 @@
     "ElevenLabs source rule: non-v3 ElevenLabs lanes use the Tony PVC-style row.",
     "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row unless a lane is explicitly labeled as a v3 PVC control.",
     "Cartesia PVC training completed on 2026-05-29 and returned voice candidates, but the hosted rows still use the current 10-second instant clone.",
-    "Mistral Voxtral TTS is a playable direct-render audio lane on this page; use agentName=mistral-test only after an exact hosted link is browser-proven."
+    "Mistral Voxtral TTS is a playable direct-render audio lane on this page; the hosted agentName=mistral-test link is a dedicated-worker proof, not Tony row-level provider-routing proof."
   ],
   "direct_audio_lanes": [
     {
@@ -20,6 +20,7 @@
         "assets/audio/mistral_voxtral_taking_action.mp3",
         "assets/audio/mistral_voxtral_breakthrough.mp3"
       ],
+      "hosted_worker_proof_url": "https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&mode=fullscreen&agentName=mistral-test",
       "source_url": "https://mistral.ai/news/voxtral-tts/",
       "docs_url": "https://docs.mistral.ai/studio-api/audio/text_to_speech"
     }
