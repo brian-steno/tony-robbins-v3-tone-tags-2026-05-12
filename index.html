@@ -148,6 +148,7 @@
         <p>Current low-latency ElevenLabs baseline using the Tony PVC-style voice row.</p>
         <dl>
           <dt>Source</dt><dd>Tony PVC-style ElevenLabs voice</dd>
+          <dt>Training audio</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
         </dl>
@@ -159,6 +160,7 @@
         <p>Eleven v3 on the Tony IVC-style row, with the normal Tony prompt and no audio-tag forcing.</p>
         <dl>
           <dt>Source</dt><dd>Tony IVC-style ElevenLabs voice</dd>
+          <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-plain-voiceonly-20260528</code></dd>
         </dl>
@@ -170,6 +172,7 @@
         <p>Minimal tag harness for checking literal Eleven v3 bracket tags on the Tony IVC-style row.</p>
         <dl>
           <dt>Source</dt><dd>Tony IVC-style ElevenLabs voice</dd>
+          <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
         </dl>
@@ -181,6 +184,8 @@
         <p>Current Cartesia Sonic 3 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
         <dl>
           <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
+          <dt>Current clone audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
+          <dt>Completed PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code> (not wired)</dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
@@ -192,6 +197,8 @@
         <p>Current Cartesia Sonic 3.5 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
         <dl>
           <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
+          <dt>Current clone audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
+          <dt>Completed PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code> (not wired)</dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
@@ -203,6 +210,7 @@
         <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. A separate hosted proof link routes through the dedicated <code>agentName=mistral-test</code> worker; it proves the worker listening path, not Tony row-level Mistral routing.</p>
         <dl>
           <dt>Source</dt><dd>10-second reference clip from Tony PVC sample pack</dd>
+          <dt>Reference audio</dt><dd><code>mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3</code></dd>
           <dt>Mode</dt><dd>Direct audio render</dd>
           <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
         </dl>
