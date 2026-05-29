@@ -1,7 +1,7 @@
 {
   "packet_name": "tony-robbins-live-voice-model-review",
   "updated_at": "2026-05-29",
-  "proof_level": "public page separates Flash PVC/IVC and Cartesia PVC/IVC; Cartesia PVC rows are browser-proven hosted links",
+  "proof_level": "public page separates Flash PVC/IVC and Cartesia PVC/IVC; Cartesia PVC rows are browser-proven hosted links; Mistral uses Ian's dedicated agentName worker link",
   "notes": [
     "Recorded audio clips and the direct-render controls were removed from the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id.",
@@ -9,7 +9,9 @@
     "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on that clone.",
     "Cartesia IVC links use the current 10-second instant clone.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
-    "Hosted browser text probes passed for tony-business-coaching-cartesia-pvc and tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment."
+    "Hosted browser text probes passed for tony-business-coaching-cartesia-pvc and tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
+    "Mistral is linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is a hosted LiveKit listening lane, not Tony row-level Mistral routing.",
+    "Tone-tag caveat: a May 29 reviewer check saw [excited] leak into assistant text and repeated whisper requests did not produce a reliable whisper."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -70,6 +72,14 @@
         "voice_samples/tony7.mp3"
       ],
       "evidence": "workspace/customer_files/tony-robbins-rri/cartesia_pvc_20260528/source_manifest.json"
+    },
+    "mistral_voxtral_worker_mistral_test": {
+      "provider": "Mistral",
+      "model": "Voxtral TTS via dedicated LiveKit worker",
+      "agent_name": "mistral-test",
+      "lineage": "Ian-created hosted worker link; source audio is worker-configured and not exposed through a Tony row-level training file in this packet.",
+      "files": [],
+      "evidence": "workspace/slack-exports/research.json"
     }
   },
   "links": [
@@ -103,7 +113,17 @@
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
       "prompt_set_id": "tony-voice-review-v3-tagged-minimal-no-realtime-20260528",
+      "known_issue": "May 29 reviewer check saw visible [excited] tag leakage and no reliable whisper effect.",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
+    },
+    {
+      "label": "Mistral Voxtral Worker",
+      "voice_source": "Ian-created dedicated Mistral test worker",
+      "source_audio_set": "mistral_voxtral_worker_mistral_test",
+      "chat_id": "atrioc-waob",
+      "agent_name": "mistral-test",
+      "host": "dev.chat.steno.ai",
+      "url": "https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
     },
     {
       "label": "Cartesia Sonic 3 IVC",

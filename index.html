@@ -128,7 +128,7 @@
       <h1>Tony Robbins Voice Model Review</h1>
       <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
       <div class="status">IVC/PVC lane refresh updated on May 29, 2026</div>
-      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code> from the completed Cartesia Pro Voice Clone job.</p>
+      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. The Mistral lane is Ian's dedicated <code>agentName=mistral-test</code> hosted worker link, not row-level Tony provider routing.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
@@ -170,14 +170,28 @@
 
       <article>
         <h2>ElevenLabs v3 Tagged IVC</h2>
-        <p>Minimal tag harness for checking literal Eleven v3 bracket tags on the Tony IVC-style row.</p>
+        <p>Experimental tag harness on the Tony IVC-style row. Latest reviewer check saw a visible tag leak and no reliable whisper effect.</p>
         <dl>
           <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
           <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
+          <dt>Status</dt><dd>tag leak / whisper not proven</dd>
         </dl>
         <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open v3 Tagged</a>
+      </article>
+
+      <article>
+        <h2>Mistral Voxtral Worker</h2>
+        <p>Ian-created hosted Mistral listening link through the dedicated LiveKit worker.</p>
+        <dl>
+          <dt>Clone type</dt><dd>Mistral Voxtral hosted worker</dd>
+          <dt>Source audio</dt><dd>Worker-configured; no row-level training file is exposed in this packet</dd>
+          <dt>Row</dt><dd><code>atrioc-waob</code></dd>
+          <dt>Route</dt><dd><code>agentName=mistral-test</code></dd>
+          <dt>Host</dt><dd><code>dev.chat.steno.ai</code></dd>
+        </dl>
+        <a class="review" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Mistral Worker</a>
       </article>
 
       <article>
@@ -238,7 +252,7 @@
         <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
         <li>Cartesia PVC links are browser-smoked hosted rows using the selected V3 returned voice id. Human listening is still the authority for subjective voice quality.</li>
-        <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
+        <li>Tone-tag lane caveat: a May 29 reviewer check saw <code>[excited]</code> leak into assistant text and repeated whisper requests did not produce a reliable whisper. Treat that lane as diagnostic, not validated.</li>
       </ul>
     </section>
   </main>
