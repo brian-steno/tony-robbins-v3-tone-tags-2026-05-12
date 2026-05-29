@@ -120,17 +120,6 @@
     }
     ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
     li + li { margin-top: 4px; }
-    audio {
-      display: block;
-      width: 100%;
-      margin: 8px 0 10px;
-    }
-    .audio-label {
-      margin-top: 10px;
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 650;
-    }
   </style>
 </head>
 <body>
@@ -138,28 +127,40 @@
     <header>
       <h1>Tony Robbins Voice Model Review</h1>
       <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
-      <div class="status">Source-lineage refresh updated on May 29, 2026</div>
-      <p class="notice"><strong>ElevenLabs source rule:</strong> all non-v3 ElevenLabs lanes use the Tony PVC-style voice row. ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on the IVC clone. Cartesia PVC training completed on May 29 and returned candidate voices, but the live Cartesia links below still point at the previous 10-second instant clone until a candidate is selected, wired into the hosted rows, and smoke-tested.</p>
+      <div class="status">IVC/PVC lane refresh updated on May 29, 2026</div>
+      <p class="notice"><strong>Live-lane rule:</strong> Flash now has both PVC and IVC controls. Cartesia has live instant-clone/IVC rows and completed PVC candidates, but no live Cartesia PVC row yet because a returned voice still needs to be selected, wired into a hidden row, and smoke-tested.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
       <article>
-        <h2>ElevenLabs Flash</h2>
-        <p>Current low-latency ElevenLabs baseline using the Tony PVC-style voice row.</p>
+        <h2>ElevenLabs Flash PVC</h2>
+        <p>Low-latency ElevenLabs Flash using the Tony PVC-style voice row.</p>
         <dl>
-          <dt>Source</dt><dd>Tony PVC-style ElevenLabs voice</dd>
+          <dt>Clone type</dt><dd>PVC-style ElevenLabs voice</dd>
           <dt>Training audio</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
         </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash</a>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash PVC</a>
       </article>
 
       <article>
-        <h2>ElevenLabs v3 Plain</h2>
+        <h2>ElevenLabs Flash IVC</h2>
+        <p>Same Flash prompt on the Tony IVC-style row for source-lineage comparison.</p>
+        <dl>
+          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
+          <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash IVC</a>
+      </article>
+
+      <article>
+        <h2>ElevenLabs v3 Plain IVC</h2>
         <p>Eleven v3 on the Tony IVC-style row, with the normal Tony prompt and no audio-tag forcing.</p>
         <dl>
-          <dt>Source</dt><dd>Tony IVC-style ElevenLabs voice</dd>
+          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
           <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-plain-voiceonly-20260528</code></dd>
@@ -168,10 +169,10 @@
       </article>
 
       <article>
-        <h2>ElevenLabs v3 Tagged</h2>
+        <h2>ElevenLabs v3 Tagged IVC</h2>
         <p>Minimal tag harness for checking literal Eleven v3 bracket tags on the Tony IVC-style row.</p>
         <dl>
-          <dt>Source</dt><dd>Tony IVC-style ElevenLabs voice</dd>
+          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
           <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
@@ -180,46 +181,39 @@
       </article>
 
       <article>
-        <h2>Cartesia Sonic 3</h2>
-        <p>Current Cartesia Sonic 3 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
+        <h2>Cartesia Sonic 3 IVC</h2>
+        <p>Live Cartesia Sonic 3 lane using the current 10-second instant voice clone.</p>
         <dl>
-          <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
-          <dt>Current clone audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
-          <dt>Completed PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code> (not wired)</dd>
+          <dt>Clone type</dt><dd>Cartesia instant voice clone</dd>
+          <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3</a>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3 IVC</a>
       </article>
 
       <article>
-        <h2>Cartesia Sonic 3.5</h2>
-        <p>Current Cartesia Sonic 3.5 instant-clone lane. PVC training completed, but this hosted row has not been repointed yet.</p>
+        <h2>Cartesia Sonic 3.5 IVC</h2>
+        <p>Live Cartesia Sonic 3.5 lane using the current 10-second instant voice clone.</p>
         <dl>
-          <dt>Source</dt><dd>Current 10-second instant clone; PVC candidate not wired yet</dd>
-          <dt>Current clone audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
-          <dt>Completed PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code> (not wired)</dd>
+          <dt>Clone type</dt><dd>Cartesia instant voice clone</dd>
+          <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5</a>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5 IVC</a>
       </article>
 
       <article>
-        <h2>Mistral Voxtral TTS</h2>
-        <p>Direct-render Voxtral lane using a 10-second Tony PVC reference clip. A separate hosted proof link routes through the dedicated <code>agentName=mistral-test</code> worker; it proves the worker listening path, not Tony row-level Mistral routing.</p>
+        <h2>Cartesia Sonic 3 PVC Candidates</h2>
+        <p>PVC training finished on May 29, 2026. This is not a hosted link yet; it needs a selected returned voice id and a hidden-row smoke test.</p>
         <dl>
-          <dt>Source</dt><dd>10-second reference clip from Tony PVC sample pack</dd>
-          <dt>Reference audio</dt><dd><code>mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3</code></dd>
-          <dt>Mode</dt><dd>Direct audio render</dd>
-          <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
+          <dt>Clone type</dt><dd>Cartesia Pro Voice Clone</dd>
+          <dt>Training audio</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
+          <dt>Fine-tune</dt><dd><code>fine_tune_Yeeg96cfnGnV5qE8QqxNm7</code></dd>
+          <dt>Returned voices</dt><dd><code>V3 dbeae250-d56d-4add-9d38-16f159179e8c</code>; <code>V2 724dc842-89ea-4982-92f3-776e2d6d8392</code>; <code>V1 9222f12e-d001-49c4-891b-f43c436834f0</code>; <code>V0 a9a7ffce-7d34-48d4-b689-c3a235ac4412</code></dd>
+          <dt>Hosted status</dt><dd>not wired</dd>
         </dl>
-        <div class="audio-label">Taking action</div>
-        <audio controls preload="metadata" src="assets/audio/mistral_voxtral_taking_action.mp3"></audio>
-        <div class="audio-label">Breakthrough</div>
-        <audio controls preload="metadata" src="assets/audio/mistral_voxtral_breakthrough.mp3"></audio>
-        <a class="review" href="https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Mistral worker proof</a>
-        <a class="review secondary" href="https://mistral.ai/news/voxtral-tts/">Read Mistral note</a>
       </article>
     </section>
 
@@ -227,10 +221,9 @@
       <p>Suggested reviewer prompts:</p>
       <ul>
         <li><code>Say one sentence about taking action.</code></li>
-        <li>ElevenLabs non-v3 comparisons use the Tony PVC-style voice. ElevenLabs v3 comparisons use the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
+        <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
-        <li>The Mistral Voxtral lane is a playable direct-render audio lane. The hosted <code>agentName=mistral-test</code> link is a dedicated-worker proof, not a Tony row-level provider-routing proof.</li>
-        <li>Do not treat the current Cartesia hosted links as final source-aligned PVC comparisons yet; the PVC job completed, but these rows still need a selected returned voice id and a smoke test.</li>
+        <li>Cartesia PVC is complete as a training job, but it is not a live hosted comparison until a candidate voice id is selected, wired into a hidden row, and smoke-tested.</li>
         <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
       </ul>
     </section>

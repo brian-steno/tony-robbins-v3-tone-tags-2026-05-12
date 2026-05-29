@@ -1,14 +1,13 @@
 {
   "packet_name": "tony-robbins-live-voice-model-review",
   "updated_at": "2026-05-29",
-  "proof_level": "source-lineage refresh in progress; Cartesia PVC completed but hosted rows not repointed",
+  "proof_level": "public page separates Flash PVC/IVC and Cartesia IVC/PVC status; Cartesia PVC candidates completed but not hosted",
   "notes": [
-    "Recorded audio clips were removed from the public review page.",
-    "Each lane uses a hidden review row plus an explicit prompt_set_id.",
-    "ElevenLabs source rule: non-v3 ElevenLabs lanes use the Tony PVC-style row.",
-    "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row unless a lane is explicitly labeled as a v3 PVC control.",
-    "Cartesia PVC training completed on 2026-05-29 and returned voice candidates, but the hosted rows still use the current 10-second instant clone.",
-    "Mistral Voxtral TTS is a playable direct-render audio lane on this page; the hosted agentName=mistral-test link is a dedicated-worker proof, not Tony row-level provider-routing proof."
+    "Recorded audio clips and the direct-render controls were removed from the public review page.",
+    "Each live lane uses a hidden review row plus an explicit prompt_set_id.",
+    "Flash now has both PVC and IVC controls: tony-business-coaching-review uses the Tony PVC-style ElevenLabs voice, while tony-business-coaching-review-pvc uses the Tony IVC-style ElevenLabs voice despite its stale suffix.",
+    "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on that clone.",
+    "Cartesia IVC links use the current 10-second instant clone. Cartesia PVC training completed on 2026-05-29 and returned voice candidates, but no hosted PVC row is wired yet."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -68,36 +67,11 @@
         "voice_samples/tony7.mp3"
       ],
       "evidence": "workspace/customer_files/tony-robbins-rri/cartesia_pvc_20260528/source_manifest.json"
-    },
-    "mistral_voxtral_ref_tony1_10s": {
-      "provider": "Mistral",
-      "model": "voxtral-mini-tts-2603",
-      "lineage": "Reference-audio render, not a hosted Tony row-level saved voice.",
-      "files": [
-        "mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3"
-      ],
-      "evidence": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/renders/manifest.json"
     }
   },
-  "direct_audio_lanes": [
-    {
-      "label": "Mistral Voxtral TTS",
-      "status": "rendered",
-      "model": "voxtral-mini-tts-2603",
-      "source_audio_set": "mistral_voxtral_ref_tony1_10s",
-      "ref_audio": "Tony PVC 10-second reference clip from tony1.mp3",
-      "audio": [
-        "assets/audio/mistral_voxtral_taking_action.mp3",
-        "assets/audio/mistral_voxtral_breakthrough.mp3"
-      ],
-      "hosted_worker_proof_url": "https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&mode=fullscreen&agentName=mistral-test",
-      "source_url": "https://mistral.ai/news/voxtral-tts/",
-      "docs_url": "https://docs.mistral.ai/studio-api/audio/text_to_speech"
-    }
-  ],
   "links": [
     {
-      "label": "ElevenLabs Flash",
+      "label": "ElevenLabs Flash PVC",
       "voice_source": "Tony PVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U",
       "chat_id": "tony-business-coaching-review",
@@ -105,7 +79,15 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528"
     },
     {
-      "label": "ElevenLabs v3 Plain",
+      "label": "ElevenLabs Flash IVC",
+      "voice_source": "Tony IVC-style ElevenLabs voice",
+      "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
+      "chat_id": "tony-business-coaching-review-pvc",
+      "prompt_set_id": "tony-voice-review-flash-voiceonly-20260528",
+      "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528"
+    },
+    {
+      "label": "ElevenLabs v3 Plain IVC",
       "voice_source": "Tony IVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
@@ -113,7 +95,7 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528"
     },
     {
-      "label": "ElevenLabs v3 Tagged",
+      "label": "ElevenLabs v3 Tagged IVC",
       "voice_source": "Tony IVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
@@ -121,22 +103,50 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
     },
     {
-      "label": "Cartesia Sonic 3",
-      "voice_source": "Current 10-second instant clone; PVC candidate not wired yet",
+      "label": "Cartesia Sonic 3 IVC",
+      "voice_source": "Current 10-second instant clone",
       "source_audio_set": "cartesia_current_instant_clone",
-      "completed_pvc_source_audio_set": "cartesia_pvc_completed_not_wired",
       "chat_id": "tony-business-coaching-cartesia",
       "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
     },
     {
-      "label": "Cartesia Sonic 3.5",
-      "voice_source": "Current 10-second instant clone; PVC candidate not wired yet",
+      "label": "Cartesia Sonic 3.5 IVC",
+      "voice_source": "Current 10-second instant clone",
       "source_audio_set": "cartesia_current_instant_clone",
-      "completed_pvc_source_audio_set": "cartesia_pvc_completed_not_wired",
       "chat_id": "tony-business-coaching-cartesia-35",
       "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
+    }
+  ],
+  "pending_lanes": [
+    {
+      "label": "Cartesia Sonic 3 PVC",
+      "status": "candidate_voices_completed_not_wired",
+      "source_audio_set": "cartesia_pvc_completed_not_wired",
+      "needed_before_live_link": [
+        "select returned Cartesia PVC voice candidate",
+        "create or repoint a hidden Cartesia PVC row with voice_settings.cartesia_voice_id",
+        "smoke-test the hosted link"
+      ],
+      "candidate_voice_ids": [
+        {
+          "label": "V3",
+          "id": "dbeae250-d56d-4add-9d38-16f159179e8c"
+        },
+        {
+          "label": "V2",
+          "id": "724dc842-89ea-4982-92f3-776e2d6d8392"
+        },
+        {
+          "label": "V1",
+          "id": "9222f12e-d001-49c4-891b-f43c436834f0"
+        },
+        {
+          "label": "V0",
+          "id": "a9a7ffce-7d34-48d4-b689-c3a235ac4412"
+        }
+      ]
     }
   ],
   "cartesia_pvc_completed": {
