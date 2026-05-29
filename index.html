@@ -128,7 +128,7 @@
       <h1>Tony Robbins Voice Model Review</h1>
       <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
       <div class="status">IVC/PVC lane refresh updated on May 29, 2026</div>
-      <p class="notice"><strong>Live-lane rule:</strong> Flash now has both PVC and IVC controls. Cartesia has live instant-clone/IVC rows and completed PVC candidates, but no live Cartesia PVC row yet because a returned voice still needs to be selected, wired into a hidden row, and smoke-tested.</p>
+      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code> from the completed Cartesia Pro Voice Clone job.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
@@ -193,6 +193,19 @@
       </article>
 
       <article>
+        <h2>Cartesia Sonic 3 PVC</h2>
+        <p>Live Cartesia Sonic 3 lane using the selected V3 Pro Voice Clone candidate from the full Tony PVC sample pack.</p>
+        <dl>
+          <dt>Clone type</dt><dd>Cartesia Pro Voice Clone</dd>
+          <dt>Training audio</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
+          <dt>Voice id</dt><dd><code>dbeae250-d56d-4add-9d38-16f159179e8c</code></dd>
+          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3 PVC</a>
+      </article>
+
+      <article>
         <h2>Cartesia Sonic 3.5 IVC</h2>
         <p>Live Cartesia Sonic 3.5 lane using the current 10-second instant voice clone.</p>
         <dl>
@@ -205,15 +218,16 @@
       </article>
 
       <article>
-        <h2>Cartesia Sonic 3 PVC Candidates</h2>
-        <p>PVC training finished on May 29, 2026. This is not a hosted link yet; it needs a selected returned voice id and a hidden-row smoke test.</p>
+        <h2>Cartesia Sonic 3.5 PVC</h2>
+        <p>Live Cartesia Sonic 3.5 lane using the selected V3 Pro Voice Clone candidate from the full Tony PVC sample pack.</p>
         <dl>
           <dt>Clone type</dt><dd>Cartesia Pro Voice Clone</dd>
           <dt>Training audio</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
-          <dt>Fine-tune</dt><dd><code>fine_tune_Yeeg96cfnGnV5qE8QqxNm7</code></dd>
-          <dt>Returned voices</dt><dd><code>V3 dbeae250-d56d-4add-9d38-16f159179e8c</code>; <code>V2 724dc842-89ea-4982-92f3-776e2d6d8392</code>; <code>V1 9222f12e-d001-49c4-891b-f43c436834f0</code>; <code>V0 a9a7ffce-7d34-48d4-b689-c3a235ac4412</code></dd>
-          <dt>Hosted status</dt><dd>not wired</dd>
+          <dt>Voice id</dt><dd><code>dbeae250-d56d-4add-9d38-16f159179e8c</code></dd>
+          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35-pvc</code></dd>
+          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
         </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5 PVC</a>
       </article>
     </section>
 
@@ -223,7 +237,7 @@
         <li><code>Say one sentence about taking action.</code></li>
         <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
-        <li>Cartesia PVC is complete as a training job, but it is not a live hosted comparison until a candidate voice id is selected, wired into a hidden row, and smoke-tested.</li>
+        <li>Cartesia PVC links are browser-smoked hosted rows using the selected V3 returned voice id. Human listening is still the authority for subjective voice quality.</li>
         <li>Tone-tag prompts are only intended for the v3 Tagged lane during a live voice call. Try <code>Say one sentence while laughing.</code>, <code>Whisper one sentence.</code>, or <code>Pause between each word without spelling the words.</code> there; the other lanes and normal text chat are not expected to show bracket tags.</li>
       </ul>
     </section>
