@@ -11,7 +11,7 @@
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Hosted browser text probes passed for tony-business-coaching-cartesia-pvc and tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
     "Mistral is linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is a hosted LiveKit listening lane, not Tony row-level Mistral routing.",
-    "Tone-tag caveat: a May 29 reviewer check showed the tagged prompt was not strict enough about mandating tags across follow-up delivery requests; the prompt contract was strengthened and redeployed to the named review slot from workspace source e323d881 at 2026-05-29T22:57:54Z, and now needs a fresh voice recheck."
+    "Tone-tag caveat: a May 29 reviewer check showed the tagged prompt was not strict enough about mandating tags across follow-up delivery requests; the prompt contract was revised per reviewer feedback and redeployed to the named review slot from workspace source 61381a69 at 2026-05-30T01:23:03Z, and now needs a fresh voice recheck."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -113,7 +113,7 @@
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
       "prompt_set_id": "tony-voice-review-v3-tagged-minimal-no-realtime-20260528",
-      "known_issue": "May 29 reviewer check showed the prompt under-mandated tone tags across follow-up delivery requests; prompt contract strengthened and redeployed, fresh voice recheck needed.",
+      "known_issue": "May 29 reviewer check showed the prompt under-mandated tone tags across follow-up delivery requests; prompt contract revised and redeployed, fresh voice recheck needed.",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
     },
     {
