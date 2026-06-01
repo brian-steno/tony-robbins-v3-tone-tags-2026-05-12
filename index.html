@@ -176,7 +176,7 @@
           <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
           <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
           <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
-          <dt>Status</dt><dd>prompt contract redeployed 2026-05-30 UTC; needs voice recheck</dd>
+          <dt>Status</dt><dd>tag contract duplicated into minimal prompt; redeployed 2026-06-01 UTC</dd>
         </dl>
         <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open v3 Tagged</a>
       </article>
@@ -252,7 +252,7 @@
         <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
         <li>Cartesia PVC links are browser-smoked hosted rows using the selected V3 returned voice id. Human listening is still the authority for subjective voice quality.</li>
-        <li>Tone-tag lane caveat: a May 29 reviewer check showed the prompt was not strict enough about mandating tags: it produced <code>[excited]</code> once, then failed to keep using matching tags for repeated whisper requests. The tagged prompt contract was revised per reviewer feedback and redeployed at <code>2026-05-30T01:23:03Z</code>; treat the lane as needing a fresh voice recheck.</li>
+        <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>
       </ul>
     </section>
   </main>
