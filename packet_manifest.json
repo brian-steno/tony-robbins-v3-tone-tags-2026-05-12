@@ -18,7 +18,7 @@
       "provider": "ElevenLabs",
       "voice_id": "rGGjfqiuOixs2MhqM01U",
       "voice_name": "TR",
-      "lineage": "Tony PVC-style retained ElevenLabs source/sample pack",
+      "lineage": "Tony PVC-style retained ElevenLabs source/sample pack. Distinct from the provider-exported IVC sample files even though both sets use tony1.mp3 through tony7.mp3 basenames.",
       "files": [
         "voice_samples/tony1.mp3",
         "voice_samples/tony2.mp3",
@@ -34,7 +34,7 @@
       "provider": "ElevenLabs",
       "voice_id": "7Uc3Xz72mC9WIQPI3t4m",
       "voice_name": "Tony Robbins",
-      "lineage": "Tony IVC-style cloned voice used for the v3 rows",
+      "lineage": "Tony IVC-style cloned voice used for the v3 rows. These are provider-exported samples for voice 7Uc3Xz72mC9WIQPI3t4m; all seven hashes differ from the PVC voice_samples/tony1.mp3 through tony7.mp3 pack.",
       "files": [
         "voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3",
         "voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony2.mp3",
