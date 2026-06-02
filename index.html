@@ -126,9 +126,9 @@
   <main>
     <header>
       <h1>Tony Robbins Voice Model Review</h1>
-      <p>Use these hosted chat links for live review. Each link is pinned to a hidden review row and an explicit prompt slot on <code>chat.steno.ai</code>.</p>
-      <div class="status">IVC/PVC lane refresh updated on May 29, 2026</div>
-      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. The Mistral lane is Ian's dedicated <code>agentName=mistral-test</code> hosted worker link, not row-level Tony provider routing.</p>
+      <p>Use these hosted chat links for live review. The Flash, ElevenLabs v3, and Cartesia links are pinned to hidden review rows and explicit prompt slots on <code>chat.steno.ai</code>.</p>
+      <div class="status">Mistral worker caveat updated on June 2, 2026</div>
+      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. The Mistral card is a marked exception: its dedicated <code>agentName=mistral-test</code> worker link is currently not joining calls, and a same-as-rest Mistral lane requires default-worker row-level Mistral routing.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
@@ -183,15 +183,17 @@
 
       <article>
         <h2>Mistral Voxtral Worker</h2>
-        <p>Ian-created hosted Mistral listening link through the dedicated LiveKit worker.</p>
+        <p>Ian-created hosted Mistral listening link through a dedicated LiveKit worker. Current probe shows the worker is not joining, so this is not a usable hosted review lane right now.</p>
         <dl>
           <dt>Clone type</dt><dd>Mistral Voxtral hosted worker</dd>
           <dt>Source audio</dt><dd>Worker-configured; no row-level training file is exposed in this packet</dd>
           <dt>Row</dt><dd><code>atrioc-waob</code></dd>
           <dt>Route</dt><dd><code>agentName=mistral-test</code></dd>
           <dt>Host</dt><dd><code>dev.chat.steno.ai</code></dd>
+          <dt>Status</dt><dd>blocked 2026-06-02: browser call probe found no audio element after join attempt</dd>
+          <dt>Same-as-rest requirement</dt><dd>deploy default-worker Mistral row routing, then create a hidden non-preview Mistral row</dd>
         </dl>
-        <a class="review" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Mistral Worker</a>
+        <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Offline Worker Link</a>
       </article>
 
       <article>
