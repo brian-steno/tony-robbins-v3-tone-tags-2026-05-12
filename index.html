@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tony Robbins Voice Model Review</title>
+  <title>Voice Provider Review</title>
   <style>
     :root {
       color-scheme: light;
@@ -125,10 +125,10 @@
 <body>
   <main>
     <header>
-      <h1>Tony Robbins Voice Model Review</h1>
-      <p>Use these hosted chat links for live review. The Flash, ElevenLabs v3, and Cartesia links are pinned to hidden review rows and explicit prompt slots on <code>chat.steno.ai</code>.</p>
-      <div class="status">Mistral worker caveat updated on June 2, 2026</div>
-      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. The Mistral card is a marked exception: its dedicated <code>agentName=mistral-test</code> worker link is currently not joining calls, and a same-as-rest Mistral lane requires default-worker row-level Mistral routing.</p>
+      <h1>Voice Provider Review</h1>
+      <p>Use these hosted chat links for live review. The Tony Flash, ElevenLabs v3, and Cartesia links are pinned to hidden review rows and explicit prompt slots on <code>chat.steno.ai</code>; David Cohen links are separated for the current 11Labs baseline vs. Ian's dedicated Mistral worker comparison.</p>
+      <div class="status">David and Mistral status updated on June 3, 2026</div>
+      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit Tony IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. Mistral is a dedicated <code>agentName=mistral-test</code> worker lane, not row-level routing; today's browser probe still found no audio element after join, so validate the worker before treating it as a working listening lane.</p>
     </header>
 
     <section class="grid" aria-label="Voice review links">
@@ -182,18 +182,31 @@
       </article>
 
       <article>
-        <h2>Mistral Voxtral Worker</h2>
-        <p>Ian-created hosted Mistral listening link through a dedicated LiveKit worker. Current probe shows the worker is not joining, so this is not a usable hosted review lane right now.</p>
+        <h2>David Cohen Current 11Labs</h2>
+        <p>Current hosted David production row, used as the ElevenLabs streaming baseline for the Voxtral comparison.</p>
         <dl>
-          <dt>Clone type</dt><dd>Mistral Voxtral hosted worker</dd>
-          <dt>Source audio</dt><dd>Worker-configured; no row-level training file is exposed in this packet</dd>
+          <dt>Clone type</dt><dd>Current ElevenLabs-style hosted voice row</dd>
+          <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB; local MP3 not present in this workspace</dd>
+          <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+          <dt>Row</dt><dd><code>david-cohen-kv1V</code></dd>
+          <dt>Settings</dt><dd><code>speed=1</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code></dd>
+        </dl>
+        <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-kv1V&amp;mode=fullscreen">Open David 11Labs</a>
+      </article>
+
+      <article>
+        <h2>David Cohen Mistral Voxtral</h2>
+        <p>Ian-updated dedicated Mistral worker link for David comparison. Keep this separate from the Tony rows and validate the worker before scoring.</p>
+        <dl>
+          <dt>Clone type</dt><dd>Mistral Voxtral dedicated LiveKit worker</dd>
+          <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB; local MP3 not present in this workspace</dd>
           <dt>Row</dt><dd><code>atrioc-waob</code></dd>
           <dt>Route</dt><dd><code>agentName=mistral-test</code></dd>
           <dt>Host</dt><dd><code>dev.chat.steno.ai</code></dd>
-          <dt>Status</dt><dd>blocked 2026-06-02: browser call probe found no audio element after join attempt</dd>
-          <dt>Same-as-rest requirement</dt><dd>deploy default-worker Mistral row routing, then create a hidden non-preview Mistral row</dd>
+          <dt>Status</dt><dd>Slack-reported David config; blocked in 2026-06-03 browser call probe with no audio element after join attempt</dd>
+          <dt>Same-as-rest requirement</dt><dd>restore the named worker, or deploy default-worker Mistral row routing plus a hidden non-preview Mistral row</dd>
         </dl>
-        <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Offline Worker Link</a>
+        <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open David Mistral</a>
       </article>
 
       <article>
@@ -250,10 +263,12 @@
     <section class="notes">
       <p>Suggested reviewer prompts:</p>
       <ul>
-        <li><code>Say one sentence about taking action.</code></li>
+        <li><code>Say one sentence introducing yourself.</code></li>
         <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
+        <li>For David, compare the current 11Labs row and the Mistral worker link separately. Do not reuse Tony verdicts for David voice fidelity.</li>
         <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
         <li>Cartesia PVC links are browser-smoked hosted rows using the selected V3 returned voice id. Human listening is still the authority for subjective voice quality.</li>
+        <li>Mistral caveat: Ian's link was Slack-reported as updated to David, but the 2026-06-03 browser call probe still failed before audio attached. Treat the card as a setup link until a live call joins successfully.</li>
         <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>
       </ul>
     </section>

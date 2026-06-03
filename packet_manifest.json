@@ -1,7 +1,7 @@
 {
-  "packet_name": "tony-robbins-live-voice-model-review",
-  "updated_at": "2026-06-02",
-  "proof_level": "public page separates Flash PVC/IVC and Cartesia PVC/IVC; Cartesia PVC rows are browser-proven hosted links; Mistral is marked blocked because the dedicated agentName worker is not currently joining",
+  "packet_name": "voice-provider-live-review",
+  "updated_at": "2026-06-03",
+  "proof_level": "public page separates Tony Flash PVC/IVC and Cartesia PVC/IVC, and adds David current 11Labs vs Mistral worker comparison links; Mistral remains a dedicated agentName worker link and is not browser-proven on 2026-06-03",
   "notes": [
     "Recorded audio clips and the direct-render controls were removed from the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id.",
@@ -10,8 +10,10 @@
     "Cartesia IVC links use the current 10-second instant clone.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Hosted browser text probes passed for tony-business-coaching-cartesia-pvc and tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
-    "Mistral remains linked for traceability through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is not Tony row-level Mistral routing.",
-    "2026-06-02 browser probes against both the current page URL and Ian's older proof URL failed with no audio element after join attempt, matching the visible 'Couldn't connect / is joining' symptom. Treat Mistral as blocked until the named worker is restored or default-worker row-level Mistral routing is deployed.",
+    "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
+    "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
+    "Mistral remains linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is not row-level Mistral routing.",
+    "2026-06-03 browser call probe against Ian's David Mistral URL failed with no audio element after join attempt. Treat Mistral as blocked until the named worker is restored or default-worker row-level Mistral routing is deployed.",
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
   ],
   "source_audio_sets": {
@@ -74,14 +76,29 @@
       ],
       "evidence": "workspace/customer_files/tony-robbins-rri/cartesia_pvc_20260528/source_manifest.json"
     },
-    "mistral_voxtral_worker_mistral_test": {
+    "david_elevenlabs_current_Whupv3362SHZJtx5BKd6": {
+      "provider": "ElevenLabs",
+      "voice_id": "Whupv3362SHZJtx5BKd6",
+      "voice_name": "David Cohen",
+      "status": "current_hosted_row_baseline_2026-06-03",
+      "lineage": "Current David Cohen production hosted row used as the ElevenLabs streaming baseline in the Slack Voxtral comparison.",
+      "files": [
+        "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
+      ],
+      "local_files_available": false,
+      "evidence": "read-only public.chat query on 2026-06-03 for david-cohen-kv1V"
+    },
+    "david_mistral_voxtral_worker_mistral_test": {
       "provider": "Mistral",
       "model": "Voxtral TTS via dedicated LiveKit worker",
       "agent_name": "mistral-test",
-      "status": "blocked_worker_not_joining_2026-06-02",
-      "lineage": "Ian-created hosted worker link; source audio is worker-configured and not exposed through a Tony row-level training file in this packet.",
-      "files": [],
-      "evidence": "workspace/slack-exports/research.json"
+      "status": "slack_reported_david_config_but_browser_probe_failed_2026-06-03",
+      "lineage": "Ian-updated hosted worker link for David Cohen. This is a dedicated agentName worker comparison, not a hidden row configured through row-level voice_settings.",
+      "files": [
+        "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
+      ],
+      "local_files_available": false,
+      "evidence": "Slack excerpt from 2026-06-03 plus local browser call probe failure on 2026-06-03"
     }
   },
   "links": [
@@ -119,14 +136,28 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
     },
     {
-      "label": "Mistral Voxtral Worker",
-      "voice_source": "Ian-created dedicated Mistral test worker",
-      "source_audio_set": "mistral_voxtral_worker_mistral_test",
+      "label": "David Cohen Current 11Labs",
+      "voice_source": "Current David ElevenLabs-style hosted row",
+      "source_audio_set": "david_elevenlabs_current_Whupv3362SHZJtx5BKd6",
+      "chat_id": "david-cohen-kv1V",
+      "voice_id": "Whupv3362SHZJtx5BKd6",
+      "voice_settings": {
+        "speed": 1,
+        "stability": 0.38,
+        "similarity_boost": 0.85,
+        "use_speaker_boost": true
+      },
+      "url": "https://chat.steno.ai/chat?id=david-cohen-kv1V&mode=fullscreen"
+    },
+    {
+      "label": "David Cohen Mistral Voxtral",
+      "voice_source": "Ian-updated dedicated Mistral test worker for David",
+      "source_audio_set": "david_mistral_voxtral_worker_mistral_test",
       "chat_id": "atrioc-waob",
       "agent_name": "mistral-test",
       "host": "dev.chat.steno.ai",
-      "status": "blocked_worker_not_joining_2026-06-02",
-      "known_issue": "Browser call probes on 2026-06-02 found no audio element after join attempt; same-as-rest setup requires default-worker Mistral row routing plus a hidden non-preview Mistral row.",
+      "status": "slack_reported_david_config_but_browser_probe_failed_2026-06-03",
+      "known_issue": "Browser call probe on 2026-06-03 found no audio element after join attempt; same-as-rest setup requires default-worker Mistral row routing plus a hidden non-preview Mistral row.",
       "url": "https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
     },
     {
