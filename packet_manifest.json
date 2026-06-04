@@ -13,9 +13,10 @@
     "Hosted browser text probe passed for tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
     "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
     "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
-    "Mistral remains linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is not row-level Mistral routing.",
-    "2026-06-03 browser call probe against Ian's David Mistral URL failed with no audio element after join attempt. Treat Mistral as blocked until the named worker is restored or default-worker row-level Mistral routing is deployed.",
-    "The earlier Tony Mistral proof is now shown next to David for side-by-side setup visibility, but it is blocked for scoring until the worker is revalidated as Tony-configured because Slack context says Ian later updated the worker link to David Cohen.",
+    "Mistral now links through Ian's 2026-06-04 dev prompt slot URL with prompt_set_id=mistral-test; this supersedes the stale agentName=mistral-test worker URLs for the current public page.",
+    "Ian-provided Mistral config for that prompt slot: tts_model=voxtral-mini-tts-2603 and mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00.",
+    "The David Mistral slot is Ian-reported live on dev, but the 2026-06-04 automated headless browser capture still failed before audio attached with NotSupportedError/no audio element. Manual listening remains required before scoring.",
+    "Tony does not currently have a separate Mistral prompt slot, Mistral voice id, or row-level Mistral route on the public page; the earlier Tony agentName proof is treated as superseded setup history, not current review evidence.",
     "David does not currently have the same live ElevenLabs v3 tagged prompt lane as Tony. The David tagged cell is pending and should be created from the same tagged contract used by the Tony tagged slot.",
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
   ],
@@ -91,17 +92,18 @@
       "local_files_available": false,
       "evidence": "read-only public.chat query on 2026-06-03 for david-cohen-kv1V"
     },
-    "david_mistral_voxtral_worker_mistral_test": {
+    "david_mistral_voxtral_prompt_slot_mistral_test": {
       "provider": "Mistral",
-      "model": "Voxtral TTS via dedicated LiveKit worker",
-      "agent_name": "mistral-test",
-      "status": "slack_reported_david_config_but_browser_probe_failed_2026-06-03",
-      "lineage": "Ian-updated hosted worker link for David Cohen. This is a dedicated agentName worker comparison, not a hidden row configured through row-level voice_settings.",
+      "model": "voxtral-mini-tts-2603",
+      "mistral_voice": "266a2af6-e868-4027-aff4-251b9cc17e00",
+      "prompt_set_id": "mistral-test",
+      "status": "ian_reported_live_dev_prompt_slot_2026-06-04_manual_listen_needed",
+      "lineage": "Ian-provided dev prompt slot for the David Cohen Voxtral comparison. This is prompt-slot provider config, not the old agentName worker URL and not a hidden row configured through row-level voice_settings.",
       "files": [
         "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
       ],
       "local_files_available": false,
-      "evidence": "Slack excerpt from 2026-06-03 plus local browser call probe failure on 2026-06-03"
+      "evidence": "Ian Slack excerpt from 2026-06-04 plus local browser call probe failure on 2026-06-04"
     },
     "tony_mistral_prepared_reference_clip": {
       "provider": "Mistral",
@@ -145,10 +147,10 @@
     {
       "model": "Mistral Voxtral",
       "tony": [
-        "Tony Robbins Mistral Voxtral proof link, blocked until worker/config is revalidated"
+        "pending: Tony Mistral prompt slot, voice id, or hidden row"
       ],
       "david": [
-        "David Cohen Mistral Voxtral"
+        "David Cohen Mistral Voxtral prompt slot"
       ]
     },
     {
@@ -201,18 +203,6 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
     },
     {
-      "label": "Tony Robbins Mistral Voxtral proof",
-      "person": "Tony Robbins",
-      "voice_source": "Earlier dedicated Mistral test worker proof, requires revalidation",
-      "source_audio_set": "tony_mistral_prepared_reference_clip",
-      "chat_id": "atrioc-waob",
-      "agent_name": "mistral-test",
-      "host": "dev.chat.steno.ai",
-      "status": "historical_tony_proof_but_current_worker_config_unverified_after_david_update",
-      "known_issue": "Slack context says Ian later updated the same mistral-test worker/link to David Cohen; do not score this as current Tony Mistral until the worker is reconfigured/revalidated.",
-      "url": "https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
-    },
-    {
       "label": "David Cohen Current 11Labs",
       "person": "David Cohen",
       "voice_source": "Current David ElevenLabs-style hosted row",
@@ -230,14 +220,18 @@
     {
       "label": "David Cohen Mistral Voxtral",
       "person": "David Cohen",
-      "voice_source": "Ian-updated dedicated Mistral test worker for David",
-      "source_audio_set": "david_mistral_voxtral_worker_mistral_test",
+      "voice_source": "Ian-provided Mistral dev prompt slot for David",
+      "source_audio_set": "david_mistral_voxtral_prompt_slot_mistral_test",
       "chat_id": "atrioc-waob",
-      "agent_name": "mistral-test",
+      "prompt_set_id": "mistral-test",
       "host": "dev.chat.steno.ai",
-      "status": "slack_reported_david_config_but_browser_probe_failed_2026-06-03",
-      "known_issue": "Browser call probe on 2026-06-03 found no audio element after join attempt; same-as-rest setup requires default-worker Mistral row routing plus a hidden non-preview Mistral row.",
-      "url": "https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
+      "mistral_config": {
+        "tts_model": "voxtral-mini-tts-2603",
+        "mistral_voice": "266a2af6-e868-4027-aff4-251b9cc17e00"
+      },
+      "status": "ian_reported_live_dev_prompt_slot_2026-06-04_manual_listen_needed",
+      "known_issue": "Automated headless browser capture on 2026-06-04 reached the page but failed before audio attached with NotSupportedError/no audio element; manual listening is still required before scoring.",
+      "url": "https://dev.chat.steno.ai/chat/?id=atrioc-waob&mode=fullscreen&prompt_set_id=mistral-test"
     },
     {
       "label": "Cartesia Sonic 3.5 IVC",
@@ -273,7 +267,7 @@
     {
       "model": "Mistral Voxtral",
       "person": "Tony Robbins",
-      "needed": "Revalidate/reconfigure the Tony Mistral proof link as Tony-configured, or deploy row-level Mistral routing with a hidden Tony row"
+      "needed": "Create a Tony-specific Mistral prompt slot or hidden row with a Tony Mistral voice id/reference; do not reuse the David prompt_set_id=mistral-test voice id"
     },
     {
       "model": "Cartesia Sonic 3.5",
@@ -282,6 +276,11 @@
     }
   ],
   "dropped_from_public_page": [
+    {
+      "label": "Tony Robbins Mistral agentName proof",
+      "chat_id": "atrioc-waob",
+      "reason": "Superseded by Ian's 2026-06-04 prompt_set_id=mistral-test dev slot; old agentName worker URL is not current Tony evidence"
+    },
     {
       "label": "Cartesia Sonic 3 IVC",
       "chat_id": "tony-business-coaching-cartesia",

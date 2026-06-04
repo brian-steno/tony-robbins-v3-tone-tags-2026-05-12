@@ -191,7 +191,7 @@
       <h1>Voice Provider Review</h1>
       <p>Use each row to compare the same voice model path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link.</p>
       <div class="status">Side-by-side matrix updated on June 4, 2026</div>
-      <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each model row. Cartesia now shows Sonic 3.5 only. Mistral is still a dedicated <code>agentName=mistral-test</code> worker lane, not row-level routing, and must be rechecked after the worker is restored.</p>
+      <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each model row. Cartesia now shows Sonic 3.5 only. Mistral is on Ian's dev <code>prompt_set_id=mistral-test</code> slot, not the old <code>agentName</code> worker URL and not row-level Tony/David routing.</p>
     </header>
 
     <section class="matrix" aria-label="Tony and David voice model comparison">
@@ -305,33 +305,34 @@
       <section class="model-row" aria-labelledby="mistral-heading">
         <div class="row-header">
           <h2 id="mistral-heading">Mistral Voxtral</h2>
-          <p class="row-note">Dedicated LiveKit worker path. Tony and David links are shown side by side, but both require worker/config revalidation before scoring.</p>
+          <p class="row-note">Ian-reported dev prompt slot for the David Voxtral comparison. Tony still needs a separate Mistral prompt slot, voice id, or hidden row before scoring.</p>
         </div>
         <div class="compare">
-          <div class="person">
+          <div class="person pending">
             <h3>Tony Robbins</h3>
-            <span class="badge blocked">Blocked</span>
+            <span class="badge">Pending</span>
             <dl>
-              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>agentName=mistral-test</code></dd>
+              <dt>Needed</dt><dd>Tony-specific Mistral prompt slot or hidden row with a Tony Mistral voice id/reference</dd>
               <dt>Prepared source</dt><dd><code>workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3</code></dd>
-              <dt>Status</dt><dd>earlier Tony proof link; not current-scored because Slack context says the worker was later updated to David</dd>
-              <dt>Needed</dt><dd>restore a Tony-configured worker or deploy row-level Mistral routing with a hidden Tony row</dd>
+              <dt>Status</dt><dd>not linked as current; the earlier <code>agentName=mistral-test</code> proof was superseded by Ian's David prompt-slot setup</dd>
             </dl>
             <div class="actions">
-              <a class="review secondary" href="https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Tony Mistral proof</a>
+              <span class="disabled">No current Tony Mistral link yet</span>
             </div>
           </div>
           <div class="person">
             <h3>David Cohen</h3>
-            <span class="badge blocked">Blocked</span>
+            <span class="badge live">Ian Live</span>
             <dl>
-              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>agentName=mistral-test</code></dd>
+              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>prompt_set_id=mistral-test</code></dd>
+              <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
+              <dt>Mistral voice</dt><dd><code>266a2af6-e868-4027-aff4-251b9cc17e00</code></dd>
               <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
               <dt>Row</dt><dd><code>atrioc-waob</code></dd>
-              <dt>Status</dt><dd>browser call probe on 2026-06-03 found no audio element after join attempt</dd>
+              <dt>Status</dt><dd>Ian reported up on dev 2026-06-04; headless browser capture still needs manual listening proof</dd>
             </dl>
             <div class="actions">
-              <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open David Mistral</a>
+              <a class="review" href="https://dev.chat.steno.ai/chat/?id=atrioc-waob&amp;mode=fullscreen&amp;prompt_set_id=mistral-test">Open David Mistral</a>
             </div>
           </div>
         </div>
@@ -380,7 +381,7 @@
         <li><code>Say one sentence introducing yourself.</code></li>
         <li>Use the same neutral prompt across both columns in one model row when comparing voice quality, pacing, pronunciation, and naturalness.</li>
         <li>Do not reuse Tony verdicts for David voice fidelity. Missing David cells require their own clone/row before scoring.</li>
-        <li>Mistral caveat: Ian's link was Slack-reported as updated to David, but the 2026-06-03 browser call probe still failed before audio attached. Treat the link as a setup link until a live call joins successfully.</li>
+        <li>Mistral caveat: Ian reported <code>prompt_set_id=mistral-test</code> live on dev with <code>tts_model=voxtral-mini-tts-2603</code> and <code>mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00</code>. The automated headless capture still did not attach audio, so manual listening remains the scoring proof.</li>
         <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>
       </ul>
     </section>
