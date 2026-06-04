@@ -1,19 +1,21 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-03",
-  "proof_level": "public page separates Tony Flash PVC/IVC and Cartesia PVC/IVC, and adds David current 11Labs vs Mistral worker comparison links; Mistral remains a dedicated agentName worker link and is not browser-proven on 2026-06-03",
+  "updated_at": "2026-06-04",
+  "proof_level": "public page is a Tony-vs-David side-by-side model matrix; Sonic 3 lanes are dropped; missing David/Tony lanes are labeled pending rather than implied",
   "notes": [
-    "Recorded audio clips and the direct-render controls were removed from the public review page.",
-    "Each live lane uses a hidden review row plus an explicit prompt_set_id.",
-    "Flash now has both PVC and IVC controls: tony-business-coaching-review uses the Tony PVC-style ElevenLabs voice, while tony-business-coaching-review-pvc uses the Tony IVC-style ElevenLabs voice despite its stale suffix.",
-    "ElevenLabs v3 plain/tagged intentionally use the Tony IVC-style row because v3 is being evaluated on that clone.",
-    "Cartesia IVC links use the current 10-second instant clone.",
+    "Recorded audio clips and direct-render controls are not on the public review page.",
+    "Each live lane uses a hidden review row plus an explicit prompt_set_id unless otherwise noted.",
+    "The visible page is organized by model path, with Tony Robbins and David Cohen columns for each row.",
+    "Flash/current 11Labs has Tony PVC, Tony IVC, and David current 11Labs controls.",
+    "ElevenLabs v3 plain/tagged currently has Tony IVC controls only; David v3 plain/tagged rows are pending.",
+    "Cartesia visible controls now show Sonic 3.5 only. Tony has Sonic 3.5 IVC and PVC controls; David Cartesia rows are pending.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
-    "Hosted browser text probes passed for tony-business-coaching-cartesia-pvc and tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
+    "Hosted browser text probe passed for tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
     "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
     "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
     "Mistral remains linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is not row-level Mistral routing.",
     "2026-06-03 browser call probe against Ian's David Mistral URL failed with no audio element after join attempt. Treat Mistral as blocked until the named worker is restored or default-worker row-level Mistral routing is deployed.",
+    "The earlier Tony Mistral proof is not a current Tony lane because Slack context says Ian updated the worker link to David Cohen.",
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
   ],
   "source_audio_sets": {
@@ -52,7 +54,7 @@
     "cartesia_current_instant_clone": {
       "provider": "Cartesia",
       "voice_id": "d2b6d7e4-5b90-4efd-954e-5c42e214e771",
-      "lineage": "Current hosted Cartesia rows use the prior 10-second instant clone, not the completed PVC candidates.",
+      "lineage": "Current hosted Cartesia IVC row uses the prior 10-second instant clone.",
       "files": [
         "voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3"
       ],
@@ -99,11 +101,70 @@
       ],
       "local_files_available": false,
       "evidence": "Slack excerpt from 2026-06-03 plus local browser call probe failure on 2026-06-03"
+    },
+    "tony_mistral_prepared_reference_clip": {
+      "provider": "Mistral",
+      "model": "Voxtral TTS reference-audio candidate",
+      "status": "prepared_reference_only_not_current_hosted_lane",
+      "files": [
+        "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3"
+      ],
+      "evidence": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/renders/manifest.json"
     }
   },
+  "comparison_matrix": [
+    {
+      "model": "ElevenLabs Flash / Current 11Labs",
+      "tony": [
+        "ElevenLabs Flash PVC",
+        "ElevenLabs Flash IVC"
+      ],
+      "david": [
+        "David Cohen Current 11Labs"
+      ]
+    },
+    {
+      "model": "ElevenLabs v3 Plain",
+      "tony": [
+        "ElevenLabs v3 Plain IVC"
+      ],
+      "david": [
+        "pending: David v3 plain row or slot"
+      ]
+    },
+    {
+      "model": "ElevenLabs v3 Tagged",
+      "tony": [
+        "ElevenLabs v3 Tagged IVC"
+      ],
+      "david": [
+        "pending: David v3 tagged row or slot"
+      ]
+    },
+    {
+      "model": "Mistral Voxtral",
+      "tony": [
+        "pending: restore Tony-configured worker or deploy row-level Mistral row"
+      ],
+      "david": [
+        "David Cohen Mistral Voxtral"
+      ]
+    },
+    {
+      "model": "Cartesia Sonic 3.5",
+      "tony": [
+        "Cartesia Sonic 3.5 IVC",
+        "Cartesia Sonic 3.5 PVC"
+      ],
+      "david": [
+        "pending: David Cartesia instant/PVC row"
+      ]
+    }
+  ],
   "links": [
     {
       "label": "ElevenLabs Flash PVC",
+      "person": "Tony Robbins",
       "voice_source": "Tony PVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U",
       "chat_id": "tony-business-coaching-review",
@@ -112,6 +173,7 @@
     },
     {
       "label": "ElevenLabs Flash IVC",
+      "person": "Tony Robbins",
       "voice_source": "Tony IVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
@@ -120,6 +182,7 @@
     },
     {
       "label": "ElevenLabs v3 Plain IVC",
+      "person": "Tony Robbins",
       "voice_source": "Tony IVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
@@ -128,6 +191,7 @@
     },
     {
       "label": "ElevenLabs v3 Tagged IVC",
+      "person": "Tony Robbins",
       "voice_source": "Tony IVC-style ElevenLabs voice",
       "source_audio_set": "elevenlabs_ivc_7Uc3Xz72mC9WIQPI3t4m",
       "chat_id": "tony-business-coaching-review-pvc",
@@ -137,6 +201,7 @@
     },
     {
       "label": "David Cohen Current 11Labs",
+      "person": "David Cohen",
       "voice_source": "Current David ElevenLabs-style hosted row",
       "source_audio_set": "david_elevenlabs_current_Whupv3362SHZJtx5BKd6",
       "chat_id": "david-cohen-kv1V",
@@ -151,6 +216,7 @@
     },
     {
       "label": "David Cohen Mistral Voxtral",
+      "person": "David Cohen",
       "voice_source": "Ian-updated dedicated Mistral test worker for David",
       "source_audio_set": "david_mistral_voxtral_worker_mistral_test",
       "chat_id": "atrioc-waob",
@@ -161,24 +227,8 @@
       "url": "https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
     },
     {
-      "label": "Cartesia Sonic 3 IVC",
-      "voice_source": "Current 10-second instant clone",
-      "source_audio_set": "cartesia_current_instant_clone",
-      "chat_id": "tony-business-coaching-cartesia",
-      "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
-      "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
-    },
-    {
-      "label": "Cartesia Sonic 3 PVC",
-      "voice_source": "Selected V3 Cartesia Pro Voice Clone",
-      "source_audio_set": "cartesia_pvc_v3_dbeae250",
-      "cartesia_voice_id": "dbeae250-d56d-4add-9d38-16f159179e8c",
-      "chat_id": "tony-business-coaching-cartesia-pvc",
-      "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
-      "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
-    },
-    {
       "label": "Cartesia Sonic 3.5 IVC",
+      "person": "Tony Robbins",
       "voice_source": "Current 10-second instant clone",
       "source_audio_set": "cartesia_current_instant_clone",
       "chat_id": "tony-business-coaching-cartesia-35",
@@ -187,12 +237,47 @@
     },
     {
       "label": "Cartesia Sonic 3.5 PVC",
+      "person": "Tony Robbins",
       "voice_source": "Selected V3 Cartesia Pro Voice Clone",
       "source_audio_set": "cartesia_pvc_v3_dbeae250",
       "cartesia_voice_id": "dbeae250-d56d-4add-9d38-16f159179e8c",
       "chat_id": "tony-business-coaching-cartesia-35-pvc",
       "prompt_set_id": "tony-voice-review-baseline-no-tts-20260528",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
+    }
+  ],
+  "pending_lanes": [
+    {
+      "model": "ElevenLabs v3 Plain",
+      "person": "David Cohen",
+      "needed": "David row or prompt slot that selects ElevenLabs v3 plain for the David voice"
+    },
+    {
+      "model": "ElevenLabs v3 Tagged",
+      "person": "David Cohen",
+      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice"
+    },
+    {
+      "model": "Mistral Voxtral",
+      "person": "Tony Robbins",
+      "needed": "Restore a Tony-configured mistral-test worker or deploy row-level Mistral routing with a hidden Tony row"
+    },
+    {
+      "model": "Cartesia Sonic 3.5",
+      "person": "David Cohen",
+      "needed": "David Cartesia instant clone and/or Pro Voice Clone rows for Sonic 3.5"
+    }
+  ],
+  "dropped_from_public_page": [
+    {
+      "label": "Cartesia Sonic 3 IVC",
+      "chat_id": "tony-business-coaching-cartesia",
+      "reason": "Brian requested dropping Sonic 3 from the side-by-side page"
+    },
+    {
+      "label": "Cartesia Sonic 3 PVC",
+      "chat_id": "tony-business-coaching-cartesia-pvc",
+      "reason": "Brian requested dropping Sonic 3 from the side-by-side page"
     }
   ],
   "cartesia_pvc_completed": {
@@ -219,9 +304,11 @@
     ],
     "selected_live_voice_id": "dbeae250-d56d-4add-9d38-16f159179e8c",
     "hosted_row_status": "wired_and_browser_smoked",
-    "hosted_rows": [
-      "tony-business-coaching-cartesia-pvc",
+    "active_public_page_rows": [
       "tony-business-coaching-cartesia-35-pvc"
+    ],
+    "available_hidden_rows_not_on_public_page": [
+      "tony-business-coaching-cartesia-pvc"
     ]
   }
 }

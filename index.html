@@ -15,6 +15,7 @@
       --accent: #165f63;
       --warning: #8a5a00;
       --warning-bg: #fff8e8;
+      --pending: #f1f1ee;
     }
     * { box-sizing: border-box; }
     body {
@@ -25,14 +26,14 @@
       line-height: 1.5;
     }
     main {
-      width: min(980px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
       padding: 32px 0 48px;
     }
     header {
       padding: 0 0 20px;
       border-bottom: 1px solid var(--line);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     h1 {
       margin: 0 0 8px;
@@ -40,7 +41,7 @@
       line-height: 1.08;
       letter-spacing: 0;
     }
-    p { margin: 0 0 12px; color: var(--muted); max-width: 760px; }
+    p { margin: 0 0 12px; color: var(--muted); max-width: 860px; }
     .status {
       display: inline-flex;
       align-items: center;
@@ -58,29 +59,72 @@
       border: 1px solid #e2c46d;
       background: var(--warning-bg);
       color: var(--warning);
-      max-width: 860px;
+      max-width: 980px;
       font-size: 14px;
     }
-    .grid {
+    .matrix {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-      margin-top: 22px;
+      gap: 18px;
     }
-    article {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 18px;
-      min-height: 190px;
+    .model-row {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .row-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
     }
     h2 {
-      margin: 0 0 6px;
-      font-size: 20px;
+      margin: 0;
+      font-size: 22px;
       line-height: 1.2;
       letter-spacing: 0;
     }
+    .row-note {
+      margin: 0;
+      max-width: 560px;
+      font-size: 14px;
+      text-align: right;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .person {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 16px;
+      min-height: 220px;
+    }
+    .person.pending {
+      background: var(--pending);
+    }
+    h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .badge {
+      display: inline-flex;
+      margin: 2px 0 10px;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+    .badge.live { color: #0c5f33; border-color: #9cc9ad; background: #eef8f1; }
+    .badge.blocked { color: var(--warning); border-color: #e2c46d; background: var(--warning-bg); }
     dl {
-      margin: 14px 0;
+      margin: 12px 0;
       display: grid;
       grid-template-columns: max-content 1fr;
       gap: 6px 10px;
@@ -93,17 +137,26 @@
       font-size: 0.92em;
       overflow-wrap: anywhere;
     }
-    a.review {
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    a.review,
+    .disabled {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 9px 13px;
-      background: var(--accent);
-      color: white;
+      min-height: 40px;
+      padding: 8px 12px;
       text-decoration: none;
       font-weight: 650;
-      margin-top: 4px;
+      font-size: 14px;
+    }
+    a.review {
+      background: var(--accent);
+      color: white;
     }
     a.review:focus,
     a.review:hover { filter: brightness(0.92); }
@@ -111,6 +164,11 @@
       background: var(--paper);
       color: var(--accent);
       border: 1px solid var(--accent);
+    }
+    .disabled {
+      background: transparent;
+      color: var(--muted);
+      border: 1px dashed #b8b8b8;
     }
     .notes {
       margin-top: 26px;
@@ -120,155 +178,207 @@
     }
     ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
     li + li { margin-top: 4px; }
+    @media (max-width: 760px) {
+      .row-header { display: block; }
+      .row-note { text-align: left; margin-top: 6px; }
+      .compare { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <main>
     <header>
       <h1>Voice Provider Review</h1>
-      <p>Use these hosted chat links for live review. The Tony Flash, ElevenLabs v3, and Cartesia links are pinned to hidden review rows and explicit prompt slots on <code>chat.steno.ai</code>; David Cohen links are separated for the current 11Labs baseline vs. Ian's dedicated Mistral worker comparison.</p>
-      <div class="status">David and Mistral status updated on June 3, 2026</div>
-      <p class="notice"><strong>Live-lane rule:</strong> Flash and Cartesia now each have explicit Tony IVC and PVC controls. Cartesia PVC uses returned V3 voice <code>dbeae250-d56d-4add-9d38-16f159179e8c</code>. Mistral is a dedicated <code>agentName=mistral-test</code> worker lane, not row-level routing; today's browser probe still found no audio element after join, so validate the worker before treating it as a working listening lane.</p>
+      <p>Use each row to compare the same voice model path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link.</p>
+      <div class="status">Side-by-side matrix updated on June 4, 2026</div>
+      <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each model row. Cartesia now shows Sonic 3.5 only. Mistral is still a dedicated <code>agentName=mistral-test</code> worker lane, not row-level routing, and must be rechecked after the worker is restored.</p>
     </header>
 
-    <section class="grid" aria-label="Voice review links">
-      <article>
-        <h2>ElevenLabs Flash PVC</h2>
-        <p>Low-latency ElevenLabs Flash using the Tony PVC-style voice row.</p>
-        <dl>
-          <dt>Clone type</dt><dd>PVC-style ElevenLabs voice</dd>
-          <dt>PVC source pack</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-review</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash PVC</a>
-      </article>
+    <section class="matrix" aria-label="Tony and David voice model comparison">
+      <section class="model-row" aria-labelledby="flash-heading">
+        <div class="row-header">
+          <h2 id="flash-heading">ElevenLabs Flash / Current 11Labs</h2>
+          <p class="row-note">Low-latency ElevenLabs comparison. Tony has PVC and IVC controls; David has the current hosted 11Labs row.</p>
+        </div>
+        <div class="compare">
+          <div class="person">
+            <h3>Tony Robbins</h3>
+            <span class="badge live">Live</span>
+            <dl>
+              <dt>PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+              <dt>IVC source</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+              <dt>PVC row</dt><dd><code>tony-business-coaching-review</code></dd>
+              <dt>IVC row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+              <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
+            </dl>
+            <div class="actions">
+              <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Tony Flash PVC</a>
+              <a class="review secondary" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Tony Flash IVC</a>
+            </div>
+          </div>
+          <div class="person">
+            <h3>David Cohen</h3>
+            <span class="badge live">Live</span>
+            <dl>
+              <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
+              <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+              <dt>Row</dt><dd><code>david-cohen-kv1V</code></dd>
+              <dt>Settings</dt><dd><code>speed=1</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code></dd>
+            </dl>
+            <div class="actions">
+              <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-kv1V&amp;mode=fullscreen">Open David 11Labs</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article>
-        <h2>ElevenLabs Flash IVC</h2>
-        <p>Same Flash prompt on the Tony IVC-style row for source-lineage comparison.</p>
-        <dl>
-          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
-          <dt>IVC provider export</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code>; same basenames as PVC, different files</dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-flash-voiceonly-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-flash-voiceonly-20260528">Open Flash IVC</a>
-      </article>
+      <section class="model-row" aria-labelledby="v3-plain-heading">
+        <div class="row-header">
+          <h2 id="v3-plain-heading">ElevenLabs v3 Plain</h2>
+          <p class="row-note">Plain v3 without the tone-tag harness. Tony is wired; David still needs a v3-specific row or slot.</p>
+        </div>
+        <div class="compare">
+          <div class="person">
+            <h3>Tony Robbins</h3>
+            <span class="badge live">Live</span>
+            <dl>
+              <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
+              <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+              <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+              <dt>Slot</dt><dd><code>tony-voice-review-v3-plain-voiceonly-20260528</code></dd>
+            </dl>
+            <div class="actions">
+              <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528">Open Tony v3 Plain</a>
+            </div>
+          </div>
+          <div class="person pending">
+            <h3>David Cohen</h3>
+            <span class="badge">Pending</span>
+            <dl>
+              <dt>Needed</dt><dd>David row or prompt slot that selects ElevenLabs v3 plain for the David voice</dd>
+              <dt>Source audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
+              <dt>Current voice</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+            </dl>
+            <div class="actions">
+              <span class="disabled">No David v3 Plain link yet</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article>
-        <h2>ElevenLabs v3 Plain IVC</h2>
-        <p>Eleven v3 on the Tony IVC-style row, with the normal Tony prompt and no audio-tag forcing.</p>
-        <dl>
-          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
-          <dt>IVC provider export</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code>; same basenames as PVC, different files</dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-v3-plain-voiceonly-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528">Open v3 Plain</a>
-      </article>
+      <section class="model-row" aria-labelledby="v3-tagged-heading">
+        <div class="row-header">
+          <h2 id="v3-tagged-heading">ElevenLabs v3 Tagged</h2>
+          <p class="row-note">Tone-tag prompt harness. Tony needs a fresh voice recheck; David still needs a matching tagged lane.</p>
+        </div>
+        <div class="compare">
+          <div class="person">
+            <h3>Tony Robbins</h3>
+            <span class="badge live">Live</span>
+            <dl>
+              <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
+              <dt>Training audio</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+              <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
+              <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
+              <dt>Status</dt><dd>tag contract duplicated into minimal prompt; redeployed 2026-06-01 UTC</dd>
+            </dl>
+            <div class="actions">
+              <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open Tony v3 Tagged</a>
+            </div>
+          </div>
+          <div class="person pending">
+            <h3>David Cohen</h3>
+            <span class="badge">Pending</span>
+            <dl>
+              <dt>Needed</dt><dd>David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice</dd>
+              <dt>Source audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
+              <dt>Current voice</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+            </dl>
+            <div class="actions">
+              <span class="disabled">No David v3 Tagged link yet</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article>
-        <h2>ElevenLabs v3 Tagged IVC</h2>
-        <p>Experimental tag harness on the Tony IVC-style row. Latest reviewer check showed the prompt was not strict enough about mandating tone tags across follow-up requests.</p>
-        <dl>
-          <dt>Clone type</dt><dd>IVC-style ElevenLabs voice</dd>
-          <dt>IVC provider export</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1.mp3</code> through <code>tony7.mp3</code>; same basenames as PVC, different files</dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-v3-tagged-minimal-no-realtime-20260528</code></dd>
-          <dt>Status</dt><dd>tag contract duplicated into minimal prompt; redeployed 2026-06-01 UTC</dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open v3 Tagged</a>
-      </article>
+      <section class="model-row" aria-labelledby="mistral-heading">
+        <div class="row-header">
+          <h2 id="mistral-heading">Mistral Voxtral</h2>
+          <p class="row-note">Dedicated LiveKit worker path. The David link exists but is blocked until <code>mistral-test</code> joins again.</p>
+        </div>
+        <div class="compare">
+          <div class="person pending">
+            <h3>Tony Robbins</h3>
+            <span class="badge">Pending</span>
+            <dl>
+              <dt>Needed</dt><dd>restore a Tony-configured Mistral worker or deploy row-level Mistral routing with a hidden Tony row</dd>
+              <dt>Prepared source</dt><dd><code>workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3</code></dd>
+              <dt>Note</dt><dd>the current <code>mistral-test</code> link was Slack-reported as updated to David</dd>
+            </dl>
+            <div class="actions">
+              <span class="disabled">No current Tony Mistral link</span>
+            </div>
+          </div>
+          <div class="person">
+            <h3>David Cohen</h3>
+            <span class="badge blocked">Blocked</span>
+            <dl>
+              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>agentName=mistral-test</code></dd>
+              <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
+              <dt>Row</dt><dd><code>atrioc-waob</code></dd>
+              <dt>Status</dt><dd>browser call probe on 2026-06-03 found no audio element after join attempt</dd>
+            </dl>
+            <div class="actions">
+              <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open David Mistral</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <article>
-        <h2>David Cohen Current 11Labs</h2>
-        <p>Current hosted David production row, used as the ElevenLabs streaming baseline for the Voxtral comparison.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Current ElevenLabs-style hosted voice row</dd>
-          <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB; local MP3 not present in this workspace</dd>
-          <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
-          <dt>Row</dt><dd><code>david-cohen-kv1V</code></dd>
-          <dt>Settings</dt><dd><code>speed=1</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-kv1V&amp;mode=fullscreen">Open David 11Labs</a>
-      </article>
-
-      <article>
-        <h2>David Cohen Mistral Voxtral</h2>
-        <p>Ian-updated dedicated Mistral worker link for David comparison. Keep this separate from the Tony rows and validate the worker before scoring.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Mistral Voxtral dedicated LiveKit worker</dd>
-          <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB; local MP3 not present in this workspace</dd>
-          <dt>Row</dt><dd><code>atrioc-waob</code></dd>
-          <dt>Route</dt><dd><code>agentName=mistral-test</code></dd>
-          <dt>Host</dt><dd><code>dev.chat.steno.ai</code></dd>
-          <dt>Status</dt><dd>Slack-reported David config; blocked in 2026-06-03 browser call probe with no audio element after join attempt</dd>
-          <dt>Same-as-rest requirement</dt><dd>restore the named worker, or deploy default-worker Mistral row routing plus a hidden non-preview Mistral row</dd>
-        </dl>
-        <a class="review secondary" href="https://dev.chat.steno.ai/chat/CJbKRel17owGWL7LyOiSc6sx?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open David Mistral</a>
-      </article>
-
-      <article>
-        <h2>Cartesia Sonic 3 IVC</h2>
-        <p>Live Cartesia Sonic 3 lane using the current 10-second instant voice clone.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Cartesia instant voice clone</dd>
-          <dt>IVC instant-clone clip</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-cartesia</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3 IVC</a>
-      </article>
-
-      <article>
-        <h2>Cartesia Sonic 3 PVC</h2>
-        <p>Live Cartesia Sonic 3 lane using the selected V3 Pro Voice Clone candidate from the full Tony PVC sample pack.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Cartesia Pro Voice Clone</dd>
-          <dt>PVC source pack</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
-          <dt>Voice id</dt><dd><code>dbeae250-d56d-4add-9d38-16f159179e8c</code></dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-pvc</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3 PVC</a>
-      </article>
-
-      <article>
-        <h2>Cartesia Sonic 3.5 IVC</h2>
-        <p>Live Cartesia Sonic 3.5 lane using the current 10-second instant voice clone.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Cartesia instant voice clone</dd>
-          <dt>IVC instant-clone clip</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5 IVC</a>
-      </article>
-
-      <article>
-        <h2>Cartesia Sonic 3.5 PVC</h2>
-        <p>Live Cartesia Sonic 3.5 lane using the selected V3 Pro Voice Clone candidate from the full Tony PVC sample pack.</p>
-        <dl>
-          <dt>Clone type</dt><dd>Cartesia Pro Voice Clone</dd>
-          <dt>PVC source pack</dt><dd><code>voice_samples/tony1.mp3</code> through <code>voice_samples/tony7.mp3</code></dd>
-          <dt>Voice id</dt><dd><code>dbeae250-d56d-4add-9d38-16f159179e8c</code></dd>
-          <dt>Row</dt><dd><code>tony-business-coaching-cartesia-35-pvc</code></dd>
-          <dt>Slot</dt><dd><code>tony-voice-review-baseline-no-tts-20260528</code></dd>
-        </dl>
-        <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Sonic 3.5 PVC</a>
-      </article>
+      <section class="model-row" aria-labelledby="cartesia-heading">
+        <div class="row-header">
+          <h2 id="cartesia-heading">Cartesia Sonic 3.5</h2>
+          <p class="row-note">Tony has instant-clone and PVC controls. David Cartesia rows have not been created yet.</p>
+        </div>
+        <div class="compare">
+          <div class="person">
+            <h3>Tony Robbins</h3>
+            <span class="badge live">Live</span>
+            <dl>
+              <dt>IVC clip</dt><dd><code>voice_samples_provider_export_2026-05-12_7Uc3Xz72mC9WIQPI3t4m/audio/tony1_clone_clip_10s.mp3</code></dd>
+              <dt>PVC source</dt><dd><code>voice_samples/tony1.mp3</code> through <code>tony7.mp3</code></dd>
+              <dt>PVC voice id</dt><dd><code>dbeae250-d56d-4add-9d38-16f159179e8c</code></dd>
+              <dt>IVC row</dt><dd><code>tony-business-coaching-cartesia-35</code></dd>
+              <dt>PVC row</dt><dd><code>tony-business-coaching-cartesia-35-pvc</code></dd>
+            </dl>
+            <div class="actions">
+              <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Tony Cartesia IVC</a>
+              <a class="review secondary" href="https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-baseline-no-tts-20260528">Open Tony Cartesia PVC</a>
+            </div>
+          </div>
+          <div class="person pending">
+            <h3>David Cohen</h3>
+            <span class="badge">Pending</span>
+            <dl>
+              <dt>Needed</dt><dd>David Cartesia instant clone and/or Pro Voice Clone rows for Sonic 3.5</dd>
+              <dt>Source audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
+              <dt>Current baseline</dt><dd>use the David 11Labs row until a Cartesia row exists</dd>
+            </dl>
+            <div class="actions">
+              <span class="disabled">No David Cartesia link yet</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section class="notes">
       <p>Suggested reviewer prompts:</p>
       <ul>
         <li><code>Say one sentence introducing yourself.</code></li>
-        <li>Flash now has explicit PVC and IVC lanes. ElevenLabs v3 comparisons remain on the Tony IVC-style voice unless a lane is explicitly labeled as a v3 PVC control.</li>
-        <li>For David, compare the current 11Labs row and the Mistral worker link separately. Do not reuse Tony verdicts for David voice fidelity.</li>
-        <li>Use the same neutral prompt across lanes when comparing voice quality, pacing, pronunciation, and naturalness.</li>
-        <li>Cartesia PVC links are browser-smoked hosted rows using the selected V3 returned voice id. Human listening is still the authority for subjective voice quality.</li>
-        <li>Mistral caveat: Ian's link was Slack-reported as updated to David, but the 2026-06-03 browser call probe still failed before audio attached. Treat the card as a setup link until a live call joins successfully.</li>
+        <li>Use the same neutral prompt across both columns in one model row when comparing voice quality, pacing, pronunciation, and naturalness.</li>
+        <li>Do not reuse Tony verdicts for David voice fidelity. Missing David cells require their own clone/row before scoring.</li>
+        <li>Mistral caveat: Ian's link was Slack-reported as updated to David, but the 2026-06-03 browser call probe still failed before audio attached. Treat the link as a setup link until a live call joins successfully.</li>
         <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>
       </ul>
     </section>
