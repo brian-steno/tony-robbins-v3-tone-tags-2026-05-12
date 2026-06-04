@@ -15,7 +15,8 @@
     "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
     "Mistral remains linked through Ian's dedicated dev hosted worker URL with agentName=mistral-test; this is not row-level Mistral routing.",
     "2026-06-03 browser call probe against Ian's David Mistral URL failed with no audio element after join attempt. Treat Mistral as blocked until the named worker is restored or default-worker row-level Mistral routing is deployed.",
-    "The earlier Tony Mistral proof is not a current Tony lane because Slack context says Ian updated the worker link to David Cohen.",
+    "The earlier Tony Mistral proof is now shown next to David for side-by-side setup visibility, but it is blocked for scoring until the worker is revalidated as Tony-configured because Slack context says Ian later updated the worker link to David Cohen.",
+    "David does not currently have the same live ElevenLabs v3 tagged prompt lane as Tony. The David tagged cell is pending and should be created from the same tagged contract used by the Tony tagged slot.",
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
   ],
   "source_audio_sets": {
@@ -144,7 +145,7 @@
     {
       "model": "Mistral Voxtral",
       "tony": [
-        "pending: restore Tony-configured worker or deploy row-level Mistral row"
+        "Tony Robbins Mistral Voxtral proof link, blocked until worker/config is revalidated"
       ],
       "david": [
         "David Cohen Mistral Voxtral"
@@ -198,6 +199,18 @@
       "prompt_set_id": "tony-voice-review-v3-tagged-minimal-no-realtime-20260528",
       "known_issue": "Reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; hard tag contract duplicated into minimal_tag_review and redeployed, fresh voice recheck needed.",
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
+    },
+    {
+      "label": "Tony Robbins Mistral Voxtral proof",
+      "person": "Tony Robbins",
+      "voice_source": "Earlier dedicated Mistral test worker proof, requires revalidation",
+      "source_audio_set": "tony_mistral_prepared_reference_clip",
+      "chat_id": "atrioc-waob",
+      "agent_name": "mistral-test",
+      "host": "dev.chat.steno.ai",
+      "status": "historical_tony_proof_but_current_worker_config_unverified_after_david_update",
+      "known_issue": "Slack context says Ian later updated the same mistral-test worker/link to David Cohen; do not score this as current Tony Mistral until the worker is reconfigured/revalidated.",
+      "url": "https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&mode=fullscreen&agentName=mistral-test"
     },
     {
       "label": "David Cohen Current 11Labs",
@@ -255,12 +268,12 @@
     {
       "model": "ElevenLabs v3 Tagged",
       "person": "David Cohen",
-      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice"
+      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice using the same tagged contract as the Tony tagged slot"
     },
     {
       "model": "Mistral Voxtral",
       "person": "Tony Robbins",
-      "needed": "Restore a Tony-configured mistral-test worker or deploy row-level Mistral routing with a hidden Tony row"
+      "needed": "Revalidate/reconfigure the Tony Mistral proof link as Tony-configured, or deploy row-level Mistral routing with a hidden Tony row"
     },
     {
       "model": "Cartesia Sonic 3.5",

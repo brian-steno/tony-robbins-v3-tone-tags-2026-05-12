@@ -269,7 +269,7 @@
       <section class="model-row" aria-labelledby="v3-tagged-heading">
         <div class="row-header">
           <h2 id="v3-tagged-heading">ElevenLabs v3 Tagged</h2>
-          <p class="row-note">Tone-tag prompt harness. Tony needs a fresh voice recheck; David still needs a matching tagged lane.</p>
+          <p class="row-note">Tone-tag prompt harness. Tony is live on the tagged slot; David does not yet have the same tagged prompt lane.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -291,6 +291,7 @@
             <span class="badge">Pending</span>
             <dl>
               <dt>Needed</dt><dd>David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice</dd>
+              <dt>Prompt parity</dt><dd>not live yet; create David from the same tagged contract used by the Tony slot</dd>
               <dt>Source audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
               <dt>Current voice</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
             </dl>
@@ -304,19 +305,20 @@
       <section class="model-row" aria-labelledby="mistral-heading">
         <div class="row-header">
           <h2 id="mistral-heading">Mistral Voxtral</h2>
-          <p class="row-note">Dedicated LiveKit worker path. The David link exists but is blocked until <code>mistral-test</code> joins again.</p>
+          <p class="row-note">Dedicated LiveKit worker path. Tony and David links are shown side by side, but both require worker/config revalidation before scoring.</p>
         </div>
         <div class="compare">
-          <div class="person pending">
+          <div class="person">
             <h3>Tony Robbins</h3>
-            <span class="badge">Pending</span>
+            <span class="badge blocked">Blocked</span>
             <dl>
-              <dt>Needed</dt><dd>restore a Tony-configured Mistral worker or deploy row-level Mistral routing with a hidden Tony row</dd>
+              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>agentName=mistral-test</code></dd>
               <dt>Prepared source</dt><dd><code>workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3</code></dd>
-              <dt>Note</dt><dd>the current <code>mistral-test</code> link was Slack-reported as updated to David</dd>
+              <dt>Status</dt><dd>earlier Tony proof link; not current-scored because Slack context says the worker was later updated to David</dd>
+              <dt>Needed</dt><dd>restore a Tony-configured worker or deploy row-level Mistral routing with a hidden Tony row</dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No current Tony Mistral link</span>
+              <a class="review secondary" href="https://dev.chat.steno.ai/chat/ZHq6vjBgoBx09TNLwSF1wLFp?id=atrioc-waob&amp;mode=fullscreen&amp;agentName=mistral-test">Open Tony Mistral proof</a>
             </div>
           </div>
           <div class="person">
