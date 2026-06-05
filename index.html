@@ -62,6 +62,52 @@
       max-width: 980px;
       font-size: 14px;
     }
+    .review-brief {
+      margin: 22px 0 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .brief-block h2 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .brief-block p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .score-table th,
+    .score-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .score-table th {
+      color: var(--ink);
+      font-weight: 700;
+      background: #fafafa;
+    }
+    .score-table tr:last-child td { border-bottom: 0; }
+    .prompt-list {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .prompt-list li + li { margin-top: 6px; }
     .matrix {
       display: grid;
       gap: 18px;
@@ -182,6 +228,7 @@
       .row-header { display: block; }
       .row-note { text-align: left; margin-top: 6px; }
       .compare { grid-template-columns: 1fr; }
+      .brief-grid { grid-template-columns: 1fr; gap: 18px; }
     }
   </style>
 </head>
@@ -189,10 +236,61 @@
   <main>
     <header>
       <h1>Voice Provider Review</h1>
-      <p>Use each row to compare the same voice model path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link.</p>
-      <div class="status">Side-by-side matrix updated on June 4, 2026</div>
+      <p>Qualitative listening page for side-by-side voice-provider review. Use it to compare voice identity, naturalness, pacing, and audio artifacts; do not use it as production rollout approval.</p>
+      <div class="status">Qualitative review page updated on June 5, 2026</div>
       <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each model row. Cartesia now shows Sonic 3.5 only. Mistral is on Ian's dev <code>prompt_set_id=mistral-test</code> slot, not the old dedicated-worker URL and not row-level Tony/David routing.</p>
     </header>
+
+    <section class="review-brief" aria-label="Qualitative review setup">
+      <div class="brief-grid">
+        <div class="brief-block">
+          <h2>Qualitative Test</h2>
+          <p>Open one model row at a time, listen to the available Tony and David lanes, and record the subjective verdict separately for each person. Pending cells are not scorable.</p>
+          <p>Use the same prompts in every lane you compare. If a link fails to join, mark it as failed-to-connect rather than scoring the voice.</p>
+          <ol class="prompt-list">
+            <li><code>Say one sentence introducing yourself.</code></li>
+            <li><code>Give a warm, practical answer about staying focused under pressure.</code></li>
+            <li><code>Say the same answer more slowly and calmly.</code></li>
+            <li><code>Say one short sentence with mild sarcasm.</code></li>
+            <li><code>Answer for about thirty seconds so we can hear pacing and artifacts.</code></li>
+          </ol>
+        </div>
+        <div class="brief-block">
+          <h2>Reviewer Scorecard</h2>
+          <table class="score-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Record</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Voice match</td>
+                <td>Better / same / worse than current baseline, plus notes.</td>
+              </tr>
+              <tr>
+                <td>Naturalness</td>
+                <td>Human, robotic, flat, overacted, or unstable.</td>
+              </tr>
+              <tr>
+                <td>Pacing</td>
+                <td>Too fast, too slow, conversational, or inconsistent.</td>
+              </tr>
+              <tr>
+                <td>Artifacts</td>
+                <td>Rattle, noise, clipping, weird pauses, mispronunciations.</td>
+              </tr>
+              <tr>
+                <td>Decision</td>
+                <td>Advance, retry with new clone/audio, or drop for now.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Separate rollout track: latency measurements, cost modeling, row-routing readiness, uptime, failure rate, and production QA are quantitative checks and are not decided by this page.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="matrix" aria-label="Tony and David voice model comparison">
       <section class="model-row" aria-labelledby="flash-heading">
@@ -376,10 +474,9 @@
     </section>
 
     <section class="notes">
-      <p>Suggested reviewer prompts:</p>
+      <p>Review caveats:</p>
       <ul>
-        <li><code>Say one sentence introducing yourself.</code></li>
-        <li>Use the same neutral prompt across both columns in one model row when comparing voice quality, pacing, pronunciation, and naturalness.</li>
+        <li>Qualitative verdicts should stay separate from quantitative rollout checks such as latency, cost, uptime, row-routing, and production QA.</li>
         <li>Do not reuse Tony verdicts for David voice fidelity. Missing David cells require their own clone/row before scoring.</li>
         <li>Mistral caveat: Ian reported <code>prompt_set_id=mistral-test</code> live on dev with <code>tts_model=voxtral-mini-tts-2603</code> and <code>mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00</code>. The automated headless capture still did not attach audio, so manual listening remains the scoring proof.</li>
         <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>

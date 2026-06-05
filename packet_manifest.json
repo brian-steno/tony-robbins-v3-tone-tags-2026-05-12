@@ -1,8 +1,10 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-04",
-  "proof_level": "public page is a Tony-vs-David side-by-side model matrix; Sonic 3 lanes are dropped; missing David/Tony lanes are labeled pending rather than implied",
+  "updated_at": "2026-06-05",
+  "proof_level": "public page is a qualitative Tony-vs-David side-by-side listening matrix; quantitative rollout readiness is a separate workstream",
   "notes": [
+    "This page is for team qualitative listening only: voice match, naturalness, pacing, artifacts, and subjective advance/retry/drop verdicts.",
+    "Quantitative rollout checks are intentionally out of scope for this page: latency measurement, cost modeling, uptime, failure rate, row-routing readiness, and production QA.",
     "Recorded audio clips and direct-render controls are not on the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id unless otherwise noted.",
     "The visible page is organized by model path, with Tony Robbins and David Cohen columns for each row.",
@@ -20,6 +22,37 @@
     "David does not currently have the same live ElevenLabs v3 tagged prompt lane as Tony. The David tagged cell is pending and should be created from the same tagged contract used by the Tony tagged slot.",
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
   ],
+  "qualitative_review": {
+    "owner": "Brian's team",
+    "scope": "subjective listening comparison only",
+    "not_in_scope": [
+      "latency measurement",
+      "cost modeling",
+      "uptime or failure-rate tracking",
+      "row-routing readiness",
+      "production QA",
+      "production rollout approval"
+    ],
+    "prompts": [
+      "Say one sentence introducing yourself.",
+      "Give a warm, practical answer about staying focused under pressure.",
+      "Say the same answer more slowly and calmly.",
+      "Say one short sentence with mild sarcasm.",
+      "Answer for about thirty seconds so we can hear pacing and artifacts."
+    ],
+    "scorecard_dimensions": [
+      "voice match",
+      "naturalness",
+      "pacing",
+      "artifacts",
+      "decision"
+    ],
+    "decision_values": [
+      "advance",
+      "retry with new clone/audio",
+      "drop for now"
+    ]
+  },
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
       "provider": "ElevenLabs",
