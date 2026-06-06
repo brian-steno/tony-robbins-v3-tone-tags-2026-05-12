@@ -5,13 +5,13 @@
   "notes": [
     "Recorded audio clips and direct-render controls are not on the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id unless otherwise noted.",
-    "The visible page is organized by model path, with Tony Robbins and David Cohen columns for each row.",
-    "Flash/current 11Labs has Tony PVC, Tony IVC, and David current 11Labs controls.",
+    "The visible page is organized by provider/model/clone-type path, with Tony Robbins and David Cohen columns for each row.",
+    "ElevenLabs Flash PVC and ElevenLabs Flash IVC are separate rows; David has a current one-sample 11Labs baseline live, but no separate David PVC row.",
     "ElevenLabs v3 plain/tagged currently has Tony IVC controls only; David v3 plain/tagged rows are pending.",
-    "Cartesia visible controls now show Sonic 3.5 only. Tony has Sonic 3.5 IVC and PVC controls; David Cartesia rows are pending.",
+    "Cartesia Sonic 3.5 IVC and Cartesia Sonic 3.5 PVC are separate rows. Tony has both controls; David Cartesia rows are pending.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Hosted browser text probe passed for tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
-    "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
+    "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, style=0, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
     "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
     "Mistral now links through Ian's 2026-06-04 dev prompt slot URL with prompt_set_id=mistral-test; this supersedes the stale agentName=mistral-test worker URLs for the current public page.",
     "Ian-provided Mistral config for that prompt slot: tts_model=voxtral-mini-tts-2603 and mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00.",
@@ -117,17 +117,25 @@
   },
   "comparison_matrix": [
     {
-      "model": "ElevenLabs Flash / Current 11Labs",
+      "model": "ElevenLabs Flash PVC",
       "tony": [
-        "ElevenLabs Flash PVC",
-        "ElevenLabs Flash IVC"
+        "ElevenLabs Flash PVC"
       ],
       "david": [
-        "David Cohen Current 11Labs"
+        "pending: David ElevenLabs PVC/pro-clone row"
       ]
     },
     {
-      "model": "ElevenLabs v3 Plain",
+      "model": "ElevenLabs Flash IVC",
+      "tony": [
+        "ElevenLabs Flash IVC"
+      ],
+      "david": [
+        "David Cohen Current 11Labs nearest baseline"
+      ]
+    },
+    {
+      "model": "ElevenLabs v3 Plain IVC",
       "tony": [
         "ElevenLabs v3 Plain IVC"
       ],
@@ -136,7 +144,7 @@
       ]
     },
     {
-      "model": "ElevenLabs v3 Tagged",
+      "model": "ElevenLabs v3 Tagged IVC",
       "tony": [
         "ElevenLabs v3 Tagged IVC"
       ],
@@ -154,13 +162,21 @@
       ]
     },
     {
-      "model": "Cartesia Sonic 3.5",
+      "model": "Cartesia Sonic 3.5 IVC",
       "tony": [
-        "Cartesia Sonic 3.5 IVC",
+        "Cartesia Sonic 3.5 IVC"
+      ],
+      "david": [
+        "pending: David Cartesia instant clone row"
+      ]
+    },
+    {
+      "model": "Cartesia Sonic 3.5 PVC",
+      "tony": [
         "Cartesia Sonic 3.5 PVC"
       ],
       "david": [
-        "pending: David Cartesia instant/PVC row"
+        "pending: David Cartesia Pro Voice Clone row"
       ]
     }
   ],
@@ -211,6 +227,7 @@
       "voice_id": "Whupv3362SHZJtx5BKd6",
       "voice_settings": {
         "speed": 1,
+        "style": 0,
         "stability": 0.38,
         "similarity_boost": 0.85,
         "use_speaker_boost": true
@@ -255,31 +272,52 @@
   ],
   "pending_lanes": [
     {
-      "model": "ElevenLabs v3 Plain",
+      "model": "ElevenLabs Flash PVC",
       "person": "David Cohen",
-      "needed": "David row or prompt slot that selects ElevenLabs v3 plain for the David voice"
+      "needed": "David ElevenLabs PVC/pro-clone row or voice export for a true PVC comparison; current David 11Labs row is not a separate PVC lane",
+      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
     },
     {
-      "model": "ElevenLabs v3 Tagged",
+      "model": "ElevenLabs v3 Plain IVC",
       "person": "David Cohen",
-      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice using the same tagged contract as the Tony tagged slot"
+      "needed": "David row or prompt slot that selects ElevenLabs v3 plain for the David voice",
+      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "target_model": "eleven_v3"
+    },
+    {
+      "model": "ElevenLabs v3 Tagged IVC",
+      "person": "David Cohen",
+      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice using the same tagged contract as the Tony tagged slot",
+      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "target_model": "eleven_v3"
     },
     {
       "model": "Mistral Voxtral",
       "person": "Tony Robbins",
-      "needed": "Create a Tony-specific Mistral prompt slot or hidden row with a Tony Mistral voice id/reference; do not reuse the David prompt_set_id=mistral-test voice id"
+      "needed": "Create a Tony-specific Mistral prompt slot or hidden row with a Tony Mistral voice id/reference; do not reuse the David prompt_set_id=mistral-test voice id",
+      "prepared_audio": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3",
+      "target_model": "voxtral-mini-tts-2603"
     },
     {
-      "model": "Cartesia Sonic 3.5",
+      "model": "Cartesia Sonic 3.5 IVC",
       "person": "David Cohen",
-      "needed": "David Cartesia instant clone and/or Pro Voice Clone rows for Sonic 3.5"
+      "needed": "David Cartesia instant clone row for Sonic 3.5",
+      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "target_model": "cartesia/sonic-3.5"
+    },
+    {
+      "model": "Cartesia Sonic 3.5 PVC",
+      "person": "David Cohen",
+      "needed": "David Cartesia Pro Voice Clone job and Sonic 3.5 hosted row; source pack should be recorded separately if it uses more than the current one sample",
+      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "target_model": "cartesia/sonic-3.5"
     }
   ],
   "dropped_from_public_page": [
     {
       "label": "Tony Robbins Mistral agentName proof",
       "chat_id": "atrioc-waob",
-      "reason": "Superseded by Ian's 2026-06-04 prompt_set_id=mistral-test dev slot; old agentName worker URL is not current Tony evidence"
+      "reason": "Not a current verified Tony-specific scoring link. Ian's 2026-06-04 prompt_set_id=mistral-test dev slot uses the David Mistral voice id."
     },
     {
       "label": "Cartesia Sonic 3 IVC",
