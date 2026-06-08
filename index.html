@@ -190,15 +190,15 @@
     <header>
       <h1>Voice Provider Review</h1>
       <p>Use each row to compare the same provider, model, and clone-type path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link.</p>
-      <div class="status">Side-by-side matrix updated on June 5, 2026</div>
-      <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each row. PVC and IVC are separate rows because the training audio and clone settings are part of the comparison. Cartesia shows Sonic 3.5 only. Mistral is on Ian's dev <code>prompt_set_id=mistral-test</code> slot for David, not a Tony voice.</p>
+      <div class="status">Side-by-side matrix updated on June 8, 2026</div>
+      <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each row. PVC and IVC are separate rows because the training audio and clone settings are part of the comparison. David ElevenLabs IVC links use a hidden non-customer review row; Cartesia shows Sonic 3.5 only. Mistral is on Ian's dev <code>prompt_set_id=mistral-test</code> slot for David, not a Tony voice.</p>
     </header>
 
     <section class="matrix" aria-label="Tony and David voice model comparison">
       <section class="model-row" aria-labelledby="flash-pvc-heading">
         <div class="row-header">
           <h2 id="flash-pvc-heading">ElevenLabs Flash PVC</h2>
-          <p class="row-note">Tony PVC-style ElevenLabs voice is live. David still needs a true PVC row; the current one-sample 11Labs voice is only a reference baseline.</p>
+          <p class="row-note">Tony PVC-style ElevenLabs voice is live. David still needs a true PVC row; the current one-sample 11Labs voice is an IVC baseline, not a PVC lane.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -223,7 +223,8 @@
             <dl>
               <dt>Needed</dt><dd>David ElevenLabs PVC/pro-clone row or voice export for a true PVC comparison</dd>
               <dt>Known audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
-              <dt>Current baseline</dt><dd><code>david-cohen-kv1V</code> uses voice <code>Whupv3362SHZJtx5BKd6</code>, but this is not a separate PVC lane</dd>
+              <dt>Current IVC baseline</dt><dd><code>david-cohen-voice-review-ivc</code> uses voice <code>Whupv3362SHZJtx5BKd6</code>, but this is not a separate PVC lane</dd>
+              <dt>PVC status</dt><dd>DB row <code>David Cohen Pro-voice</code> points at ElevenLabs voice <code>6jpqXcplCS7hTJGEmGEH</code>, which returned <code>voice_not_found</code> on 2026-06-08</dd>
               <dt>Current settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
             </dl>
             <div class="actions">
@@ -236,7 +237,7 @@
       <section class="model-row" aria-labelledby="flash-ivc-heading">
         <div class="row-header">
           <h2 id="flash-ivc-heading">ElevenLabs Flash IVC</h2>
-          <p class="row-note">Tony IVC-style ElevenLabs voice using the same Flash slot. David's current 11Labs row is the closest live comparison.</p>
+          <p class="row-note">Tony IVC-style ElevenLabs voice using the same Flash slot. David is live on a hidden IVC review row copied from the current David ElevenLabs voice/settings.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -257,18 +258,19 @@
           </div>
           <div class="person">
             <h3>David Cohen</h3>
-            <span class="badge live">Nearest Live</span>
+            <span class="badge live">Live</span>
             <dl>
-              <dt>Clone type</dt><dd>Current David 11Labs voice from one provided sample</dd>
+              <dt>Clone type</dt><dd>Dedicated David IVC-style ElevenLabs review row copied from the current David 11Labs voice</dd>
               <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
               <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
-              <dt>Row</dt><dd><code>david-cohen-kv1V</code></dd>
-              <dt>TTS model</dt><dd>current 11Labs row default; no explicit <code>tts_model</code> in row</dd>
+              <dt>Row</dt><dd><code>david-cohen-voice-review-ivc</code></dd>
+              <dt>TTS model</dt><dd><code>eleven_flash_v2_5</code> from slot config</dd>
               <dt>Settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
-              <dt>Comparability</dt><dd>best current David one-sample 11Labs baseline; create a dedicated Flash IVC slot if the model must be locked explicitly</dd>
+              <dt>Slot</dt><dd><code>david-voice-review-flash-voiceonly-20260608</code></dd>
+              <dt>Proof</dt><dd>hosted browser text-turn passed on 2026-06-08</dd>
             </dl>
             <div class="actions">
-              <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-kv1V&amp;mode=fullscreen">Open David 11Labs</a>
+              <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&amp;mode=fullscreen&amp;prompt_set_id=david-voice-review-flash-voiceonly-20260608">Open David Flash IVC</a>
             </div>
           </div>
         </div>
@@ -277,7 +279,7 @@
       <section class="model-row" aria-labelledby="v3-plain-heading">
         <div class="row-header">
           <h2 id="v3-plain-heading">ElevenLabs v3 Plain IVC</h2>
-          <p class="row-note">Plain v3 without the tone-tag harness. Tony is wired; David still needs a v3-specific row or slot.</p>
+          <p class="row-note">Plain v3 without the tone-tag harness. Tony and David are both wired on IVC-style rows with v3 prompt slots.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -296,18 +298,21 @@
               <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528">Open Tony v3 Plain</a>
             </div>
           </div>
-          <div class="person pending">
+          <div class="person">
             <h3>David Cohen</h3>
-            <span class="badge">Pending</span>
+            <span class="badge live">Live</span>
             <dl>
-              <dt>Needed</dt><dd>David row or prompt slot that selects ElevenLabs v3 plain for the David voice</dd>
+              <dt>Clone type</dt><dd>Dedicated David IVC-style ElevenLabs review row copied from the current David 11Labs voice</dd>
               <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
-              <dt>Current voice</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
-              <dt>Current settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
-              <dt>Target model</dt><dd><code>eleven_v3</code></dd>
+              <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+              <dt>Row</dt><dd><code>david-cohen-voice-review-ivc</code></dd>
+              <dt>TTS model</dt><dd><code>eleven_v3</code> from slot config</dd>
+              <dt>Settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
+              <dt>Slot</dt><dd><code>david-voice-review-v3-plain-voiceonly-20260608</code></dd>
+              <dt>Proof</dt><dd>hosted browser text-turn passed on 2026-06-08</dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No David v3 Plain link yet</span>
+              <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&amp;mode=fullscreen&amp;prompt_set_id=david-voice-review-v3-plain-voiceonly-20260608">Open David v3 Plain</a>
             </div>
           </div>
         </div>
@@ -316,7 +321,7 @@
       <section class="model-row" aria-labelledby="v3-tagged-heading">
         <div class="row-header">
           <h2 id="v3-tagged-heading">ElevenLabs v3 Tagged IVC</h2>
-          <p class="row-note">Tone-tag prompt harness. Tony is live on the tagged slot; David does not yet have the same tagged prompt lane.</p>
+          <p class="row-note">Tone-tag prompt harness. Tony and David are both live; David uses the same tag contract adapted to David's own persona.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -336,19 +341,22 @@
               <a class="review" href="https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528">Open Tony v3 Tagged</a>
             </div>
           </div>
-          <div class="person pending">
+          <div class="person">
             <h3>David Cohen</h3>
-            <span class="badge">Pending</span>
+            <span class="badge live">Live</span>
             <dl>
-              <dt>Needed</dt><dd>David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice</dd>
-              <dt>Prompt parity</dt><dd>not live yet; create David from the same tagged contract used by the Tony slot</dd>
+              <dt>Clone type</dt><dd>Dedicated David IVC-style ElevenLabs review row copied from the current David 11Labs voice</dd>
+              <dt>Prompt parity</dt><dd>same tone-tag contract as the Tony tagged slot, rewritten without Tony-specific persona text</dd>
               <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
-              <dt>Current voice</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
-              <dt>Current settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
-              <dt>Target model</dt><dd><code>eleven_v3</code> with the Tony tagged contract copied over</dd>
+              <dt>Voice id</dt><dd><code>Whupv3362SHZJtx5BKd6</code></dd>
+              <dt>Row</dt><dd><code>david-cohen-voice-review-ivc</code></dd>
+              <dt>TTS model</dt><dd><code>eleven_v3</code> from slot config</dd>
+              <dt>Settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
+              <dt>Slot</dt><dd><code>david-voice-review-v3-tagged-minimal-no-realtime-20260608</code></dd>
+              <dt>Proof</dt><dd>hosted browser text-turn passed on 2026-06-08 with <code>[whispers]</code> output</dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No David v3 Tagged link yet</span>
+              <a class="review" href="https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&amp;mode=fullscreen&amp;prompt_set_id=david-voice-review-v3-tagged-minimal-no-realtime-20260608">Open David v3 Tagged</a>
             </div>
           </div>
         </div>
@@ -382,7 +390,7 @@
               <dt>Mistral voice</dt><dd><code>266a2af6-e868-4027-aff4-251b9cc17e00</code></dd>
               <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code> from Annisa's Slack attachment, 2:47 / 7 MB</dd>
               <dt>Row</dt><dd><code>atrioc-waob</code></dd>
-              <dt>Status</dt><dd>Ian reported up on dev 2026-06-04; headless browser capture still needs manual listening proof</dd>
+              <dt>Status</dt><dd>Ian reported up on dev 2026-06-04; hosted text-turn passed on 2026-06-08, but manual listening proof is still required</dd>
             </dl>
             <div class="actions">
               <a class="review" href="https://dev.chat.steno.ai/chat/?id=atrioc-waob&amp;mode=fullscreen&amp;prompt_set_id=mistral-test">Open David Mistral</a>
@@ -474,9 +482,10 @@
       <p>Notes:</p>
       <ul>
         <li>Do not reuse Tony verdicts for David voice fidelity. Missing David cells require their own clone/row before rating.</li>
+        <li>David ElevenLabs IVC links use hidden non-customer row <code>david-cohen-voice-review-ivc</code>; the production row <code>david-cohen-kv1V</code> was not changed.</li>
         <li>PVC and IVC rows are intentionally separate. A row should only be scored when the source audio, clone type, provider model, and hosted settings are visible in that cell.</li>
         <li>Mistral caveat: Ian reported <code>prompt_set_id=mistral-test</code> live on dev with <code>tts_model=voxtral-mini-tts-2603</code> and <code>mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00</code>. The automated headless capture still did not attach audio, so manual listening remains required before rating in Linear.</li>
-        <li>Tone-tag lane caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up requests such as whisper. The hard tag contract is now duplicated into <code>minimal_tag_review</code> and redeployed at <code>2026-06-01T16:34:31Z</code>; treat the lane as needing a fresh voice recheck.</li>
+        <li>Tone-tag lane caveat: Tony reviewer checks previously showed weak follow-up tag compliance; David tagged text-turn proof returned <code>[whispers]</code> on 2026-06-08. Both tagged lanes still need human voice listening before qualitative ratings.</li>
       </ul>
     </section>
   </main>

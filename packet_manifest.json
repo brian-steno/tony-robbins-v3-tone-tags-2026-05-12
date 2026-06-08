@@ -1,24 +1,26 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-05",
+  "updated_at": "2026-06-08",
   "proof_level": "public page is a Tony-vs-David side-by-side model matrix; ratings/comments are tracked separately in Linear after review",
   "notes": [
     "Recorded audio clips and direct-render controls are not on the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id unless otherwise noted.",
     "The visible page is organized by provider/model/clone-type path, with Tony Robbins and David Cohen columns for each row.",
-    "ElevenLabs Flash PVC and ElevenLabs Flash IVC are separate rows; David has a current one-sample 11Labs baseline live, but no separate David PVC row.",
-    "ElevenLabs v3 plain/tagged currently has Tony IVC controls only; David v3 plain/tagged rows are pending.",
+    "ElevenLabs Flash PVC and ElevenLabs Flash IVC are separate rows; David Flash IVC is live on hidden non-customer row david-cohen-voice-review-ivc, but no separate David PVC row is live.",
+    "ElevenLabs v3 plain/tagged now has Tony IVC controls and David hidden-row IVC links live through David-specific prompt slots.",
     "Cartesia Sonic 3.5 IVC and Cartesia Sonic 3.5 PVC are separate rows. Tony has both controls; David Cartesia rows are pending.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Hosted browser text probe passed for tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
-    "David Cohen current 11Labs baseline was checked from public.chat on 2026-06-03: chat id david-cohen-kv1V, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, style=0, stability=0.38, similarity_boost=0.85, use_speaker_boost=true.",
+    "David Cohen hidden IVC review row was created on 2026-06-08: chat id david-cohen-voice-review-ivc, customerId=null, assistant_id=david-cohen-kv1V, voice_mode=true, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, style=0, stability=0.38, similarity_boost=0.85, use_speaker_boost=true. The production row david-cohen-kv1V was read back unchanged with customerId still set and voice_mode=false.",
     "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
     "Mistral now links through Ian's 2026-06-04 dev prompt slot URL with prompt_set_id=mistral-test; this supersedes the stale agentName=mistral-test worker URLs for the current public page.",
     "Ian-provided Mistral config for that prompt slot: tts_model=voxtral-mini-tts-2603 and mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00.",
-    "The David Mistral slot is Ian-reported live on dev, but the 2026-06-04 automated headless browser capture still failed before audio attached with NotSupportedError/no audio element. Manual listening remains required before rating in Linear.",
+    "The David Mistral slot is Ian-reported live on dev and hosted text-turn proof passed on 2026-06-08, but the 2026-06-04 automated headless browser capture still failed before audio attached with NotSupportedError/no audio element. Manual listening remains required before rating in Linear.",
     "Tony does not currently have a separate Mistral prompt slot, Mistral voice id, or row-level Mistral route on the public page; the earlier Tony agentName proof is treated as superseded setup history, not current review evidence.",
-    "David does not currently have the same live ElevenLabs v3 tagged prompt lane as Tony. The David tagged cell is pending and should be created from the same tagged contract used by the Tony tagged slot.",
-    "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck."
+    "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck.",
+    "David prompt slots deployed and read back from Azure Blob on 2026-06-08: david-voice-review-flash-voiceonly-20260608 uses config.tts_model=eleven_flash_v2_5; david-voice-review-v3-plain-voiceonly-20260608 and david-voice-review-v3-tagged-minimal-no-realtime-20260608 use config.tts_model=eleven_v3.",
+    "Hosted browser text probes passed on 2026-06-08 for David Flash IVC, David v3 Plain IVC, and David v3 Tagged IVC. The tagged probe returned literal [whispers] output for a whisper request; human listening is still required before subjective scoring.",
+    "David ElevenLabs PVC remains pending. The DB voice_clones row named David Cohen Pro-voice pointed at ElevenLabs voice 6jpqXcplCS7hTJGEmGEH, but the ElevenLabs metadata request returned voice_not_found on 2026-06-08."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -83,14 +85,14 @@
     "david_elevenlabs_current_Whupv3362SHZJtx5BKd6": {
       "provider": "ElevenLabs",
       "voice_id": "Whupv3362SHZJtx5BKd6",
-      "voice_name": "David Cohen",
-      "status": "current_hosted_row_baseline_2026-06-03",
-      "lineage": "Current David Cohen production hosted row used as the ElevenLabs streaming baseline in the Slack Voxtral comparison.",
+      "voice_name": "David Cohen (instant v3)",
+      "status": "hidden_review_ivc_live_2026-06-08",
+      "lineage": "Hidden non-customer David IVC review row copied from the current David Cohen production ElevenLabs voice/settings. The source audio is the one-sample David Cohen v3 sample attachment; this is not a PVC lane.",
       "files": [
         "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
       ],
       "local_files_available": false,
-      "evidence": "read-only public.chat query on 2026-06-03 for david-cohen-kv1V"
+      "evidence": "read-only public.chat before/after queries on 2026-06-08 for david-cohen-kv1V and david-cohen-voice-review-ivc; ElevenLabs metadata read for Whupv3362SHZJtx5BKd6 returned category cloned"
     },
     "david_mistral_voxtral_prompt_slot_mistral_test": {
       "provider": "Mistral",
@@ -131,7 +133,7 @@
         "ElevenLabs Flash IVC"
       ],
       "david": [
-        "David Cohen Current 11Labs nearest baseline"
+        "David Cohen Flash IVC hidden review row"
       ]
     },
     {
@@ -140,7 +142,7 @@
         "ElevenLabs v3 Plain IVC"
       ],
       "david": [
-        "pending: David v3 plain row or slot"
+        "David Cohen v3 Plain IVC hidden review row"
       ]
     },
     {
@@ -149,7 +151,7 @@
         "ElevenLabs v3 Tagged IVC"
       ],
       "david": [
-        "pending: David v3 tagged row or slot"
+        "David Cohen v3 Tagged IVC hidden review row"
       ]
     },
     {
@@ -219,12 +221,14 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528"
     },
     {
-      "label": "David Cohen Current 11Labs",
+      "label": "David Cohen Flash IVC",
       "person": "David Cohen",
-      "voice_source": "Current David ElevenLabs-style hosted row",
+      "voice_source": "Hidden David IVC-style ElevenLabs review row copied from current David voice/settings",
       "source_audio_set": "david_elevenlabs_current_Whupv3362SHZJtx5BKd6",
-      "chat_id": "david-cohen-kv1V",
+      "chat_id": "david-cohen-voice-review-ivc",
       "voice_id": "Whupv3362SHZJtx5BKd6",
+      "prompt_set_id": "david-voice-review-flash-voiceonly-20260608",
+      "tts_model": "eleven_flash_v2_5",
       "voice_settings": {
         "speed": 1,
         "style": 0,
@@ -232,7 +236,47 @@
         "similarity_boost": 0.85,
         "use_speaker_boost": true
       },
-      "url": "https://chat.steno.ai/chat?id=david-cohen-kv1V&mode=fullscreen"
+      "proof": "Hosted browser text-turn passed on 2026-06-08.",
+      "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-flash-voiceonly-20260608"
+    },
+    {
+      "label": "David Cohen v3 Plain IVC",
+      "person": "David Cohen",
+      "voice_source": "Hidden David IVC-style ElevenLabs review row copied from current David voice/settings",
+      "source_audio_set": "david_elevenlabs_current_Whupv3362SHZJtx5BKd6",
+      "chat_id": "david-cohen-voice-review-ivc",
+      "voice_id": "Whupv3362SHZJtx5BKd6",
+      "prompt_set_id": "david-voice-review-v3-plain-voiceonly-20260608",
+      "tts_model": "eleven_v3",
+      "voice_settings": {
+        "speed": 1,
+        "style": 0,
+        "stability": 0.38,
+        "similarity_boost": 0.85,
+        "use_speaker_boost": true
+      },
+      "proof": "Hosted browser text-turn passed on 2026-06-08.",
+      "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-v3-plain-voiceonly-20260608"
+    },
+    {
+      "label": "David Cohen v3 Tagged IVC",
+      "person": "David Cohen",
+      "voice_source": "Hidden David IVC-style ElevenLabs review row copied from current David voice/settings",
+      "source_audio_set": "david_elevenlabs_current_Whupv3362SHZJtx5BKd6",
+      "chat_id": "david-cohen-voice-review-ivc",
+      "voice_id": "Whupv3362SHZJtx5BKd6",
+      "prompt_set_id": "david-voice-review-v3-tagged-minimal-no-realtime-20260608",
+      "tts_model": "eleven_v3",
+      "voice_settings": {
+        "speed": 1,
+        "style": 0,
+        "stability": 0.38,
+        "similarity_boost": 0.85,
+        "use_speaker_boost": true
+      },
+      "tag_contract": "David-specific copy of the Tony tone-tag contract; no Tony persona text.",
+      "proof": "Hosted browser text-turn passed on 2026-06-08 with [whispers] output for a whisper request.",
+      "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-v3-tagged-minimal-no-realtime-20260608"
     },
     {
       "label": "David Cohen Mistral Voxtral",
@@ -246,9 +290,10 @@
         "tts_model": "voxtral-mini-tts-2603",
         "mistral_voice": "266a2af6-e868-4027-aff4-251b9cc17e00"
       },
-      "status": "ian_reported_live_dev_prompt_slot_2026-06-04_manual_listen_needed",
+      "status": "ian_reported_live_dev_prompt_slot_2026-06-04_text_turn_passed_2026-06-08_manual_listen_needed",
       "known_issue": "Automated headless browser capture on 2026-06-04 reached the page but failed before audio attached with NotSupportedError/no audio element; manual listening is still required before scoring.",
-      "url": "https://dev.chat.steno.ai/chat/?id=atrioc-waob&mode=fullscreen&prompt_set_id=mistral-test"
+      "url": "https://dev.chat.steno.ai/chat/?id=atrioc-waob&mode=fullscreen&prompt_set_id=mistral-test",
+      "proof": "Hosted browser text-turn passed on 2026-06-08; prior call_sanity_capture failed before audio attached, so manual listening remains required."
     },
     {
       "label": "Cartesia Sonic 3.5 IVC",
@@ -274,22 +319,9 @@
     {
       "model": "ElevenLabs Flash PVC",
       "person": "David Cohen",
-      "needed": "David ElevenLabs PVC/pro-clone row or voice export for a true PVC comparison; current David 11Labs row is not a separate PVC lane",
-      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
-    },
-    {
-      "model": "ElevenLabs v3 Plain IVC",
-      "person": "David Cohen",
-      "needed": "David row or prompt slot that selects ElevenLabs v3 plain for the David voice",
+      "needed": "David ElevenLabs PVC/pro-clone row with a provider-valid true PVC voice; current David IVC hidden row is not a separate PVC lane",
       "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
-      "target_model": "eleven_v3"
-    },
-    {
-      "model": "ElevenLabs v3 Tagged IVC",
-      "person": "David Cohen",
-      "needed": "David row or prompt slot that selects ElevenLabs v3 tagged behavior for the David voice using the same tagged contract as the Tony tagged slot",
-      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
-      "target_model": "eleven_v3"
+      "provider_status_2026_06_08": "voice_clones row David Cohen Pro-voice pointed at 6jpqXcplCS7hTJGEmGEH, but ElevenLabs returned voice_not_found"
     },
     {
       "model": "Mistral Voxtral",
@@ -303,14 +335,16 @@
       "person": "David Cohen",
       "needed": "David Cartesia instant clone row for Sonic 3.5",
       "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
-      "target_model": "cartesia/sonic-3.5"
+      "target_model": "cartesia/sonic-3.5",
+      "local_audio_status_2026_06_08": "David Cohen v3 sample.mp3 was not found locally; Cartesia provider action was not performed"
     },
     {
       "model": "Cartesia Sonic 3.5 PVC",
       "person": "David Cohen",
       "needed": "David Cartesia Pro Voice Clone job and Sonic 3.5 hosted row; source pack should be recorded separately if it uses more than the current one sample",
       "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
-      "target_model": "cartesia/sonic-3.5"
+      "target_model": "cartesia/sonic-3.5",
+      "local_audio_status_2026_06_08": "David Cohen v3 sample.mp3 was not found locally; Cartesia provider action was not performed"
     }
   ],
   "dropped_from_public_page": [
