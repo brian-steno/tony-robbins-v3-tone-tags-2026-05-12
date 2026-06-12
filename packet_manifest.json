@@ -20,7 +20,9 @@
     "Tone-tag caveat: reviewer checks showed the voice-only addendum was not reliably forcing tags on follow-up delivery requests; the hard tag contract is now duplicated into minimal_tag_review and redeployed to the named review slot from workspace source ea4c3fb9 at 2026-06-01T16:34:31Z, and now needs a fresh voice recheck.",
     "David prompt slots deployed and read back from Azure Blob on 2026-06-08: david-voice-review-flash-voiceonly-20260608 uses config.tts_model=eleven_flash_v2_5; david-voice-review-v3-plain-voiceonly-20260608 and david-voice-review-v3-tagged-minimal-no-realtime-20260608 use config.tts_model=eleven_v3.",
     "Hosted browser text probes passed on 2026-06-08 for David Flash IVC, David v3 Plain IVC, and David v3 Tagged IVC. The tagged probe returned literal [whispers] output for a whisper request; human listening is still required before subjective scoring.",
-    "David ElevenLabs PVC remains pending. The DB voice_clones row named David Cohen Pro-voice pointed at ElevenLabs voice 6jpqXcplCS7hTJGEmGEH, but the ElevenLabs metadata request returned voice_not_found on 2026-06-08."
+    "David ElevenLabs PVC remains pending. The DB voice_clones row named David Cohen Pro-voice pointed at ElevenLabs voice 6jpqXcplCS7hTJGEmGEH, but the ElevenLabs metadata request returned voice_not_found on 2026-06-08.",
+    "David Cartesia Sonic 3.5 IVC is live as of 2026-06-12: provider voice 5b04533d-2cd6-4e18-9527-d8656c80d16a, hidden row david-cohen-cartesia-35-ivc, prompt_set_id=david-voice-review-baseline-no-tts-20260612, source manifest workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/source_manifest.json. This is an instant clone/IVC lane, not PVC.",
+    "David Cartesia IVC hosted browser text-turn proof passed on 2026-06-12; manual listening remains required before subjective scoring."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -119,6 +121,20 @@
         "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3"
       ],
       "evidence": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/renders/manifest.json"
+    },
+    "david_cartesia_35_ivc_5b04533d": {
+      "provider": "Cartesia",
+      "model": "cartesia/sonic-3.5",
+      "voice_id": "5b04533d-2cd6-4e18-9527-d8656c80d16a",
+      "status": "hidden_review_ivc_live_2026-06-12",
+      "lineage": "David Cartesia instant clone/IVC created from a 10-second excerpt (30s-40s) of the recovered ElevenLabs David Cohen v3 sample. This is not a PVC lane.",
+      "files": [
+        "workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/david_cohen_v3_sample_30s_40s_cartesia_ivc_clip.mp3"
+      ],
+      "source_manifest": "workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/source_manifest.json",
+      "sha256": "c942c8af502d619e3efb0b18b1777ec012fee0574245a43ab47b1eb73c65be36",
+      "duration_seconds": 10.03,
+      "evidence": "Cartesia clone response and hosted text-turn probe in workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/"
     }
   },
   "comparison_matrix": [
@@ -173,7 +189,7 @@
         "Cartesia Sonic 3.5 IVC"
       ],
       "david": [
-        "pending: David Cartesia instant clone row"
+        "David Cohen Cartesia Sonic 3.5 IVC hidden review row"
       ]
     },
     {
@@ -309,6 +325,18 @@
       "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528"
     },
     {
+      "label": "Cartesia Sonic 3.5 IVC",
+      "person": "David Cohen",
+      "voice_source": "David Cartesia instant clone / IVC-style voice from recovered ElevenLabs sample excerpt",
+      "source_audio_set": "david_cartesia_35_ivc_5b04533d",
+      "cartesia_voice_id": "5b04533d-2cd6-4e18-9527-d8656c80d16a",
+      "chat_id": "david-cohen-cartesia-35-ivc",
+      "prompt_set_id": "david-voice-review-baseline-no-tts-20260612",
+      "tts_model": "cartesia/sonic-3.5",
+      "proof": "Hosted browser text-turn passed on 2026-06-12; manual listening remains required.",
+      "url": "https://chat.steno.ai/chat?id=david-cohen-cartesia-35-ivc&mode=fullscreen&prompt_set_id=david-voice-review-baseline-no-tts-20260612"
+    },
+    {
       "label": "Cartesia Sonic 3.5 PVC",
       "person": "Tony Robbins",
       "voice_source": "Selected V3 Cartesia Pro Voice Clone",
@@ -335,20 +363,12 @@
       "target_model": "voxtral-mini-tts-2603"
     },
     {
-      "model": "Cartesia Sonic 3.5 IVC",
-      "person": "David Cohen",
-      "needed": "David Cartesia instant clone row for Sonic 3.5",
-      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
-      "target_model": "cartesia/sonic-3.5",
-      "local_audio_status_2026_06_12": "David Cohen v3 sample.mp3 recovered locally from retained ElevenLabs sample; Cartesia provider action was not performed"
-    },
-    {
       "model": "Cartesia Sonic 3.5 PVC",
       "person": "David Cohen",
-      "needed": "David Cartesia Pro Voice Clone job and Sonic 3.5 hosted row; source pack should be recorded separately if it uses more than the current one sample",
+      "needed": "Not needed for current qualitative page; only create if a true David PVC source pack and explicit PVC approval exist.",
       "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
       "target_model": "cartesia/sonic-3.5",
-      "local_audio_status_2026_06_12": "David Cohen v3 sample.mp3 recovered locally from retained ElevenLabs sample, but this one-sample source is not sufficient to label a David PVC lane live; Cartesia provider action was not performed"
+      "local_audio_status_2026_06_12": "David Cartesia IVC is live from a one-sample 10-second instant-clone excerpt; do not label this as PVC."
     }
   ],
   "dropped_from_public_page": [
