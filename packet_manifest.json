@@ -1,6 +1,6 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-08",
+  "updated_at": "2026-06-12",
   "proof_level": "public page is a Tony-vs-David side-by-side model matrix; ratings/comments are tracked separately in Linear after review",
   "notes": [
     "Recorded audio clips and direct-render controls are not on the public review page.",
@@ -12,7 +12,7 @@
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Hosted browser text probe passed for tony-business-coaching-cartesia-35-pvc on 2026-05-29; human listening is still required for subjective voice-quality judgment.",
     "David Cohen hidden IVC review row was created on 2026-06-08: chat id david-cohen-voice-review-ivc, customerId=null, assistant_id=david-cohen-kv1V, voice_mode=true, voice_id Whupv3362SHZJtx5BKd6, settings speed=1, style=0, stability=0.38, similarity_boost=0.85, use_speaker_boost=true. The production row david-cohen-kv1V was read back unchanged with customerId still set and voice_mode=false.",
-    "David training audio source is the Slack-attached David Cohen v3 sample.mp3 from Annisa, 2:47 / 7 MB. The MP3 is not present in this local workspace, so the page records the Slack attachment name rather than a local path.",
+    "David training audio source is the one-sample David Cohen v3 sample.mp3, now recovered from the retained ElevenLabs sample for voice Whupv3362SHZJtx5BKd6 / sample ZSmauvSFATloKsiHPrmL on 2026-06-12. Local source path: workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3. sha256=3479d0362ab8e6cbc54c8149b325d3499b35a2283d8165d62cb3dbdbc18a6d25; estimated duration 167.786 seconds.",
     "Mistral now links through Ian's 2026-06-04 dev prompt slot URL with prompt_set_id=mistral-test; this supersedes the stale agentName=mistral-test worker URLs for the current public page.",
     "Ian-provided Mistral config for that prompt slot: tts_model=voxtral-mini-tts-2603 and mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00.",
     "The David Mistral slot is Ian-reported live on dev and hosted text-turn proof passed on 2026-06-08, but the 2026-06-04 automated headless browser capture still failed before audio attached with NotSupportedError/no audio element. Manual listening remains required before rating in Linear.",
@@ -89,10 +89,13 @@
       "status": "hidden_review_ivc_live_2026-06-08",
       "lineage": "Hidden non-customer David IVC review row copied from the current David Cohen production ElevenLabs voice/settings. The source audio is the one-sample David Cohen v3 sample attachment; this is not a PVC lane.",
       "files": [
-        "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
+        "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3"
       ],
-      "local_files_available": false,
-      "evidence": "read-only public.chat before/after queries on 2026-06-08 for david-cohen-kv1V and david-cohen-voice-review-ivc; ElevenLabs metadata read for Whupv3362SHZJtx5BKd6 returned category cloned"
+      "local_files_available": true,
+      "source_manifest": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/source_manifest.json",
+      "sha256": "3479d0362ab8e6cbc54c8149b325d3499b35a2283d8165d62cb3dbdbc18a6d25",
+      "duration_seconds_estimate": 167.786,
+      "evidence": "read-only public.chat before/after queries on 2026-06-08 for david-cohen-kv1V and david-cohen-voice-review-ivc; ElevenLabs metadata read for Whupv3362SHZJtx5BKd6 returned category cloned; retained ElevenLabs sample audio downloaded on 2026-06-12"
     },
     "david_mistral_voxtral_prompt_slot_mistral_test": {
       "provider": "Mistral",
@@ -102,9 +105,10 @@
       "status": "ian_reported_live_dev_prompt_slot_2026-06-04_manual_listen_needed",
       "lineage": "Ian-provided dev prompt slot for the David Cohen Voxtral comparison. This is prompt-slot provider config, not the old agentName worker URL and not a hidden row configured through row-level voice_settings.",
       "files": [
-        "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)"
+        "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3"
       ],
-      "local_files_available": false,
+      "local_files_available": true,
+      "source_manifest": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/source_manifest.json",
       "evidence": "Ian Slack excerpt from 2026-06-04 plus local browser call probe failure on 2026-06-04"
     },
     "tony_mistral_prepared_reference_clip": {
@@ -320,7 +324,7 @@
       "model": "ElevenLabs Flash PVC",
       "person": "David Cohen",
       "needed": "David ElevenLabs PVC/pro-clone row with a provider-valid true PVC voice; current David IVC hidden row is not a separate PVC lane",
-      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
       "provider_status_2026_06_08": "voice_clones row David Cohen Pro-voice pointed at 6jpqXcplCS7hTJGEmGEH, but ElevenLabs returned voice_not_found"
     },
     {
@@ -334,17 +338,17 @@
       "model": "Cartesia Sonic 3.5 IVC",
       "person": "David Cohen",
       "needed": "David Cartesia instant clone row for Sonic 3.5",
-      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
       "target_model": "cartesia/sonic-3.5",
-      "local_audio_status_2026_06_08": "David Cohen v3 sample.mp3 was not found locally; Cartesia provider action was not performed"
+      "local_audio_status_2026_06_12": "David Cohen v3 sample.mp3 recovered locally from retained ElevenLabs sample; Cartesia provider action was not performed"
     },
     {
       "model": "Cartesia Sonic 3.5 PVC",
       "person": "David Cohen",
       "needed": "David Cartesia Pro Voice Clone job and Sonic 3.5 hosted row; source pack should be recorded separately if it uses more than the current one sample",
-      "known_audio": "Slack attachment: David Cohen v3 sample.mp3 (2:47, 7 MB)",
+      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
       "target_model": "cartesia/sonic-3.5",
-      "local_audio_status_2026_06_08": "David Cohen v3 sample.mp3 was not found locally; Cartesia provider action was not performed"
+      "local_audio_status_2026_06_12": "David Cohen v3 sample.mp3 recovered locally from retained ElevenLabs sample, but this one-sample source is not sufficient to label a David PVC lane live; Cartesia provider action was not performed"
     }
   ],
   "dropped_from_public_page": [
