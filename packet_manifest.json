@@ -22,7 +22,9 @@
     "Hosted browser text probes passed on 2026-06-08 for David Flash IVC, David v3 Plain IVC, and David v3 Tagged IVC. The tagged probe returned literal [whispers] output for a whisper request; human listening is still required before subjective scoring.",
     "David ElevenLabs PVC remains pending. The DB voice_clones row named David Cohen Pro-voice pointed at ElevenLabs voice 6jpqXcplCS7hTJGEmGEH, but the ElevenLabs metadata request returned voice_not_found on 2026-06-08.",
     "David Cartesia Sonic 3.5 IVC is live as of 2026-06-12: provider voice 5b04533d-2cd6-4e18-9527-d8656c80d16a, hidden row david-cohen-cartesia-35-ivc, prompt_set_id=david-voice-review-baseline-no-tts-20260612, source manifest workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/source_manifest.json. This is an instant clone/IVC lane, not PVC.",
-    "David Cartesia IVC hosted browser text-turn proof passed on 2026-06-12; manual listening remains required before subjective scoring."
+    "David Cartesia IVC hosted browser text-turn proof passed on 2026-06-12; manual listening remains required before subjective scoring.",
+    "Tony Mistral Voxtral is live on dev as of 2026-06-12 through a Tony-specific reference-audio prompt slot: prompt_set_id=tony-voice-review-mistral-ref-audio-voiceonly-20260612 with config.tts_model=voxtral-mini-tts-2603 and config.mistral_ref_audio from tony1_pvc_ref_10s.mp3. No saved Mistral Tony voice id was created locally because no MISTRAL_API_KEY/LA_PLATEFORME_API_KEY was available.",
+    "Tony Mistral hosted browser text-turn proof passed on 2026-06-12; manual listening remains required before subjective scoring."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -135,6 +137,21 @@
       "sha256": "c942c8af502d619e3efb0b18b1777ec012fee0574245a43ab47b1eb73c65be36",
       "duration_seconds": 10.03,
       "evidence": "Cartesia clone response and hosted text-turn probe in workspace/customer_files/david-cohen/david-cohen-kv1V/cartesia_ivc_20260612/"
+    },
+    "tony_mistral_ref_audio_prompt_slot_20260612": {
+      "provider": "Mistral",
+      "model": "voxtral-mini-tts-2603",
+      "prompt_set_id": "tony-voice-review-mistral-ref-audio-voiceonly-20260612",
+      "status": "dev_prompt_slot_ref_audio_live_2026-06-12_manual_listen_needed",
+      "lineage": "Tony-specific Mistral Voxtral prompt slot using mistral_ref_audio from the prepared Tony 10-second PVC reference clip. This does not reuse David mistral_voice 266a2af6-e868-4027-aff4-251b9cc17e00.",
+      "files": [
+        "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3"
+      ],
+      "sha256": "2aa2ed437d989a1a0f655e8d1e77def0b2ec2111c3a30c551501bf43030d7d16",
+      "source_manifest": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260612/source_manifest.json",
+      "saved_voice_id": null,
+      "saved_voice_id_status": "not created locally; missing MISTRAL_API_KEY/LA_PLATEFORME_API_KEY",
+      "evidence": "Blob readback and hosted text-turn probe in workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260612/"
     }
   },
   "comparison_matrix": [
@@ -177,7 +194,7 @@
     {
       "model": "Mistral Voxtral",
       "tony": [
-        "pending: Tony Mistral prompt slot, voice id, or hidden row"
+        "Tony Robbins Mistral Voxtral reference-audio prompt slot"
       ],
       "david": [
         "David Cohen Mistral Voxtral prompt slot"
@@ -299,6 +316,24 @@
       "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-v3-tagged-minimal-no-realtime-20260608"
     },
     {
+      "label": "Mistral Voxtral",
+      "person": "Tony Robbins",
+      "voice_source": "Tony-specific Mistral ref_audio prompt slot from prepared 10-second Tony reference clip",
+      "source_audio_set": "tony_mistral_ref_audio_prompt_slot_20260612",
+      "chat_id": "tony-business-coaching-review-pvc",
+      "prompt_set_id": "tony-voice-review-mistral-ref-audio-voiceonly-20260612",
+      "tts_model": "voxtral-mini-tts-2603",
+      "host": "dev.chat.steno.ai",
+      "mistral_config": {
+        "tts_model": "voxtral-mini-tts-2603",
+        "mistral_ref_audio": "base64 Tony reference clip; see source manifest",
+        "mistral_response_format": "pcm"
+      },
+      "saved_voice_id": null,
+      "proof": "Hosted browser text-turn passed on 2026-06-12; manual listening remains required.",
+      "url": "https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-mistral-ref-audio-voiceonly-20260612"
+    },
+    {
       "label": "David Cohen Mistral Voxtral",
       "person": "David Cohen",
       "voice_source": "Ian-provided Mistral dev prompt slot for David",
@@ -354,13 +389,6 @@
       "needed": "David ElevenLabs PVC/pro-clone row with a provider-valid true PVC voice; current David IVC hidden row is not a separate PVC lane",
       "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
       "provider_status_2026_06_08": "voice_clones row David Cohen Pro-voice pointed at 6jpqXcplCS7hTJGEmGEH, but ElevenLabs returned voice_not_found"
-    },
-    {
-      "model": "Mistral Voxtral",
-      "person": "Tony Robbins",
-      "needed": "Create a Tony-specific Mistral prompt slot or hidden row with a Tony Mistral voice id/reference; do not reuse the David prompt_set_id=mistral-test voice id",
-      "prepared_audio": "workspace/customer_files/tony-robbins-rri/mistral_voxtral_20260528/tony1_pvc_ref_10s.mp3",
-      "target_model": "voxtral-mini-tts-2603"
     },
     {
       "model": "Cartesia Sonic 3.5 PVC",
