@@ -365,37 +365,39 @@
       <section class="model-row" aria-labelledby="mistral-heading">
         <div class="row-header">
           <h2 id="mistral-heading">Mistral Voxtral</h2>
-          <p class="row-note">Dev prompt-slot Voxtral comparison. Tony's reference-audio attempt failed listening proof; David uses Ian's saved-voice slot.</p>
+          <p class="row-note">Dev prompt-slot Voxtral comparison using Steno-owned saved Mistral voices. Text-turn proof passed; manual listening is required before scoring.</p>
         </div>
         <div class="compare">
           <div class="person">
             <h3>Tony Robbins</h3>
-            <span class="badge pending">Pending</span>
+            <span class="badge live">Manual Listen</span>
             <dl>
-              <dt>Failed route</dt><dd><code>dev.chat.steno.ai</code> with <code>prompt_set_id=tony-voice-review-mistral-ref-audio-voiceonly-20260612</code></dd>
+              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>prompt_set_id=tony-voice-review-mistral-saved-voiceonly-20260616</code></dd>
               <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
-              <dt>Mistral source</dt><dd>Tony-specific <code>mistral_ref_audio</code> from <code>tony1_pvc_ref_10s.mp3</code></dd>
+              <dt>Mistral voice</dt><dd><code>0422b6e3-ce77-4bd1-af29-751a4227da8a</code></dd>
+              <dt>Training audio</dt><dd><code>tony1_pvc_ref_10s.mp3</code></dd>
               <dt>Row</dt><dd><code>tony-business-coaching-review-pvc</code></dd>
-              <dt>Status</dt><dd>failed Brian manual listening on 2026-06-12: generated voice was definitely not Tony</dd>
-              <dt>Needed</dt><dd>true Tony Mistral saved voice id or another proven clone path before this lane can be scored</dd>
+              <dt>Status</dt><dd>saved voice created 2026-06-16; direct MP3 generated; hosted text-turn passed; call-capture automation hit <code>NotSupportedError</code></dd>
+              <dt>Proof boundary</dt><dd>manual listening is still required before rating</dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No Tony Mistral scoring link yet</span>
+              <a class="review" href="https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&amp;mode=fullscreen&amp;prompt_set_id=tony-voice-review-mistral-saved-voiceonly-20260616">Open Tony Mistral</a>
             </div>
           </div>
           <div class="person">
             <h3>David Cohen</h3>
-            <span class="badge live">Ian Live</span>
+            <span class="badge live">Manual Listen</span>
             <dl>
-              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>prompt_set_id=mistral-test</code></dd>
+              <dt>Route</dt><dd><code>dev.chat.steno.ai</code> with <code>prompt_set_id=david-voice-review-mistral-saved-voiceonly-20260616</code></dd>
               <dt>Model</dt><dd><code>voxtral-mini-tts-2603</code></dd>
-              <dt>Mistral voice</dt><dd><code>266a2af6-e868-4027-aff4-251b9cc17e00</code></dd>
-              <dt>Training audio</dt><dd><code>David Cohen v3 sample.mp3</code>, recovered from the retained ElevenLabs sample on 2026-06-12</dd>
-              <dt>Row</dt><dd><code>atrioc-waob</code></dd>
-              <dt>Status</dt><dd>Ian reported up on dev 2026-06-04; hosted text-turn passed on 2026-06-08, but manual listening proof is still required</dd>
+              <dt>Mistral voice</dt><dd><code>b5fa8b0e-e477-4c7d-8673-3f88fa5fcf23</code></dd>
+              <dt>Training audio</dt><dd>10-second excerpt from <code>David Cohen v3 sample.mp3</code>, recovered from the retained ElevenLabs sample on 2026-06-12</dd>
+              <dt>Row</dt><dd><code>david-cohen-voice-review-ivc</code></dd>
+              <dt>Status</dt><dd>saved voice created 2026-06-16; direct MP3 generated; hosted text-turn passed; call-capture automation hit <code>NotSupportedError</code></dd>
+              <dt>Proof boundary</dt><dd>manual listening is still required before rating</dd>
             </dl>
             <div class="actions">
-              <a class="review" href="https://dev.chat.steno.ai/chat/?id=atrioc-waob&amp;mode=fullscreen&amp;prompt_set_id=mistral-test">Open David Mistral</a>
+              <a class="review" href="https://dev.chat.steno.ai/chat?id=david-cohen-voice-review-ivc&amp;mode=fullscreen&amp;prompt_set_id=david-voice-review-mistral-saved-voiceonly-20260616">Open David Mistral</a>
             </div>
           </div>
         </div>
@@ -490,7 +492,7 @@
         <li>Do not reuse Tony verdicts for David voice fidelity. Missing David cells require their own clone/row before rating.</li>
         <li>David ElevenLabs IVC links use hidden non-customer row <code>david-cohen-voice-review-ivc</code>; the production row <code>david-cohen-kv1V</code> was not changed.</li>
         <li>PVC and IVC rows are intentionally separate. A row should only be scored when the source audio, clone type, provider model, and hosted settings are visible in that cell.</li>
-        <li>Mistral caveat: Tony's <code>mistral_ref_audio</code> attempt failed listening proof and is not a scoring link. David uses Ian's <code>mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00</code>. Manual listening remains required before rating in Linear.</li>
+        <li>Mistral caveat: Tony and David now use Steno-owned saved Mistral voices from 2026-06-16. The prior Tony <code>mistral_ref_audio</code> attempt failed listening proof and Ian's David <code>mistral-test</code> slot is setup history. Manual listening remains required before rating in Linear.</li>
         <li>Tone-tag lane caveat: Tony reviewer checks previously showed weak follow-up tag compliance; David tagged text-turn proof returned <code>[whispers]</code> on 2026-06-08. Both tagged lanes still need human voice listening before qualitative ratings.</li>
       </ul>
     </section>
