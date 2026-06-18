@@ -178,10 +178,74 @@
     }
     ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
     li + li { margin-top: 4px; }
+    .tabbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 22px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tab {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-bottom: 0;
+      background: var(--paper);
+      color: var(--muted);
+      padding: 10px 14px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .tab.active {
+      color: var(--ink);
+      background: #fdfdfb;
+      box-shadow: inset 0 3px 0 var(--accent);
+    }
+    .tab-panel[hidden] { display: none; }
+    .data-section {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+      font-size: 14px;
+    }
+    th,
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--ink);
+      background: #ededeb;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .metric {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .source-list a {
+      color: var(--accent);
+      font-weight: 650;
+    }
     @media (max-width: 760px) {
       .row-header { display: block; }
       .row-note { text-align: left; margin-top: 6px; }
       .compare { grid-template-columns: 1fr; }
+      .tabbar { border-bottom: 0; }
+      .tab { border: 1px solid var(--line); }
     }
   </style>
 </head>
@@ -190,7 +254,7 @@
     <header>
       <h1>Voice Provider Review</h1>
       <p>Use each row to compare the same provider, model, and clone-type path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link; an out-of-scope cell is intentionally excluded from this review round.</p>
-      <div class="status">Side-by-side matrix updated on June 17, 2026</div>
+      <div class="status">Side-by-side matrix updated on June 18, 2026</div>
       <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each row. PVC and IVC are separate rows because the training audio and clone settings are part of the comparison. David ElevenLabs IVC links use a hidden non-customer review row; Cartesia shows Sonic 3.5 only. Mistral links must pass manual listening before scoring.</p>
     </header>
 
@@ -203,7 +267,14 @@
       </ul>
     </section>
 
-    <section class="matrix" aria-label="Tony and David voice model comparison">
+    <nav class="tabbar" aria-label="Review sections">
+      <button class="tab active" type="button" id="tab-review-button" data-tab-target="tab-review" aria-controls="tab-review" aria-selected="true">Review Links</button>
+      <button class="tab" type="button" id="tab-latency-button" data-tab-target="tab-latency" aria-controls="tab-latency" aria-selected="false">Latency</button>
+      <button class="tab" type="button" id="tab-costs-button" data-tab-target="tab-costs" aria-controls="tab-costs" aria-selected="false">Public Costs</button>
+    </nav>
+
+    <section class="tab-panel active" id="tab-review" role="tabpanel" aria-labelledby="tab-review-button">
+      <section class="matrix" aria-label="Tony and David voice model comparison">
       <section class="model-row" aria-labelledby="flash-pvc-heading">
         <div class="row-header">
           <h2 id="flash-pvc-heading">ElevenLabs Flash PVC</h2>
@@ -505,6 +576,150 @@
         <li>Tone-tag lane caveat: Tony reviewer checks previously showed weak follow-up tag compliance; David tagged text-turn proof returned <code>[whispers]</code> on 2026-06-08. Both tagged lanes still need human voice listening before qualitative ratings.</li>
       </ul>
     </section>
+    </section>
+
+    <section class="tab-panel" id="tab-latency" role="tabpanel" aria-labelledby="tab-latency-button" hidden>
+      <section class="data-section" aria-labelledby="hosted-latency-heading">
+        <h2 id="hosted-latency-heading">Quick Hosted Latency</h2>
+        <p>Measured June 18, 2026 with <code>curl -L</code>, three opens per public review link. This measures hosted page open and HTTP time to first byte, not call connection, assistant response, or time to first audible audio. Keep <code>dev.chat.steno.ai</code> Mistral rows separate from <code>chat.steno.ai</code> rows during analysis.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Lane</th>
+                <th>Host</th>
+                <th>Runs</th>
+                <th>Median TTFB</th>
+                <th>Median total open</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Tony Flash PVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">930 ms</td><td class="metric">1109 ms</td><td>Hosted open only</td></tr>
+              <tr><td>Tony Flash IVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">919 ms</td><td class="metric">1105 ms</td><td>Hosted open only</td></tr>
+              <tr><td>David Flash IVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">905 ms</td><td class="metric">1073 ms</td><td>Hosted open only</td></tr>
+              <tr><td>Tony v3 Plain</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">895 ms</td><td class="metric">1064 ms</td><td>Hosted open only</td></tr>
+              <tr><td>David v3 Plain</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">909 ms</td><td class="metric">1088 ms</td><td>Hosted open only</td></tr>
+              <tr><td>Tony v3 Tagged</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">767 ms</td><td class="metric">939 ms</td><td>Hosted open only</td></tr>
+              <tr><td>David v3 Tagged</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">994 ms</td><td class="metric">1159 ms</td><td>Hosted open only</td></tr>
+              <tr><td>Tony Mistral</td><td><code>dev.chat.steno.ai</code></td><td>3/3</td><td class="metric">814 ms</td><td class="metric">988 ms</td><td>Dev host; do not aggregate with prod-host rows</td></tr>
+              <tr><td>David Mistral</td><td><code>dev.chat.steno.ai</code></td><td>3/3</td><td class="metric">761 ms</td><td class="metric">929 ms</td><td>Dev host; do not aggregate with prod-host rows</td></tr>
+              <tr><td>Tony Cartesia IVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">860 ms</td><td class="metric">1040 ms</td><td>Hosted open only</td></tr>
+              <tr><td>David Cartesia IVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">845 ms</td><td class="metric">1025 ms</td><td>Hosted open only</td></tr>
+              <tr><td>Tony Cartesia PVC</td><td><code>chat.steno.ai</code></td><td>3/3</td><td class="metric">918 ms</td><td class="metric">1083 ms</td><td>Hosted open only</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Artifact: <code>workspace/customer_files/voice_provider_comparison/quick_hosted_latency_20260618/quick_hosted_open_latency_20260618.json</code></p>
+      </section>
+
+      <section class="data-section" aria-labelledby="runtime-latency-heading">
+        <h2 id="runtime-latency-heading">Runtime Audio Reference</h2>
+        <p>Historical May 22 LiveKit runtime smoke, one Tony-only run per lane on older slots. Include this as audio-path reference, not as current Tony/David public-page proof.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Lane</th>
+                <th>Stable prompt audio</th>
+                <th>Current page relationship</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>ElevenLabs Flash v2.5</td><td class="metric">95.4 ms</td><td>Current page has Flash PVC and Flash IVC rows</td><td><code>voice_provider_comparison_runtime_receipts_2026-05-22.md</code></td></tr>
+              <tr><td>ElevenLabs v3 plain</td><td class="metric">94.0 ms</td><td>Current page has v3 Plain IVC rows</td><td><code>voice_provider_comparison_runtime_receipts_2026-05-22.md</code></td></tr>
+              <tr><td>ElevenLabs v3 tagged</td><td class="metric">92.7 ms</td><td>Current page has v3 Tagged IVC rows</td><td><code>voice_provider_comparison_runtime_receipts_2026-05-22.md</code></td></tr>
+              <tr><td>Cartesia Sonic 3.5</td><td class="metric">99.1 ms</td><td>Current page has Cartesia Sonic 3.5 IVC and PVC rows</td><td><code>voice_provider_comparison_runtime_receipts_2026-05-22.md</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section class="tab-panel" id="tab-costs" role="tabpanel" aria-labelledby="tab-costs-button" hidden>
+      <section class="data-section" aria-labelledby="costs-heading">
+        <h2 id="costs-heading">Public Provider Costs</h2>
+        <p>Pricing checked June 18, 2026 from provider public pages. These are public unit prices or credit rules, not measured Steno account usage, invoice totals, or blended cost after plan discounts.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Page lanes</th>
+                <th>Provider / model</th>
+                <th>Published unit</th>
+                <th>Applies here</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ElevenLabs Flash PVC / IVC</td>
+                <td>ElevenLabs Flash / Turbo Text to Speech</td>
+                <td>$0.05 per 1K characters</td>
+                <td>Tony Flash PVC, Tony Flash IVC, David Flash IVC</td>
+                <td class="source-list"><a href="https://elevenlabs.io/pricing/api">ElevenLabs API pricing</a></td>
+              </tr>
+              <tr>
+                <td>ElevenLabs v3 Plain / Tagged IVC</td>
+                <td>ElevenLabs Multilingual v2 / v3 Text to Speech</td>
+                <td>$0.10 per 1K characters</td>
+                <td>Tony and David v3 Plain / v3 Tagged rows</td>
+                <td class="source-list"><a href="https://elevenlabs.io/pricing/api">ElevenLabs API pricing</a></td>
+              </tr>
+              <tr>
+                <td>Cartesia Sonic 3.5 IVC</td>
+                <td>Cartesia standard TTS / instant voice clone</td>
+                <td>~1 credit per character</td>
+                <td>Tony Cartesia IVC, David Cartesia IVC</td>
+                <td class="source-list"><a href="https://docs.cartesia.ai/pricing">Cartesia pricing docs</a></td>
+              </tr>
+              <tr>
+                <td>Cartesia Sonic 3.5 PVC</td>
+                <td>Cartesia Pro Voice Clone TTS</td>
+                <td>~1.5 credits per character, plus 1,000,000 credits per successful fine-tune</td>
+                <td>Tony Cartesia PVC only; David PVC is out of scope</td>
+                <td class="source-list"><a href="https://docs.cartesia.ai/pricing">Cartesia pricing docs</a></td>
+              </tr>
+              <tr>
+                <td>Mistral Voxtral</td>
+                <td><code>voxtral-mini-tts-2603</code></td>
+                <td>Model card lists $16 per million characters and also displays a $0/M chars entry; verify account billing before internal cost use</td>
+                <td>Tony Mistral, David Mistral</td>
+                <td class="source-list"><a href="https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03">Mistral Voxtral TTS model card</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
   </main>
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[data-tab-target]'));
+    const panels = Array.from(document.querySelectorAll('.tab-panel'));
+
+    function selectTab(targetId, updateHash = true) {
+      const panel = document.getElementById(targetId) || document.getElementById('tab-review');
+      panels.forEach((candidate) => {
+        const active = candidate === panel;
+        candidate.hidden = !active;
+        candidate.classList.toggle('active', active);
+      });
+      tabs.forEach((tab) => {
+        const active = tab.dataset.tabTarget === panel.id;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      if (updateHash && window.location.hash !== `#${panel.id}`) {
+        window.history.replaceState(null, '', `#${panel.id}`);
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => selectTab(tab.dataset.tabTarget));
+    });
+
+    selectTab(window.location.hash.slice(1) || 'tab-review', false);
+  </script>
 </body>
 </html>

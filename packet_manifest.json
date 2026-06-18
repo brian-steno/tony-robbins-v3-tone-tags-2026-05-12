@@ -1,6 +1,6 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-17T00:00:00Z",
+  "updated_at": "2026-06-18T00:00:00Z",
   "proof_level": "public page is a Tony-vs-David hosted review matrix; qualitative ratings/comments and quantitative timing/error observations are captured separately in Linear or the team score sheet",
   "notes": [
     "Recorded audio clips and direct-render controls are not on the public review page.",
@@ -24,7 +24,10 @@
     "Mistral saved-voice hosted text-turn proof passed for both Tony and David on 2026-06-16. Automated call capture still failed before audio attached with NotSupportedError/no audio element, so manual listening remains required before rating in Linear.",
     "Tony Mistral reference-audio prompt slot prompt_set_id=tony-voice-review-mistral-ref-audio-voiceonly-20260612 remains failed evidence only; Brian manual listening on 2026-06-12 found the generated voice was definitely not Tony.",
     "Ian's David prompt_set_id=mistral-test slot with mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00 is retained as setup history and no longer the active public David Mistral control.",
-    "Adversarial review update on 2026-06-17: the public page now includes an analysis protocol for qualitative dimensions and lightweight quantitative metrics; measurements still live outside the page."
+    "Adversarial review update on 2026-06-17: the public page now includes an analysis protocol for qualitative dimensions and lightweight quantitative metrics; measurements still live outside the page.",
+    "Latency tab added on 2026-06-18 with quick hosted page-open timing for all 12 public links. This is HTTP hosted-open/TTFB evidence only, not call connection or time-to-first-audible-audio proof.",
+    "Public Costs tab added on 2026-06-18 from official provider public pricing pages. These are public unit prices or credit rules, not measured Steno account spend or invoice totals.",
+    "Historical runtime-audio latency receipts from 2026-05-22 remain Tony-only and older-slot evidence; they are included as reference, not as current public-page proof."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -532,8 +535,293 @@
       "Use the same neutral prompt set for Tony and David within each row.",
       "Keep chat.steno.ai lanes separate from dev.chat.steno.ai Mistral lanes during quantitative analysis.",
       "Do not score rows where the page says manual listening is still required until a human has listened.",
-      "Do not fill David PVC from IVC evidence; David PVC is intentionally excluded from this review round."
+      "Do not fill David PVC from IVC evidence; David PVC is intentionally excluded from this review round.",
+      "Treat the Latency tab quick hosted timings as page-open/TTFB evidence only; do not use them as TTS latency or time-to-first-audio scores.",
+      "Treat the Public Costs tab as provider-published list pricing/credit rules only; do not use it as measured Steno account spend."
     ],
     "storage": "Capture ratings, comments, and timing/error observations outside the page in Linear or the team score sheet."
-  }
+  },
+  "latency_measurements": {
+    "updated_at": "2026-06-18",
+    "quick_hosted_open": {
+      "method": "curl -L -sS -o /dev/null --max-time 40 -w %{json}; three sequential opens per public review link",
+      "artifact_paths": [
+        "workspace/customer_files/voice_provider_comparison/quick_hosted_latency_20260618/quick_hosted_open_latency_20260618.json",
+        "workspace/customer_files/voice_provider_comparison/quick_hosted_latency_20260618/quick_hosted_open_latency_20260618_summary.csv",
+        "workspace/customer_files/voice_provider_comparison/quick_hosted_latency_20260618/quick_hosted_open_latency_20260618_raw.csv"
+      ],
+      "caveats": [
+        "Measures hosted page open / HTTP time to first byte, not call connection, assistant response, or time to first audible audio.",
+        "All 12 current public links returned HTTP 200 on 3/3 opens.",
+        "Mistral rows use dev.chat.steno.ai and should not be aggregated with chat.steno.ai rows."
+      ],
+      "rows": [
+        {
+          "label": "Open Tony Flash PVC",
+          "person": "Tony Robbins",
+          "provider": "ElevenLabs",
+          "model": "Flash v2.5",
+          "clone_type": "PVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 930,
+          "median_total_open_ms": 1109,
+          "min_total_open_ms": 1090,
+          "max_total_open_ms": 1155,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony Flash IVC",
+          "person": "Tony Robbins",
+          "provider": "ElevenLabs",
+          "model": "Flash v2.5",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 919,
+          "median_total_open_ms": 1105,
+          "min_total_open_ms": 1063,
+          "max_total_open_ms": 1356,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-flash-voiceonly-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open David Flash IVC",
+          "person": "David Cohen",
+          "provider": "ElevenLabs",
+          "model": "Flash v2.5",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 905,
+          "median_total_open_ms": 1073,
+          "min_total_open_ms": 1044,
+          "max_total_open_ms": 1243,
+          "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-flash-voiceonly-20260608",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony v3 Plain",
+          "person": "Tony Robbins",
+          "provider": "ElevenLabs",
+          "model": "v3",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 895,
+          "median_total_open_ms": 1064,
+          "min_total_open_ms": 1022,
+          "max_total_open_ms": 2128,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-plain-voiceonly-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open David v3 Plain",
+          "person": "David Cohen",
+          "provider": "ElevenLabs",
+          "model": "v3",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 909,
+          "median_total_open_ms": 1088,
+          "min_total_open_ms": 1026,
+          "max_total_open_ms": 1130,
+          "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-v3-plain-voiceonly-20260608",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony v3 Tagged",
+          "person": "Tony Robbins",
+          "provider": "ElevenLabs",
+          "model": "v3 tagged",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 767,
+          "median_total_open_ms": 939,
+          "min_total_open_ms": 933,
+          "max_total_open_ms": 1335,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-v3-tagged-minimal-no-realtime-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open David v3 Tagged",
+          "person": "David Cohen",
+          "provider": "ElevenLabs",
+          "model": "v3 tagged",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 994,
+          "median_total_open_ms": 1159,
+          "min_total_open_ms": 1018,
+          "max_total_open_ms": 1200,
+          "url": "https://chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-v3-tagged-minimal-no-realtime-20260608",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony Mistral",
+          "person": "Tony Robbins",
+          "provider": "Mistral",
+          "model": "Voxtral mini TTS 2603",
+          "clone_type": "saved voice",
+          "host_surface": "dev.chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 814,
+          "median_total_open_ms": 988,
+          "min_total_open_ms": 946,
+          "max_total_open_ms": 1527,
+          "url": "https://dev.chat.steno.ai/chat?id=tony-business-coaching-review-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-mistral-saved-voiceonly-20260616",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open David Mistral",
+          "person": "David Cohen",
+          "provider": "Mistral",
+          "model": "Voxtral mini TTS 2603",
+          "clone_type": "saved voice",
+          "host_surface": "dev.chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 761,
+          "median_total_open_ms": 929,
+          "min_total_open_ms": 925,
+          "max_total_open_ms": 936,
+          "url": "https://dev.chat.steno.ai/chat?id=david-cohen-voice-review-ivc&mode=fullscreen&prompt_set_id=david-voice-review-mistral-saved-voiceonly-20260616",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony Cartesia IVC",
+          "person": "Tony Robbins",
+          "provider": "Cartesia",
+          "model": "Sonic 3.5",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 860,
+          "median_total_open_ms": 1040,
+          "min_total_open_ms": 1017,
+          "max_total_open_ms": 1057,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open David Cartesia IVC",
+          "person": "David Cohen",
+          "provider": "Cartesia",
+          "model": "Sonic 3.5",
+          "clone_type": "IVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 845,
+          "median_total_open_ms": 1025,
+          "min_total_open_ms": 1006,
+          "max_total_open_ms": 1060,
+          "url": "https://chat.steno.ai/chat?id=david-cohen-cartesia-35-ivc&mode=fullscreen&prompt_set_id=david-voice-review-baseline-no-tts-20260612",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        },
+        {
+          "label": "Open Tony Cartesia PVC",
+          "person": "Tony Robbins",
+          "provider": "Cartesia",
+          "model": "Sonic 3.5",
+          "clone_type": "PVC",
+          "host_surface": "chat.steno.ai",
+          "successes": 3,
+          "runs": 3,
+          "median_ttfb_ms": 918,
+          "median_total_open_ms": 1083,
+          "min_total_open_ms": 1036,
+          "max_total_open_ms": 1143,
+          "url": "https://chat.steno.ai/chat?id=tony-business-coaching-cartesia-35-pvc&mode=fullscreen&prompt_set_id=tony-voice-review-baseline-no-tts-20260528",
+          "interpretation": "hosted page open only; not call connection, assistant response, or first audible audio"
+        }
+      ]
+    },
+    "historical_runtime_audio_reference": {
+      "source": "workspace/docs/trackers/voice_provider_comparison_runtime_receipts_2026-05-22.md",
+      "method": "May 22 local LiveKit runtime smoke; Tony-only; one run per lane; older prompt slots.",
+      "caveats": [
+        "Audio-path reference only, not current Tony/David public-page proof.",
+        "Stable prompt audio metric is min_prompt_audio_frames_seconds from the runtime smoke.",
+        "Interrupt RTT behaved like a shared runtime ceiling and is not treated as a model-specific differentiator."
+      ],
+      "rows": [
+        {
+          "lane": "ElevenLabs Flash v2.5",
+          "stable_prompt_audio_ms": 95.4,
+          "current_page_relationship": "Flash PVC and Flash IVC rows"
+        },
+        {
+          "lane": "ElevenLabs v3 plain",
+          "stable_prompt_audio_ms": 94.0,
+          "current_page_relationship": "v3 Plain IVC rows"
+        },
+        {
+          "lane": "ElevenLabs v3 tagged",
+          "stable_prompt_audio_ms": 92.7,
+          "current_page_relationship": "v3 Tagged IVC rows"
+        },
+        {
+          "lane": "Cartesia Sonic 3.5",
+          "stable_prompt_audio_ms": 99.1,
+          "current_page_relationship": "Cartesia Sonic 3.5 IVC and PVC rows"
+        }
+      ]
+    }
+  },
+  "public_costs": [
+    {
+      "page_lanes": "ElevenLabs Flash PVC / IVC",
+      "provider_model": "ElevenLabs Flash / Turbo Text to Speech",
+      "published_unit": "$0.05 per 1K characters",
+      "applies_to_current_page": "Tony Flash PVC, Tony Flash IVC, David Flash IVC",
+      "source_url": "https://elevenlabs.io/pricing/api",
+      "checked_at": "2026-06-18"
+    },
+    {
+      "page_lanes": "ElevenLabs v3 Plain / Tagged IVC",
+      "provider_model": "ElevenLabs Multilingual v2 / v3 Text to Speech",
+      "published_unit": "$0.10 per 1K characters",
+      "applies_to_current_page": "Tony and David v3 Plain / v3 Tagged rows",
+      "source_url": "https://elevenlabs.io/pricing/api",
+      "checked_at": "2026-06-18"
+    },
+    {
+      "page_lanes": "Cartesia Sonic 3.5 IVC",
+      "provider_model": "Cartesia standard TTS / instant voice clone",
+      "published_unit": "~1 credit per character",
+      "applies_to_current_page": "Tony Cartesia IVC, David Cartesia IVC",
+      "source_url": "https://docs.cartesia.ai/pricing",
+      "checked_at": "2026-06-18"
+    },
+    {
+      "page_lanes": "Cartesia Sonic 3.5 PVC",
+      "provider_model": "Cartesia Pro Voice Clone TTS",
+      "published_unit": "~1.5 credits per character plus 1,000,000 credits per successful fine-tune",
+      "applies_to_current_page": "Tony Cartesia PVC only; David PVC is out of scope",
+      "source_url": "https://docs.cartesia.ai/pricing",
+      "checked_at": "2026-06-18"
+    },
+    {
+      "page_lanes": "Mistral Voxtral",
+      "provider_model": "voxtral-mini-tts-2603",
+      "published_unit": "Model card lists $16 per million characters and also displays a $0/M chars entry; verify account billing before internal cost use",
+      "applies_to_current_page": "Tony Mistral, David Mistral",
+      "source_url": "https://docs.mistral.ai/models/model-cards/voxtral-tts-26-03",
+      "checked_at": "2026-06-18"
+    }
+  ]
 }
