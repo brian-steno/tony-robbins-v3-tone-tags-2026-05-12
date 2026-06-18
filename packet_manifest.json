@@ -1,12 +1,12 @@
 {
   "packet_name": "voice-provider-live-review",
-  "updated_at": "2026-06-16T12:56:16Z",
-  "proof_level": "public page is a Tony-vs-David side-by-side model matrix; ratings/comments are tracked separately in Linear after review",
+  "updated_at": "2026-06-17T00:00:00Z",
+  "proof_level": "public page is a Tony-vs-David hosted review matrix; qualitative ratings/comments and quantitative timing/error observations are captured separately in Linear or the team score sheet",
   "notes": [
     "Recorded audio clips and direct-render controls are not on the public review page.",
     "Each live lane uses a hidden review row plus an explicit prompt_set_id unless otherwise noted.",
     "The visible page is organized by provider/model/clone-type path, with Tony Robbins and David Cohen columns for each row.",
-    "ElevenLabs Flash PVC and ElevenLabs Flash IVC are separate rows; David Flash IVC is live on hidden non-customer row david-cohen-voice-review-ivc, but no separate David PVC row is live.",
+    "ElevenLabs Flash PVC and ElevenLabs Flash IVC are separate rows; David Flash IVC is live on hidden non-customer row david-cohen-voice-review-ivc, and David PVC is intentionally out of scope for this review round.",
     "ElevenLabs v3 plain/tagged now has Tony IVC controls and David hidden-row IVC links live through David-specific prompt slots.",
     "Cartesia PVC links use selected V3 returned voice dbeae250-d56d-4add-9d38-16f159179e8c from the completed 2026-05-29 Cartesia Pro Voice Clone job.",
     "Cartesia Sonic 3.5 IVC and Cartesia Sonic 3.5 PVC are separate rows. Tony has both controls; David Cartesia IVC is live and David Cartesia PVC is intentionally not required for the current qualitative page.",
@@ -23,7 +23,8 @@
     "Tony Mistral link: dev.chat.steno.ai with chat id tony-business-coaching-review-pvc and prompt_set_id=tony-voice-review-mistral-saved-voiceonly-20260616. David Mistral link: dev.chat.steno.ai with chat id david-cohen-voice-review-ivc and prompt_set_id=david-voice-review-mistral-saved-voiceonly-20260616.",
     "Mistral saved-voice hosted text-turn proof passed for both Tony and David on 2026-06-16. Automated call capture still failed before audio attached with NotSupportedError/no audio element, so manual listening remains required before rating in Linear.",
     "Tony Mistral reference-audio prompt slot prompt_set_id=tony-voice-review-mistral-ref-audio-voiceonly-20260612 remains failed evidence only; Brian manual listening on 2026-06-12 found the generated voice was definitely not Tony.",
-    "Ian's David prompt_set_id=mistral-test slot with mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00 is retained as setup history and no longer the active public David Mistral control."
+    "Ian's David prompt_set_id=mistral-test slot with mistral_voice=266a2af6-e868-4027-aff4-251b9cc17e00 is retained as setup history and no longer the active public David Mistral control.",
+    "Adversarial review update on 2026-06-17: the public page now includes an analysis protocol for qualitative dimensions and lightweight quantitative metrics; measurements still live outside the page."
   ],
   "source_audio_sets": {
     "elevenlabs_pvc_rGGjfqiuOixs2MhqM01U": {
@@ -190,7 +191,7 @@
         "ElevenLabs Flash PVC"
       ],
       "david": [
-        "pending: David ElevenLabs PVC/pro-clone row"
+        "not in current scope: David PVC/pro-clone row intentionally excluded"
       ]
     },
     {
@@ -244,7 +245,7 @@
         "Cartesia Sonic 3.5 PVC"
       ],
       "david": [
-        "pending: David Cartesia Pro Voice Clone row"
+        "not in current scope: David Cartesia PVC intentionally excluded"
       ]
     }
   ],
@@ -412,23 +413,7 @@
       "proof": "Hosted browser text-turn passed on 2026-06-16; direct speech MP3 smoke exists; manual listening remains required."
     }
   ],
-  "pending_lanes": [
-    {
-      "model": "ElevenLabs Flash PVC",
-      "person": "David Cohen",
-      "needed": "David ElevenLabs PVC/pro-clone row with a provider-valid true PVC voice; current David IVC hidden row is not a separate PVC lane",
-      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
-      "provider_status_2026_06_08": "voice_clones row David Cohen Pro-voice pointed at 6jpqXcplCS7hTJGEmGEH, but ElevenLabs returned voice_not_found"
-    },
-    {
-      "model": "Cartesia Sonic 3.5 PVC",
-      "person": "David Cohen",
-      "needed": "Not needed for current qualitative page; only create if a true David PVC source pack and explicit PVC approval exist.",
-      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
-      "target_model": "cartesia/sonic-3.5",
-      "local_audio_status_2026_06_12": "David Cartesia IVC is live from a one-sample 10-second instant-clone excerpt; do not label this as PVC."
-    }
-  ],
+  "pending_lanes": [],
   "dropped_from_public_page": [
     {
       "label": "Tony Robbins Mistral agentName proof",
@@ -502,5 +487,53 @@
     "available_hidden_rows_not_on_public_page": [
       "tony-business-coaching-cartesia-pvc"
     ]
+  },
+  "not_in_scope_lanes": [
+    {
+      "model": "ElevenLabs Flash PVC",
+      "person": "David Cohen",
+      "needed": "David ElevenLabs PVC/pro-clone row with a provider-valid true PVC voice; current David IVC hidden row is not a separate PVC lane",
+      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
+      "provider_status_2026_06_08": "voice_clones row David Cohen Pro-voice pointed at 6jpqXcplCS7hTJGEmGEH, but ElevenLabs returned voice_not_found",
+      "scope_status": "not_in_current_review_scope"
+    },
+    {
+      "model": "Cartesia Sonic 3.5 PVC",
+      "person": "David Cohen",
+      "needed": "Not needed for current qualitative page; only create if a true David PVC source pack and explicit PVC approval exist.",
+      "known_audio": "workspace/customer_files/david-cohen/david-cohen-kv1V/voice_samples_elevenlabs_20260612/David Cohen v3 sample.mp3",
+      "target_model": "cartesia/sonic-3.5",
+      "local_audio_status_2026_06_12": "David Cartesia IVC is live from a one-sample 10-second instant-clone excerpt; do not label this as PVC.",
+      "scope_status": "not_in_current_review_scope"
+    }
+  ],
+  "analysis_protocol": {
+    "qualitative_dimensions": [
+      "voice_identity_match",
+      "naturalness",
+      "prosody_and_pacing",
+      "emotional_fit",
+      "audio_artifacts",
+      "interaction_feel",
+      "overall_preference"
+    ],
+    "quantitative_metrics": [
+      "link_open_success",
+      "start_call_success",
+      "connection_time_seconds",
+      "time_to_first_audible_response_seconds",
+      "full_response_time_seconds",
+      "retry_count",
+      "visible_or_audible_error",
+      "exact_prompt_text",
+      "host_surface"
+    ],
+    "controls": [
+      "Use the same neutral prompt set for Tony and David within each row.",
+      "Keep chat.steno.ai lanes separate from dev.chat.steno.ai Mistral lanes during quantitative analysis.",
+      "Do not score rows where the page says manual listening is still required until a human has listened.",
+      "Do not fill David PVC from IVC evidence; David PVC is intentionally excluded from this review round."
+    ],
+    "storage": "Capture ratings, comments, and timing/error observations outside the page in Linear or the team score sheet."
   }
 }

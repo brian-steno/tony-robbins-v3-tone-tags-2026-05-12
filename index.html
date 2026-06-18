@@ -189,16 +189,25 @@
   <main>
     <header>
       <h1>Voice Provider Review</h1>
-      <p>Use each row to compare the same provider, model, and clone-type path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link.</p>
-      <div class="status">Side-by-side matrix updated on June 12, 2026</div>
+      <p>Use each row to compare the same provider, model, and clone-type path for Tony Robbins and David Cohen. A live button means the hosted lane exists; a pending cell means that person still needs a row, clone, worker, or browser-proofed link; an out-of-scope cell is intentionally excluded from this review round.</p>
+      <div class="status">Side-by-side matrix updated on June 17, 2026</div>
       <p class="notice"><strong>Review rule:</strong> use the same neutral prompt in both columns for each row. PVC and IVC are separate rows because the training audio and clone settings are part of the comparison. David ElevenLabs IVC links use a hidden non-customer review row; Cartesia shows Sonic 3.5 only. Mistral links must pass manual listening before scoring.</p>
     </header>
+
+    <section class="notes" aria-label="Analysis protocol">
+      <p>Analysis protocol:</p>
+      <ul>
+        <li>Qualitative: capture voice identity, naturalness, prosody, pacing, emotional fit, artifacts, and overall preference. Keep ratings and comments in Linear or the team score sheet, not on this page.</li>
+        <li>Quantitative: for each opened link, record link-open success, start-call success, connection time, time to first audible response, full-response time, retry count, and any visible or audible error.</li>
+        <li>Controls: use the same neutral prompt set for Tony and David within each row, record the exact prompt text, and keep <code>chat.steno.ai</code> lanes separate from <code>dev.chat.steno.ai</code> Mistral lanes during analysis.</li>
+      </ul>
+    </section>
 
     <section class="matrix" aria-label="Tony and David voice model comparison">
       <section class="model-row" aria-labelledby="flash-pvc-heading">
         <div class="row-header">
           <h2 id="flash-pvc-heading">ElevenLabs Flash PVC</h2>
-          <p class="row-note">Tony PVC-style ElevenLabs voice is live. David still needs a true PVC row; the current one-sample 11Labs voice is an IVC baseline, not a PVC lane.</p>
+          <p class="row-note">Tony PVC-style ElevenLabs voice is live. David PVC is intentionally out of scope for this review round; the current one-sample 11Labs voice remains an IVC baseline.</p>
         </div>
         <div class="compare">
           <div class="person">
@@ -219,16 +228,16 @@
           </div>
           <div class="person pending">
             <h3>David Cohen</h3>
-            <span class="badge">Pending</span>
+            <span class="badge">Out of scope</span>
             <dl>
-              <dt>Needed</dt><dd>David ElevenLabs PVC/pro-clone row or voice export for a true PVC comparison</dd>
+              <dt>Status</dt><dd>David PVC is not part of the current qualitative review scope</dd>
               <dt>Known audio</dt><dd><code>David Cohen v3 sample.mp3</code>, recovered from the retained ElevenLabs sample on 2026-06-12</dd>
               <dt>Current IVC baseline</dt><dd><code>david-cohen-voice-review-ivc</code> uses voice <code>Whupv3362SHZJtx5BKd6</code>, but this is not a separate PVC lane</dd>
               <dt>PVC status</dt><dd>DB row <code>David Cohen Pro-voice</code> points at ElevenLabs voice <code>6jpqXcplCS7hTJGEmGEH</code>, which returned <code>voice_not_found</code> on 2026-06-08</dd>
               <dt>Current settings</dt><dd><code>speed=1</code>, <code>style=0</code>, <code>stability=0.38</code>, <code>similarity_boost=0.85</code>, <code>use_speaker_boost=true</code></dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No David Flash PVC link yet</span>
+              <span class="disabled">David PVC intentionally excluded</span>
             </div>
           </div>
         </div>
@@ -470,16 +479,16 @@
           </div>
           <div class="person pending">
             <h3>David Cohen</h3>
-            <span class="badge">Pending</span>
+            <span class="badge">Out of scope</span>
             <dl>
-              <dt>Needed</dt><dd>Not needed for the current review scope</dd>
+              <dt>Status</dt><dd>David Cartesia PVC is not part of the current qualitative review scope</dd>
               <dt>Known audio</dt><dd><code>David Cohen v3 sample.mp3</code>, recovered from the retained ElevenLabs sample on 2026-06-12</dd>
               <dt>Target model</dt><dd><code>cartesia/sonic-3.5</code></dd>
-              <dt>Settings needed</dt><dd><code>cartesia_voice_id</code> from the PVC result plus hosted row settings</dd>
-              <dt>Comparability</dt><dd>source pack should be recorded separately if David PVC uses more than the current one sample</dd>
+              <dt>PVC boundary</dt><dd>No David Cartesia PVC fine-tune was performed; the one-sample Cartesia clone remains the IVC lane above</dd>
+              <dt>Future condition</dt><dd>Only add this lane if a true David PVC source pack and explicit PVC approval exist</dd>
             </dl>
             <div class="actions">
-              <span class="disabled">No David Cartesia PVC link yet</span>
+              <span class="disabled">David PVC intentionally excluded</span>
             </div>
           </div>
         </div>
